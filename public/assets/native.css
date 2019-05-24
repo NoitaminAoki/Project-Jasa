@@ -1,0 +1,580 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+*, *::after, *::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  outline: none;
+  scroll-behavior: smooth;
+  text-decoration: none;
+  transition: all 250ms;
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+a {
+  color: inherit;
+}
+textarea {
+  resize: vertical;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+section .container {
+  padding: 90px 0;
+}
+section .container > h1:first-child {
+  text-align: center;
+  position: relative;
+  text-transform: uppercase;
+  color: #5b5b5b;
+  font-weight: bolder;
+  font-size: 28px;
+  margin-bottom: 70px;
+}
+.navOpen a {
+  max-height: none;
+  opacity: 1;
+  padding: 10px 0;
+}
+.navOpen #loginBtn {
+  padding: 10px 30px;
+  margin: 10px 0 20px 0;
+}
+.show {
+  padding: 1rem 2rem;
+  max-height: 200vh !important;
+}
+.overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+#landingPage .overlay {
+  background-color: rgba(46, 139, 201, 0.65);
+}
+#aboutPage .overlay {
+  background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.27), rgba(41, 151, 214, 0.7));
+}
+header {
+  position: relative;
+  width: 100%;
+  height: 75vh;
+  padding-top: 80px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.container {
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+#landingPage {
+  background-image: url('img/header.jpg');
+}
+#landingPage .container {
+  height: 100%;
+  position: relative;
+}
+nav {
+  background-color: #2a2a2a;
+  box-shadow: 0 3px 4px 2px rgba(34,34,34,.3);
+  position: fixed;
+  z-index: 3;
+  padding: 0 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  color: #fff;
+  font-size: 18px;
+  width: 100%;
+  text-transform: capitalize;
+}
+nav > a {
+  max-height: 0;
+  padding: 0;
+  opacity: 0;
+}
+nav #brandNav {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 7px;
+  font-size: 22px;
+  color: #fff;
+  height: 60px;
+  font-weight: 900;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+nav #brandNav .bx {
+  font-size: 26px;
+  cursor: pointer;
+}
+nav #loginBtn {
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 53px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ECA84D;
+}
+#landingPage .header__caption {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  color: #fff;
+  left: 5%;
+  transform: translateY(-50%);
+}
+#landingPage .header__caption h1 {
+  font-weight: bolder;
+  letter-spacing: 1.6px;
+}
+#landingPage .header__caption ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-top: 30px;
+}
+#landingPage .header__caption ul li {
+  height: 30px;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  background-position: left;
+  text-indent: 40px;
+  letter-spacing: 1px;
+  background-repeat: no-repeat;
+  background-image: url('img/shield.png');
+  line-height: 30px;
+  margin-bottom: 10px;
+}
+#landingPage #goContent {
+  background-color: #ECA84D;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: 2;
+  width: 70%;
+  height: 44px;
+  max-width: 250px;
+  justify-content: center;
+  border-radius: 53px;
+  text-transform: capitalize;
+  transform: translate(-50%, 50%);
+  box-shadow: 3px 3px 3px rgba(38, 38, 38, 0.2);
+  font-weight: bold;
+}
+#landingPage #goContent .bx {
+  margin-left: 10px;
+  font-size: 25px;
+}
+#landingPage + main #jasaSection figure {
+  text-align: center;
+  margin-bottom: 30px;
+}
+#landingPage + main #jasaSection figcaption {
+  padding: 10px 0;
+}
+#landingPage + main #jasaSection figcaption h2 {
+  color: #636262;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+#landingPage + main #jasaSection figcaption p {
+  text-align: center;
+  color: #727272;
+  margin-bottom: 10px;
+}
+#landingPage + main #klienSection {
+  background-color: #F6F6F6;
+}
+#landingPage + main #klienSection #slideshowDesktop {
+  display: none;
+}
+#landingPage + main #klienSection .klienSlideshow img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  object-fit: scale-down;
+}
+#landingPage + main #klienSection .klienSlideshow > div {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+#landingPage + main #klienSection .klienSlideshow p {
+  font-size: 28px;
+  text-transform: capitalize;
+  color: #4E4E4E;
+  text-align: center;
+  margin-bottom: 15px;
+}
+#landingPage + main #hargaSection .col-12 {
+  margin-bottom: 30px;
+}
+#landingPage + main #hargaSection .col-12 > div, #landingPage + main #hargaSection #hargaDesktop .row:first-of-type > .col-12 {
+  padding: 15px 20px;
+  color: #fff;
+  border-radius: 10px 10px 0 0;
+}
+#landingPage + main #hargaSection .col-12 > div sup,  #landingPage + main #hargaSection #hargaDesktop sup {
+  position: relative;
+  top: -8px;
+}
+#landingPage + main #hargaSection .col-12 > div sub,  #landingPage + main #hargaSection #hargaDesktop sub {
+  letter-spacing: 1px;
+}
+#landingPage + main #hargaSection .col-12 > div var,  #landingPage + main #hargaSection #hargaDesktop var {
+  font-style: normal;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+#landingPage + main #hargaSection .col-12 > div h2, #landingPage + main #hargaSection #hargaDesktop h2 {
+  text-transform: uppercase;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+#landingPage + main #hargaSection .col-12 details {
+  background-color: #F2F2F2;
+  border-radius: 0 0 10px 10px;
+}
+#landingPage + main #hargaSection .col-12 details summary {
+  padding: 15px 20px;
+  color: #fff;
+}
+#landingPage + main #hargaSection .col-12 details > ul {
+  padding: 10px 20px;
+}
+#landingPage + main #hargaSection .col-12 details li, #landingPage + main #hargaSection #hargaDesktop li {
+  color: #686868;
+  padding: 5px 0;
+  text-transform: capitalize;
+  background-size: 17px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+#landingPage + main #hargaSection .col-12 details li:not(.no):not(.submenu), #landingPage + main #hargaSection #hargaDesktop li:not(.no):not(.submenu) {
+  background-image: url('img/yes.svg');
+}
+#landingPage + main #hargaSection .col-12 details .no, #landingPage + main #hargaSection #hargaDesktop .no {
+  background-image: url('img/no.svg');
+}
+#landingPage + main #hargaSection .col-12 details li ul, #landingPage + main #hargaSection #hargaDesktop li ul {
+  text-indent: 12px;
+}
+#landingPage + main #hargaSection .col-12 details li b, #landingPage + main #hargaSection #hargaDesktop li b {
+  margin-bottom: 10px;
+  display: block;
+}
+#landingPage + main #hargaSection #hargaDesktop {
+  display: none;
+}
+#landingPage + main #hargaSection .bisnis {
+  background-color: #50AFE7;
+}
+#landingPage + main #hargaSection .bisnis + details summary {
+  background-color: #409acf;
+}
+#landingPage + main #hargaSection .profesional {
+  background-color: #3081C0;
+}
+#landingPage + main #hargaSection .profesional + details summary {
+  background-color: #2d79b4;
+}
+#landingPage + main #hargaSection .pemula {
+  background-color: #67BCEE;
+}
+#landingPage + main #hargaSection .pemula + details summary {
+  background-color: #5cafe0;
+}
+#landingPage + main #hargaSection #showDetails {
+  display: none;
+}
+#landingPage + main #diskonSection h1 + p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+#landingPage + main #diskonSection br {
+  display: none;
+  height: 0;
+}
+#landingPage + main #diskonSection form input, #landingPage + main #diskonSection form select {
+  border: 1px solid #A5A5A5;
+  width: 100%;
+  padding: 10px 1rem;
+  border-radius: 5px;
+}
+#landingPage + main #diskonSection form input:focus, #landingPage + main #diskonSection form select:focus {
+  border-color: #2a8ecd;
+}
+#landingPage + main #diskonSection form select {
+  background-color: #fff;
+}
+#landingPage + main #diskonSection form input::placeholder {
+  color: #555555;
+  text-transform: capitalize;
+}
+#landingPage + main #diskonSection form button {
+  background-color: #ECA84D;
+  color: #fff;
+  border: 1px solid #AE772E;
+  padding: 10px 1rem;
+  text-transform: capitalize;
+  align-self: flex-end;
+  border-radius: 8px;
+}
+#landingPage + main #faqSection {
+  background-color: #3498DB;
+}
+#landingPage + main #faqSection .container > h1:first-child {
+  color: #fff;
+}
+#landingPage + main #faqSection .container div {
+  color: #fff;
+}
+#landingPage + main #faqSection .container div h3 {
+  margin-bottom: 15px;
+  font-weight: normal;
+}
+#landingPage + main #faqSection .container div p {
+  margin-bottom: 15px;
+}
+
+#aboutPage {
+  background-image: url('img/about.jpg');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#aboutPage nav + * {
+  z-index: 1;
+}
+#aboutPage h1 {
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  font-size: 36px;
+  letter-spacing: 2px;
+}
+#aboutPage + main {
+  min-height: 100vh;
+}
+#aboutPage + main section:first-of-type p {
+  text-align: center;
+}
+#aboutPage + main section:last-of-type figure {
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+#aboutPage + main section:last-of-type figure img {
+  width: 100%;
+  display: block;
+  border-radius: 5px 5px 0 0;
+  object-fit: cover;
+}
+#aboutPage + main section:last-of-type figcaption {
+  background-color: #EFEFEF;
+  border: 1px solid #D4D4D4;
+  display: flex;
+  color: #828282;
+  flex-direction: column;
+  padding: 10px 5px;
+  text-transform: capitalize;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 5px 5px;
+}
+#aboutPage + main section:last-of-type figcaption p:first-child {
+  font-weight: bold;
+}
+
+
+footer {
+  background-color: #328AC5;
+  color: #fff;
+  display: flex;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+}
+footer time {
+  margin: 0 5px;
+}
+
+@media screen and (min-width: 768px) {
+  section .container > h1:first-child::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 3px;
+    background-color: #ECA84D;
+    width: 15%;
+    max-width: 120px;
+  }
+
+  nav {
+    align-items: center;
+    height: 80px;
+    padding: 0 5%;
+    background-color: transparent;
+    box-shadow: none;
+    flex-direction: row;
+    font-size: 16px;
+  }
+  .navScrolled {
+    box-shadow: 0 3px 4px 2px rgba(34,34,34,.3);
+    background-color: #323232;
+    height: 70px;
+  }
+  nav #brandNav {
+    margin-right: auto;
+  }
+  nav #brandNav .bx {
+    display: none;
+  }
+  nav a {
+    max-height: none;
+    opacity: 1;
+  }
+  nav #loginBtn {
+    padding: 10px 30px;
+  }
+  nav a:not(#loginBtn) {
+    margin-right: 15px;
+  }
+  nav a:nth-child(4) {
+    position: relative;
+    margin-right: 30px !important;
+  }
+  nav a:nth-child(4)::after {
+    content: '';
+    position: absolute;
+    right: -15px;
+    top: 0;
+    height: 100%;
+    background-color: #fff;
+    width: 3px;
+  }
+  #landingPage .header__caption ul {
+    height: 80px;
+  }
+  #landingPage + main #klienSection #slideshowMobile {
+    display: none;
+  }
+  #landingPage + main #klienSection #slideshowDesktop {
+    display: block;
+  }
+  #landingPage + main #hargaSection .bisnis {
+    border-radius: 10px 0 0 0 !important;
+  }
+  #landingPage + main #hargaSection .profesional {
+    border-radius: 10px 10px 0 0 !important;
+    position: relative;
+    margin-top: -35px;
+    height: calc(300px + 35px) !important;
+  }
+  #landingPage + main #hargaSection .pemula {
+    border-radius: 0 10px 0 0 !important;
+  }
+  #landingPage + main #hargaMobile {
+    display: none;
+  }
+  #landingPage + main #hargaSection #hargaDesktop {
+    display: flex;
+  }
+  #landingPage + main #hargaSection #hargaDesktop .row:first-of-type .col-12 {
+    padding: 30px !important;
+  }
+  #landingPage + main #hargaSection #hargaDesktop .row:nth-of-type(2) {
+    background-color: #F2F2F2;
+    border: 1px solid #c1c1c1;
+    overflow: hidden;
+    transition: max-height 400ms;
+    max-height: 0;
+  }
+  #landingPage + main #hargaSection .col-12 {
+    margin-bottom: 0;
+  }
+  #landingPage + main #hargaSection #hargaDesktop .row:first-of-type > div:nth-child(-n+3) {
+    margin-bottom: 0 !important;
+    height: 300px;
+  }
+  #landingPage + main #hargaSection .col-md-4 div {
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #landingPage + main #hargaSection .container > h1:first-child {
+    margin-bottom: 105px;
+  }
+  #landingPage + main #hargaSection .col-12 > div h2 {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+  }
+  #landingPage + main #hargaSection .col-12 > div {
+    color: #686868 !important;
+  }
+  #landingPage + main #hargaSection .col-12 > div var {
+    font-size: 40px;
+  }
+  #landingPage + main #hargaSection .col-md-4 details {
+    display: none;
+  }
+  #landingPage + main #hargaSection #showDetails {
+    display: flex;
+    background-color: #FCC36A;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 100%;
+    height: 50px;
+    border-radius: 0 0 5px 5px;
+  }
+  #landingPage + main #hargaSection #showDetails:hover {
+    background-color: #e9b25a;
+  }
+  #landingPage + main #hargaSection #showDetails .bx {
+    margin-left: 10px;
+  }
+  #landingPage + main #diskonSection br {
+    display: block;
+  }
+
+  #aboutPage h1 {
+    font-size: 50px;
+  }
+  #aboutPage + main section:first-of-type p {
+    width: 50%;
+    margin: 0 auto;
+  }
+  #aboutPage + main section:last-of-type figure {
+    padding: 1rem 5rem;
+  }
+}
