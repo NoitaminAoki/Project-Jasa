@@ -2,9 +2,12 @@
 @section('title', 'Tentang Kami')
 @section('header')
   <header id="aboutPage">
-    @include('temp.nav')
-    <h1>Tentang Kami</h1>
-    <div class="overlay"></div>
+    <div class="overlay">
+      @include('temp.nav')
+      <div class="header__caption">
+        <h1>Tentang Kami</h1>
+      </div>
+    </div>
   </header>
 @endsection
 @section('content')

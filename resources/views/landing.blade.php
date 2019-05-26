@@ -2,18 +2,19 @@
 @section('title', 'Konsultan Manajemen Keuangan')
 @section('header')
   <header id="landingPage">
-    @include('temp.nav')
-    <div class="header__caption">
-      <h1>Konsultan Manajemen dan Keuangan <br> #1 Di Indonesia</h1>
-      <ul>
-        <li>SDM Profesional</li>
-        <li>Ditangani ahlinya</li>
-        <li>Pengerjaan Cepat</li>
-        <li>Biaya Super Hemat</li>
-      </ul>
+    <div class="overlay">
+      @include('temp.nav')
+      <div class="header__caption">
+        <h1>Konsultan Manajemen dan Keuangan <br> #1 Di Indonesia</h1>
+        <ul>
+          <li>SDM Profesional</li>
+          <li>Ditangani ahlinya</li>
+          <li>Pengerjaan Cepat</li>
+          <li>Biaya Super Hemat</li>
+        </ul>
+      </div>
+      <a href="#diskonSection" id="goContent">ambil diskon sekarang <box-icon name='chevrons-down' color="white"></box-icon></a>
     </div>
-    <a href="#diskonSection" id="goContent">ambil diskon sekarang <box-icon name='chevrons-down' color="white"></box-icon></a>
-    <div class="overlay"></div>
   </header>
 @endsection
 @section('content')

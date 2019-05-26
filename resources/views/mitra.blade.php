@@ -2,10 +2,13 @@
 @section('title', 'Mari Bermitra Dengan Kami')
 @section('header')
   <header id="mitraPage">
-    @include('temp.nav')
-    <h1>Ayo Bermitra Bersama Kami!</h1>
-    <a href="#caraBermitra" class="btn-secondary">Begini caranya <i class='bx bx-chevrons-down'></i></a>
-    <div class="overlay"></div>
+    <div class="overlay">
+      @include('temp.nav')
+      <div class="header__caption">
+        <h1>Ayo Bermitra Bersama Kami!</h1>
+      </div>
+      <a href="#caraBermitra" class="btn-secondary col-7 col-md-auto">Begini caranya <box-icon name='chevrons-down' color="white"></box-icon></a>
+    </div>
   </header>
 @endsection
 @section('content')
@@ -47,7 +50,7 @@
             <div class="modal__header">
               <h1>Daftarkan Bisnismu Sekarang!</h1>
               <small>dan dapatkan keuntungannya</small>
-              <span class="modal__close"><i class='bx bx-x' ></i></span>
+              <span class="modal__close"><box-icon name='x' color="white"></box-icon></span>
             </div>
             <div class="modal__content">
               <form action="" method="post">

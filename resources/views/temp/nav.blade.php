@@ -1,5 +1,5 @@
 <nav>
-  <span id="brandNav"><a href="">e-bina</a> <box-icon name='menu-alt-right' color="white"></box-icon></span>
+  <span id="brandNav"><a href="{{ url('/') }}">e-bina</a> <box-icon name='menu-alt-right' color="white"></box-icon></span>
   <a href="{{ url('/') }}#jasaSection">jasa</a>
   <a href="{{ url('/') }}#klienSection">klien</a>
   <a href="{{ url('/') }}#hargaSection">harga</a>

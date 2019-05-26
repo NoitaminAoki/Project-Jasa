@@ -3,12 +3,13 @@
 @section('header')
   <header id="supportPage">
     @include('temp.nav')
-    <div class="header__caption">
-      <h1 class="mb-3 mb-md-4">Kamu Membutuhkan Bantuan?</h1>
-      <h4>Hubungi WhatsApp kami: <a href="https://wa.me/628xxxxxxxx">08xxxxxxxx</a></h4>
-      <h4>atau isi form dibawah ini</h4>
+    <div class="overlay">
+      <div class="header__caption">
+        <h1 class="mb-3 mb-md-4">Kamu Membutuhkan Bantuan?</h1>
+        <h4 class="mr-5">Hubungi WhatsApp kami: <a href="https://wa.me/628xxxxxxxx">08xxxxxxxx</a></h4>
+        <h4>atau isi form dibawah ini</h4>
+      </div>
     </div>
-    <div class="overlay"></div>
   </header>
 @endsection
 @section('content')
