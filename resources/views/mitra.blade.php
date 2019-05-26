@@ -68,7 +68,10 @@
                   <div class="col px-0 mb-4">
                     <textarea name="name" rows="8" placeholder="Alamat Rumah"></textarea>
                   </div>
-                  <button type="submit" name="button" class="btn-secondary col-md-auto align-self-end">daftar sekarang <box-icon name='send' type='solid' color="white"></box-icon></button>
+                  <button type="submit" name="button" class="btn-secondary col-md-auto align-self-end">
+                    daftar sekarang
+                    <box-icon name='send' type='solid' color="white"></box-icon>
+                  </button>
                 </div>
               </form>
             </div>
