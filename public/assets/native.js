@@ -1,4 +1,12 @@
 $(document).ready(function() {
+  $(".btn-modal").click(function() {
+    $("body").addClass("xy-noscroll");
+    $(this).next().addClass("visible");
+  });
+  $(".modal__close").click(function() {
+    $(".modal-overlay").removeClass("visible");
+    $("body").removeClass("xy-noscroll");
+  });
   $("#showDetails").click(function() {
     $(this).prev().toggleClass("show");
   });
@@ -10,8 +18,8 @@ $(document).ready(function() {
       $('nav').removeClass('navScrolled');
     }
   });
-  $("nav #brandNav").click(function() {
-    $(this).parent().toggleClass("navOpen");
+  $("nav #brandNav box-icon").click(function() {
+    $(this).parents("nav").toggleClass("navOpen");
   });
   $("#slideshowMobile").slick({
     dots: true,

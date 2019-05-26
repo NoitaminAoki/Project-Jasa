@@ -8,8 +8,17 @@
   outline: none;
   scroll-behavior: smooth;
   text-decoration: none;
-  transition: all 250ms;
+  transition: all 200ms;
   font-family: 'Roboto', sans-serif;
+}
+form input, form select, form textarea {
+  border: 1px solid #A5A5A5;
+  width: 100%;
+  padding: 10px 1rem;
+  border-radius: 5px;
+}
+form input:focus, form select:focus, form textarea:focus {
+  border-color: #2a8ecd;
 }
 body {
   background-color: #ffffff;
@@ -38,6 +47,75 @@ section .container > h1:first-child {
   font-size: 28px;
   margin-bottom: 70px;
 }
+header:not(#landingPage) .overlay {
+  background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.27), rgba(41, 151, 214, 0.7));
+}
+header {
+  position: relative;
+  width: 100%;
+  height: 75vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+header nav + *, header nav ~ *:not(.overlay) {
+  z-index: 1;
+}
+.xy-noscroll {
+  overflow: hidden !important;
+}
+.x-noscroll {
+  overflow-x: hidden !important;
+}
+.visible {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.y-noscroll {
+  overflow-y: hidden;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  left: 0;
+  z-index: 4;
+  visibility: hidden;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal {
+  width: 90%;
+  position: absolute;
+  left: 50%;
+  border-radius: 8px;
+  overflow: hidden;
+  top: calc(30px + 50%);
+  transform: translateX(-50%) translateY(-50%);
+  background-color: #fff;
+}
+.modal__header {
+  border-left: 1px solid #2d8bcb;
+  border-right: 1px solid #2d8bcb;
+  border-top: 1px solid #2d8bcb;
+}
+.modal__close {
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  font-size: 20px;
+  right: 20px;
+}
+.modal__content {
+  border-bottom: 1px solid #868686;
+  border-right: 1px solid #868686;
+  border-left: 1px solid #868686;
+}
+.modal__header, .modal__content {
+  padding: 15px 20px;
+  width: 100%;
+}
 .navOpen a {
   max-height: none;
   opacity: 1;
@@ -58,31 +136,49 @@ section .container > h1:first-child {
   left: 0;
   top: 0;
 }
-#landingPage .overlay {
-  background-color: rgba(46, 139, 201, 0.65);
+.header__caption {
+  position: absolute;
+  z-index: 1;
+  top: calc(50% + 30px);
+  color: #fff;
+  transform: translateY(-50%);
 }
-#aboutPage .overlay {
-  background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.27), rgba(41, 151, 214, 0.7));
+.header__caption h1 {
+  font-weight: bolder;
+  letter-spacing: 1.6px;
 }
-header {
-  position: relative;
-  width: 100%;
-  height: 75vh;
-  padding-top: 80px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+.header__caption ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-top: 30px;
+}
+button box-icon {
+  margin-left: 10px;
 }
 .container {
   width: 90%;
   margin: 0 auto;
   overflow: hidden;
 }
+.btn-secondary {
+  justify-content: center;
+  background-color: #ECA84D;
+  border: 1px solid #DD9D47;
+  color: #fff;
+  text-transform: capitalize;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+}
 
-#landingPage {
+header#landingPage {
   background-image: url('img/header.jpg');
 }
-#landingPage .container {
+#landingPage .overlay {
+  background-color: rgba(46, 139, 201, 0.65);
+}
+header#landingPage .container {
   height: 100%;
   position: relative;
 }
@@ -132,22 +228,7 @@ nav #loginBtn {
   background-color: #ECA84D;
 }
 #landingPage .header__caption {
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  color: #fff;
   left: 5%;
-  transform: translateY(-50%);
-}
-#landingPage .header__caption h1 {
-  font-weight: bolder;
-  letter-spacing: 1.6px;
-}
-#landingPage .header__caption ul {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  margin-top: 30px;
 }
 #landingPage .header__caption ul li {
   height: 30px;
@@ -317,15 +398,6 @@ nav #loginBtn {
   display: none;
   height: 0;
 }
-#landingPage + main #diskonSection form input, #landingPage + main #diskonSection form select {
-  border: 1px solid #A5A5A5;
-  width: 100%;
-  padding: 10px 1rem;
-  border-radius: 5px;
-}
-#landingPage + main #diskonSection form input:focus, #landingPage + main #diskonSection form select:focus {
-  border-color: #2a8ecd;
-}
 #landingPage + main #diskonSection form select {
   background-color: #fff;
 }
@@ -333,12 +405,7 @@ nav #loginBtn {
   color: #555555;
   text-transform: capitalize;
 }
-#landingPage + main #diskonSection form button {
-  background-color: #ECA84D;
-  color: #fff;
-  border: 1px solid #AE772E;
-  padding: 10px 1rem;
-  text-transform: capitalize;
+#landingPage + main #diskonSection form button[type='submit'] {
   align-self: flex-end;
   border-radius: 8px;
 }
@@ -359,16 +426,105 @@ nav #loginBtn {
   margin-bottom: 15px;
 }
 
-#aboutPage {
+header#supportPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('img/support.jpg');
+}
+header#supportPage .header__caption {
+  text-align: center;
+}
+header#supportPage .header__caption h4 {
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+header#supportPage .header__caption a {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+#supportPage + main section form button {
+  border-radius: 5px;
+}
+
+header#mitraPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('img/mitra.jpg');
+}
+header#mitraPage h1 {
+  color: #fff;
+  font-size: 36px;
+  text-align: center;
+}
+header#mitraPage nav ~ a {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(50%);
+  border-radius: 20px;
+}
+#mitraPage + main #keuntunganSection {
+  background-color: #fff;
+}
+#mitraPage + main #keuntunganSection figure {
+  text-align: center;
+  margin-bottom: 40px;
+}
+#mitraPage + main #keuntunganSection figcaption {
+  padding: 20px;
+  font-weight: bold;
+  font-size: 22px;
+}
+#mitraPage + main #caraBermitra {
+  background-color: #3498DB;
+  color: #fff;
+}
+#mitraPage + main #caraBermitra .row {
+  align-items: center;
+  justify-content: space-between;
+}
+#mitraPage + main #caraBermitra h1, #mitraPage + main #caraBermitra p, #mitraPage + main #caraBermitra small {
+  color: #fff;
+}
+#mitraPage + main #caraBermitra ol {
+  margin-bottom: 30px;
+}
+#mitraPage + main #caraBermitra li {
+  margin-bottom: 8px;
+  font-weight: lighter;
+}
+#mitraPage + main #caraBermitra .btn-secondary {
+  background-color: #5FEB7B;
+  border-color: #4CB962 !important;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  position: relative;
+}
+#mitraPage + main #caraBermitra .btn-secondary:hover {
+  background-color: #4CB962;
+}
+#mitraPage + main #caraBermitra .modal__header {
+  background-color: #3498DB;
+}
+#mitraPage + main #caraBermitra .modal__header .modal__close {
+  color: #fff;
+}
+#mitraPage + main #caraBermitra .modal__header .modal__close:hover {
+  color: #e4e4e4;
+}
+#mitraPage + main #caraBermitra .modal__header h1 {
+  margin-bottom: 5px;
+  font-size: 22px;
+}
+
+header#aboutPage {
   background-image: url('img/about.jpg');
   display: flex;
   align-items: center;
   justify-content: center;
 }
-#aboutPage nav + * {
-  z-index: 1;
-}
-#aboutPage h1 {
+header#aboutPage h1 {
   color: #fff;
   font-weight: bold;
   text-align: center;
@@ -422,6 +578,12 @@ footer time {
 }
 
 @media screen and (min-width: 768px) {
+  .modal__header, .modal__content {
+    padding: 20px 60px;
+  }
+  .modal {
+    width: 50%;
+  }
   section .container > h1:first-child::after {
     content: '';
     position: absolute;
@@ -432,6 +594,9 @@ footer time {
     background-color: #ECA84D;
     width: 15%;
     max-width: 120px;
+  }
+  header#aboutPage h1, header#mitraPage h1 {
+    font-size: 50px;;
   }
 
   nav {
@@ -567,14 +732,38 @@ footer time {
     display: block;
   }
 
-  #aboutPage h1 {
-    font-size: 50px;
+  #supportPage .header__caption {
+    display: flex;
+    flex-wrap: wrap;
   }
+  #supportPage .header__caption h1 {
+    width: 100%;
+    font-size: 40px;
+  }
+  #supportPage .header__caption h4:first-of-type {
+    justify-content: flex-end;
+  }
+  #supportPage .header__caption h4:last-of-type {
+    justify-content: flex-start;
+  }
+  #supportPage .header__caption h4 {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    padding: 0 20px;
+  }
+
   #aboutPage + main section:first-of-type p {
     width: 50%;
     margin: 0 auto;
   }
   #aboutPage + main section:last-of-type figure {
     padding: 1rem 5rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  #supportPage .header__caption h1 {
+    font-size: 60px;
   }
 }

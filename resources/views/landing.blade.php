@@ -1,20 +1,22 @@
 @extends('layouts.master_static')
 @section('title', 'Konsultan Manajemen Keuangan')
+@section('header')
+  <header id="landingPage">
+    @include('temp.nav')
+    <div class="header__caption">
+      <h1>Konsultan Manajemen dan Keuangan <br> #1 Di Indonesia</h1>
+      <ul>
+        <li>SDM Profesional</li>
+        <li>Ditangani ahlinya</li>
+        <li>Pengerjaan Cepat</li>
+        <li>Biaya Super Hemat</li>
+      </ul>
+    </div>
+    <a href="#diskonSection" id="goContent">ambil diskon sekarang <box-icon name='chevrons-down' color="white"></box-icon></a>
+    <div class="overlay"></div>
+  </header>
+@endsection
 @section('content')
-<header id="landingPage">
-  @include('temp.nav')
-  <div class="header__caption">
-    <h1>Konsultan Manajemen dan Keuangan <br> #1 Di Indonesia</h1>
-    <ul>
-      <li>SDM Profesional</li>
-      <li>Ditangani ahlinya</li>
-      <li>Pengerjaan Cepat</li>
-      <li>Biaya Super Hemat</li>
-    </ul>
-  </div>
-  <a href="#diskonSection" id="goContent">ambil diskon sekarang <i class='bx bx-chevrons-down'></i></a>
-  <div class="overlay"></div>
-</header>
   <main>
     <section id="jasaSection">
       <div class="container">
@@ -480,7 +482,7 @@
               <input type="text" name="" placeholder="kode referal">
             </div>
             <div class="col-12 d-flex justify-content-end">
-              <button type="submit" name="button">ya aku tertarik <i class='bx bxs-send' ></i></button>
+              <button type="submit" name="button" class="btn-secondary">ya aku tertarik <box-icon name='send' type='solid' color="white"></box-icon></button>
             </div>
         </form>
       </div>

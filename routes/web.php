@@ -2,6 +2,8 @@
 
 Route::view('/', 'landing');
 Route::view('about', 'about');
+Route::view('mitra', 'mitra');
+Route::view('support', 'support');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('admin')->group(function () {
   Auth::routes();

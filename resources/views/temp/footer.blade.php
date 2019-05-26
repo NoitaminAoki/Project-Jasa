@@ -1,3 +1,3 @@
 <footer>
-  copyright <time>2019</time>| PT Jaya Bina Konsultan Grup
+  copyright <time>{{ date('Y') }}</time>| PT Jaya Bina Konsultan Grup
 </footer>
