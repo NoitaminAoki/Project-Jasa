@@ -4,7 +4,7 @@ Route::view('/', 'landing');
 Route::view('about', 'about');
 Route::view('mitra', 'mitra');
 Route::view('support', 'support');
-Route::view('promosi', 'promosi');
+Route::view('promo', 'promosi');
 Route::view('syarat-dan-ketentuan', 'peraturan')->name('peraturan');
 Route::view('profil', 'profil');
 Route::get('/home', 'HomeController@index')->name('home');
