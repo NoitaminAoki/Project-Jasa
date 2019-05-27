@@ -7,5 +7,9 @@
   <a href="{{ url('mitra') }}">mitra</a>
   <a href="{{ url('support') }}">support</a>
   <a href="{{ url('about') }}">tentang kami</a>
-  <a href="{{ route('login') }}" id="loginBtn">login</a>
+  @auth
+    <a href="{{ url('dashboard') }}" id="loginBtn">my dashboard</a>
+  @else
+    <a href="{{ route('login') }}" id="loginBtn">login</a>
+  @endauth
 </nav>
