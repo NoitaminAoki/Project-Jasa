@@ -5,6 +5,8 @@ $(document).ready(function() {
     $("body").addClass("xy-noscroll");
     $(this).next().addClass("visible");
   });
+  var profileDescription = $("#profilPage figcaption").outerHeight();
+  $("#profilPage + main section .container").css("padding-top", profileDescription + 75 + 20); /*value padding top == figpcation + 1/2 height gambar + 20px*/
   $(".modal__close").click(function() {
     $(".modal-overlay").removeClass("visible");
     $("body").removeClass("xy-noscroll");

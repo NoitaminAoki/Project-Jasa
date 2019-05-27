@@ -595,6 +595,62 @@ body#peraturanPage main p {
   border-radius: 0;
 }
 
+header#profilPage {
+  background-image: url('img/profil.png');
+}
+header#profilPage .container {
+  position: relative;
+  height: 100%;
+  overflow: visible;
+  padding-top: 60px;
+}
+#profilPage figure {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, calc(100% - 75px));
+}
+#profilPage figcaption {
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 20px 0;
+}
+#profilPage figcaption h1 {
+  color: #525252;
+  font-size: 25px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+#profilPage figcaption small:first-of-type {
+  color: #A8A8A8;
+  margin-bottom: 10px;
+}
+#profilPage figcaption small:last-of-type {
+  color: #CE7C3D;
+}
+#profilPage figcaption small a {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+#profilPage figcaption small box-icon {
+  margin-left: 0;
+}
+#profilPage + main section li {
+  margin-bottom: 30px;
+}
+#profilPage + main section li span {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+#profilPage + main section li address, #profilPage + main section li a {
+  color: #A8A8A8;
+}
+
 header#aboutPage {
   background-image: url('img/about.jpg');
   display: flex;
@@ -639,7 +695,6 @@ header#aboutPage h1, header#promosiPage h1 {
 #aboutPage + main section:last-of-type figcaption p:first-child {
   font-weight: bold;
 }
-
 
 footer {
   background-color: #328AC5;
@@ -842,6 +897,27 @@ footer time {
   }
   #promosiPage + main section .col-12:nth-of-type(n+4) {
     margin-top: 40px;
+  }
+
+  header#profilPage nav {
+    background-color: rgba(0, 0, 0, 0.56);
+  }
+  header#profilPage .container {
+    padding-top: 80px;
+  }
+  #profilPage figcaption {
+    flex-direction: row;
+    justify-content: center;
+  }
+  #profilPage figcaption h1 {
+    font-size: 30px;
+    width: 100%;
+  }
+  #profilPage figcaption small:first-of-type {
+    margin-bottom: 0;
+  }
+  #profilPage figcaption small:last-of-type {
+    margin-left: 40px;
   }
 
   #supportPage .header__caption {

@@ -446,7 +446,7 @@
               </div>
             </div>
             <div id="showDetails" class="col-12">
-              <span>Lihat Perbandingan <i class='bx bx-chevron-down'></i></span>
+              <span class="d-flex align-items-center">Lihat Perbandingan <box-icon name='chevron-down' color="white"></box-icon></span>
             </div>
           </div>
         </div>
