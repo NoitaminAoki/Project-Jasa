@@ -153,6 +153,9 @@ box-icon {
 .container {
   width: 90% !important;
 }
+.nav-link {
+  padding: .5rem 1rem !important;
+}
 .header__caption {
   width: 90%;
   position: absolute;
@@ -562,6 +565,36 @@ header#promosiPage .header__caption {
   color: #909090;
 }
 
+body#peraturanPage main h1 {
+  margin-bottom: 40px;
+}
+body#peraturanPage main h1, body#peraturanPage main h2, body#peraturanPage main p {
+  color: #595959;
+}
+body#peraturanPage main h2, body#peraturanPage main p {
+  margin-bottom: 20px;
+}
+body#peraturanPage main p {
+  font-weight: normal;
+}
+#peraturanPage nav {
+  position: static;
+}
+#peraturanPage .row {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #b3b3b3;
+}
+#peraturanPage .row .col-md-3 {
+  border-right: 1px solid #707070;
+}
+#peraturanPage .row .nav-pills a {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: 0;
+}
+
 header#aboutPage {
   background-image: url('img/about.jpg');
   display: flex;
@@ -611,11 +644,20 @@ header#aboutPage h1, header#promosiPage h1 {
 footer {
   background-color: #328AC5;
   color: #fff;
-  display: flex;
   height: 60px;
-  align-items: center;
-  justify-content: center;
   text-transform: capitalize;
+}
+footer small {
+  font-size: 16px;
+}
+footer a {
+  font-size: 12px;
+}
+footer .container {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 footer time {
   margin: 0 5px;
@@ -641,6 +683,9 @@ footer time {
   }
   header#aboutPage h1, header#mitraPage h1, header#promosiPage h1 {
     font-size: 50px;
+  }
+  body#peraturanPage nav {
+    background-color: #3498DB;
   }
 
   nav {

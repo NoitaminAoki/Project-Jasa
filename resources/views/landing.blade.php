@@ -18,7 +18,6 @@
   </header>
 @endsection
 @section('content')
-  <main>
     <section id="jasaSection">
       <div class="container">
         <h1>Apa yang kami sediakan</h1>
@@ -545,5 +544,4 @@
         </div>
       </div>
     </section>
-  </main>
 @endsection
