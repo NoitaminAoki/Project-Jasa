@@ -66,7 +66,7 @@
                     <input type="number" name="" placeholder="Nomor Handphone">
                   </div>
                   <div class="col px-0 mb-4">
-                    <textarea name="name" rows="8" placeholder="Alamat Rumah"></textarea>
+                    <textarea name="name" rows="10" placeholder="Alamat Rumah"></textarea>
                   </div>
                   <button type="submit" name="button" class="btn-secondary col-md-auto align-self-end">
                     daftar sekarang
