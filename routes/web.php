@@ -1,16 +1,33 @@
 <?php
 
-Route::view('/', 'landing');
-Route::view('about', 'about');
-Route::view('mitra', 'mitra');
-Route::view('support', 'support');
-Route::view('promo', 'promosi');
-Route::view('syarat-dan-ketentuan', 'peraturan')->name('peraturan');
-Route::view('profil', 'profil');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::prefix('admin')->group(function () {
+
+Route::prefix('admin')->name('admin.')->group(function () {
   Auth::routes();
 });
+
+Route::get('/adminss', function(){
+  return view('admin');
+})->name('adminpage');
+
+
+Route::prefix('member')->namespace('Auth')->name('member.')->group(function () {
+  Route::get('login','MemberLoginController@showLoginForm')->name('login');
+  Route::post('login', 'MemberLoginController@login')->name('login');
+  Route::get('register','MemberLoginController@showRegisterPage')->name('register');
+  Route::post('register', 'MemberLoginController@register')->name('register');
+});
+
+Route::namespace('Home')->name('home.')->group(function () {
+  Route::get('/', 'HomeController@landing');
+  Route::get('about', 'HomeController@about')->name('about');
+  Route::get('mitra', 'HomeController@mitra')->name('mitra');
+  Route::get('support', 'HomeController@support')->name('support');
+  Route::get('promo', 'HomeController@promosi')->name('promosi');
+  Route::get('syarat-dan-ketentuan', 'HomeController@peraturan')->name('peraturan');
+  Route::get('profil', 'HomeController@profil')->name('profil');
+});
+
 Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->group(function () {
   Route::resource('dashboard', 'DashboardController');
   Route::resource('profil', 'ProfilController');
@@ -23,7 +40,7 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->
   Route::resource('bantuan', 'BantuanController');
 });
 
-Route::prefix('member')->namespace('Member')->name('member.')->group(function () {
+Route::prefix('member')->namespace('Member')->name('member.')->middleware('auth:member')->group(function () {
   Route::resource('dashboard', 'DashboardController');
   Route::resource('profil', 'ProfilController');
   Route::resource('klien', 'KlienController');
@@ -32,3 +49,6 @@ Route::prefix('member')->namespace('Member')->name('member.')->group(function ()
   Route::resource('aturan', 'AturanController');
   Route::resource('bantuan', 'BantuanController');
 });
+
+
+Route::get('/home', 'HomeController@index')->name('home');
