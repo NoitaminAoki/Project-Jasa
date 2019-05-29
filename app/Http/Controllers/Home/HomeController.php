@@ -27,9 +27,9 @@ class HomeController extends Controller
     {
         return view('promosi');
     }
-    public function pengaturan()
+    public function peraturan()
     {
-        return view('pengaturan');
+        return view('peraturan');
     }
     public function profil()
     {

@@ -18,7 +18,7 @@
       <a href="{{ url('mitra') }}">mitra</a>
       <a href="{{ url('support') }}">support</a>
       <a href="{{ url('about') }}">tentang kami</a>
-      <a href="{{ route('login') }}" id="loginBtn">login</a>
+      <a href="{{ route('member.login') }}" id="loginBtn">login</a>
     </nav>
     <main>
       <section>
