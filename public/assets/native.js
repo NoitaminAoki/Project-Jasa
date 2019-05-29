@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $("img").attr("draggable", "false");
-  $("input").prop("required", true);
+  $("input, textarea, select").prop("required", true);
   $(".btn-modal").click(function() {
     $("body").addClass("xy-noscroll");
     $(this).next().addClass("visible");
