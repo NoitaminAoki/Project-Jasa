@@ -16,7 +16,7 @@
     <!-- Navbar -->
     @include('temp.navbar')
     <!-- /.navbar -->
-    
+
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-light-info elevation-4" style="z-index: 1040 !important;">
       <!-- Brand Logo -->
@@ -25,17 +25,23 @@
         style="opacity: .8">
         <span class="brand-text font-weight-light">E - Bina</span>
       </a>
-      
+
       <!-- Sidebar -->
+<<<<<<< HEAD
       @if (Auth::guard('web')->check())
       @include('temp.sidebarAdmin')    
       @endif
+=======
+      @auth
+      @include('temp.sidebarAdmin')
+      @endauth
+>>>>>>> refs/remotes/origin/master
       @if (Auth::guard('member')->check())
       @include('temp.sidebarMember')
       @endif
       <!-- /.sidebar -->
     </aside>
-    
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -55,14 +61,14 @@
         </div><!-- /.container-fluid -->
       </div>
       <!-- /.content-header -->
-      
+
       <!-- Main content -->
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            
+
             @yield('content')
-            
+
           </div>
           <!-- /.row -->
         </div>
@@ -71,14 +77,14 @@
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-    
-    
+
+
     <!-- Control Sidebar -->
     {{-- <aside class="control-sidebar control-sidebar-dark">
       <!-- Control sidebar content goes here -->
     </aside> --}}
     <!-- /.control-sidebar -->
-    
+
     <!-- Main Footer -->
     <footer class="main-footer">
       <!-- To the right -->
@@ -91,9 +97,9 @@
     </footer>
   </div>
   <!-- ./wrapper -->
-  
+
   <!-- REQUIRED SCRIPTS -->
-  
+
   <!-- jQuery -->
   @include('temp.scripts')
 </body>

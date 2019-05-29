@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Regulation;
 
 class AturanController extends Controller
 {
@@ -24,7 +25,7 @@ class AturanController extends Controller
      */
     public function create()
     {
-        //
+        // return view('admin.aturan.create');
     }
 
     /**
@@ -35,7 +36,13 @@ class AturanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $tambah_aturan = new Regulation;
+
+      $tambah_aturan->judul = $request->judul;
+      $tambah_aturan->deskripsi = $request->deskripsi;
+
+      $tambah_aturan->save();
+      return redirect()->route('admin.aturan.index');
     }
 
     /**
@@ -57,7 +64,8 @@ class AturanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $edit_aturan = Regulation::findOrFail($id);
+        return view('admin.aturan.aturan_edit');
     }
 
     /**
