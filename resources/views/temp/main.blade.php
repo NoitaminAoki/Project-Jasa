@@ -27,9 +27,15 @@
       </a>
 
       <!-- Sidebar -->
+<<<<<<< HEAD
+      @if (Auth::guard('web')->check())
+      @include('temp.sidebarAdmin')    
+      @endif
+=======
       @auth
       @include('temp.sidebarAdmin')
       @endauth
+>>>>>>> refs/remotes/origin/master
       @if (Auth::guard('member')->check())
       @include('temp.sidebarMember')
       @endif

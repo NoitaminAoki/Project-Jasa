@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Session;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -78,5 +79,11 @@ class MemberLoginController extends Controller
             return redirect(url('/member/dashboard'));
         }
         return back()->withErrors(['email' => 'Email or password are wrong.']);
+    }
+
+    public function logout(Request $request)
+    {
+        $request->session()->flush();
+        return redirect(url('/'));
     }
 }
