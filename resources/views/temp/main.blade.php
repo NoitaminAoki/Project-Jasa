@@ -27,9 +27,9 @@
       </a>
       
       <!-- Sidebar -->
-      @auth
+      @if (Auth::guard('web')->check())
       @include('temp.sidebarAdmin')    
-      @endauth
+      @endif
       @if (Auth::guard('member')->check())
       @include('temp.sidebarMember')
       @endif

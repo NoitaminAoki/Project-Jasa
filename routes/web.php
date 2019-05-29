@@ -1,9 +1,16 @@
 <?php
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function ()
+{
+  return redirect(url('/'));
+})->name('home');
 
-Route::prefix('admin')->name('admin.')->group(function () {
-  Auth::routes();
+Route::prefix('admin')->namespace('Auth')->name('admin.')->group(function () {
+  Route::get('login','LoginController@showLoginForm')->name('login');
+  Route::post('login', 'LoginController@login')->name('login');
+  Route::get('register','RegisterController@showRegistrationForm')->name('register');
+  Route::post('register', 'RegisterController@register')->name('register');
+  Route::post('logout', 'LoginController@logout')->name('logout');
 });
 
 Route::get('/adminss', function(){
@@ -16,6 +23,7 @@ Route::prefix('member')->namespace('Auth')->name('member.')->group(function () {
   Route::post('login', 'MemberLoginController@login')->name('login');
   Route::get('register','MemberLoginController@showRegisterPage')->name('register');
   Route::post('register', 'MemberLoginController@register')->name('register');
+  Route::post('logout', 'MemberLoginController@logout')->name('logout');
 });
 
 Route::namespace('Home')->name('home.')->group(function () {
@@ -50,5 +58,3 @@ Route::prefix('member')->namespace('Member')->name('member.')->middleware('auth:
   Route::resource('bantuan', 'BantuanController');
 });
 
-
-Route::get('/home', 'HomeController@index')->name('home');

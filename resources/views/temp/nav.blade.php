@@ -7,9 +7,9 @@
   <a href="{{ route('home.mitra') }}">mitra</a>
   <a href="{{ route('home.support') }}">support</a>
   <a href="{{ route('home.profil') }}">tentang kami</a>
-  @auth
-    <a href="{{ url('dashboard') }}" id="loginBtn">my dashboard</a>
+  @if(Auth::guard('member')->check())
+    <a href="{{ url('member/dashboard') }}" id="loginBtn">my dashboard</a>
   @else
-    <a href="{{ route('admin.login') }}" id="loginBtn">login</a>
-  @endauth
+    <a href="{{ route('member.login') }}" id="loginBtn">login</a>
+  @endif
 </nav>
