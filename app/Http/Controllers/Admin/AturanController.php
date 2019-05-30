@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Regulation;
+use App\Models\Peraturan as Peraturan;
 
 class AturanController extends Controller
 {
@@ -15,7 +15,8 @@ class AturanController extends Controller
      */
     public function index()
     {
-        return view('admin.aturan.aturan_index');
+        $peraturan = Peraturan::all();
+        return view('admin.aturan.aturan_index', ['peraturan' => $peraturan]);
     }
 
     /**
@@ -25,7 +26,7 @@ class AturanController extends Controller
      */
     public function create()
     {
-        // return view('admin.aturan.create');
+        return view('admin.aturan.aturan_create');
     }
 
     /**
@@ -36,7 +37,7 @@ class AturanController extends Controller
      */
     public function store(Request $request)
     {
-      $tambah_aturan = new Regulation;
+      $tambah_aturan = new Peraturan;
 
       $tambah_aturan->judul = $request->judul;
       $tambah_aturan->deskripsi = $request->deskripsi;
@@ -64,8 +65,8 @@ class AturanController extends Controller
      */
     public function edit($id)
     {
-        $edit_aturan = Regulation::findOrFail($id);
-        return view('admin.aturan.aturan_edit');
+        $edit_aturan = Peraturan::findOrFail($id);
+        return view('admin.aturan.aturan_edit', ['edit_aturan' => $edit_aturan]);
     }
 
     /**
@@ -77,7 +78,13 @@ class AturanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $update_peraturan = Peraturan::findOrFail($id);
+
+      $update_peraturan->judul = $request->judul;
+      $update_peraturan->deskripsi = $request->deskripsi;
+
+      $update_peraturan->save();
+      return redirect()->route('admin.aturan.index');
     }
 
     /**
@@ -88,6 +95,8 @@ class AturanController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $hapus_peraturan = Peraturan::findOrFail($id);
+      $hapus_peraturan->delete();
+      return redirect()->back();
     }
 }

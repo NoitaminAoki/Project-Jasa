@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  /*general js code*/
   $("img").attr("draggable", "false");
   $("input, textarea, select").prop("required", true);
   $(".btn-modal").click(function() {
@@ -25,6 +26,10 @@ $(document).ready(function() {
   $("nav #brandNav box-icon").click(function() {
     $(this).parents("nav").toggleClass("navOpen");
   });
+  $("#peraturanPage .nav-pills .nav-link:first-of-type").addClass("active").attr("aria-selected", "true")
+  $("#peraturanPage .tab-content .tab-pane.fade:first-of-type").addClass("show active");
+  /*end of general js code*/
+  /*plugin option down here*/
   $("#slideshowMobile").slick({
     dots: true,
     infinite: false,
@@ -61,4 +66,5 @@ $(document).ready(function() {
     slidesPerRow: 2,
     centerPadding: "70px"
   });
+  /*end of plugin option*/
 });

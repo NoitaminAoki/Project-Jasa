@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRegulationsTable extends Migration
+class CreatePeraturansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateRegulationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('regulations', function (Blueprint $table) {
+        Schema::create('peraturan', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('judul');
             $table->text('deskripsi');
@@ -28,6 +28,6 @@ class CreateRegulationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('regulations');
+        Schema::dropIfExists('peraturans');
     }
 }

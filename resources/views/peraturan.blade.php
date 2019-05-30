@@ -31,54 +31,20 @@
           <div class="row mx-0">
             <div class="col-md-3 px-0">
               <div class="nav flex-column nav-pills" id="v-pills-tab" aria-orientation="vertical" role="tablist" id="v-pills-tab">
-                <a class="nav-link active" id="v-pills-peraturan1-tab" role="tab" data-toggle="pill" aria-controls="v-pills-peraturan1" aria-selected="true" href="#peraturan1">peraturan pertama</a>
-                <a class="nav-link" id="v-pills-peraturan2-tab" role="tab" data-toggle="pill" aria-controls="v-pills-peraturan2" aria-selected="false" href="#peraturan2">peraturan kedua</a>
-                <a class="nav-link" id="v-pills-peraturan3-tab" role="tab" data-toggle="pill" aria-controls="v-pills-peraturan3" aria-selected="false" href="#peraturan3">peraturan ketiga</a>
-                <a class="nav-link" id="v-pills-peraturan4-tab" role="tab" data-toggle="pill" aria-controls="v-pills-peraturan4" aria-selected="false" href="#peraturan4">peraturan ketiga</a>
+                @foreach ($peraturan as $each)
+                  <a class="nav-link" id="v-pills-peraturan{{ $each->id }}-tab" data-toggle="pill" href="#v-pills-peraturan{{ $each->id }}" role="tab"
+      						aria-controls="v-pills-peraturan{{ $each->id }}" aria-selected="false">{{ $each->judul }}</a>
+                @endforeach
               </div>
             </div>
             <div class="col px-0" id="listPeraturan">
               <div class="tab-content" id="v-pills-tabContent">
-                <div role="tabpanel" aria-labelledby="v-pills-peraturan1-tab" class="tab-pane fade show active" id="peraturan1">
-                  <h3>Judul Peraturan ke1</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id diam tincidunt, accumsan est id, porttitor velit. Sed placerat quam dui,
-                    eu vehicula lectus faucibus et. Praesent bibendum bibendum justo. Proin a quam quis dui vulputate consequat.
-                    Duis consequat, nulla nec condimentum tincidunt, velit neque ullamcorper risus, rhoncus eleifend justo enim in ante.
-                    Phasellus sodales, mauris et viverra scelerisque, arcu sem cursus nunc, gravida volutpat sem nibh vel nibh.
-                    Sed ac fringilla elit. Etiam sagittis dui quis mauris rhoncus auctor. Vivamus fringilla justo leo, vel aliquet elit tempus et.
-                    Donec sed purus sollicitudin, mattis elit vel, ornare sapien. Duis aliquam libero at nunc auctor, quis efficitur est vehicula.
-                    Aenean eget auctor velit, quis congue nisi.</p>
-                </div>
-                <div role="tabpanel" aria-labelledby="v-pills-peraturan2-tab" class="tab-pane fade" id="peraturan2">
-                  <h3>Judul Peraturan ke2</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id diam tincidunt, accumsan est id, porttitor velit. Sed placerat quam dui,
-                    eu vehicula lectus faucibus et. Praesent bibendum bibendum justo. Proin a quam quis dui vulputate consequat.
-                    Duis consequat, nulla nec condimentum tincidunt, velit neque ullamcorper risus, rhoncus eleifend justo enim in ante.
-                    Phasellus sodales, mauris et viverra scelerisque, arcu sem cursus nunc, gravida volutpat sem nibh vel nibh.
-                    Sed ac fringilla elit. Etiam sagittis dui quis mauris rhoncus auctor. Vivamus fringilla justo leo, vel aliquet elit tempus et.
-                    Donec sed purus sollicitudin, mattis elit vel, ornare sapien. Duis aliquam libero at nunc auctor, quis efficitur est vehicula.
-                    Aenean eget auctor velit, quis congue nisi.</p>
-                </div>
-                <div role="tabpanel" aria-labelledby="v-pills-peraturan3-tab" class="tab-pane fade" id="peraturan3">
-                  <h3>Judul Peraturan ke3</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id diam tincidunt, accumsan est id, porttitor velit. Sed placerat quam dui,
-                    eu vehicula lectus faucibus et. Praesent bibendum bibendum justo. Proin a quam quis dui vulputate consequat.
-                    Duis consequat, nulla nec condimentum tincidunt, velit neque ullamcorper risus, rhoncus eleifend justo enim in ante.
-                    Phasellus sodales, mauris et viverra scelerisque, arcu sem cursus nunc, gravida volutpat sem nibh vel nibh.
-                    Sed ac fringilla elit. Etiam sagittis dui quis mauris rhoncus auctor. Vivamus fringilla justo leo, vel aliquet elit tempus et.
-                    Donec sed purus sollicitudin, mattis elit vel, ornare sapien. Duis aliquam libero at nunc auctor, quis efficitur est vehicula.
-                    Aenean eget auctor velit, quis congue nisi.</p>
-                </div>
-                <div role="tabpanel" aria-labelledby="v-pills-peraturan4-tab" class="tab-pane fade" id="peraturan4">
-                  <h3>Judul Peraturan ke4</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id diam tincidunt, accumsan est id, porttitor velit. Sed placerat quam dui,
-                    eu vehicula lectus faucibus et. Praesent bibendum bibendum justo. Proin a quam quis dui vulputate consequat.
-                    Duis consequat, nulla nec condimentum tincidunt, velit neque ullamcorper risus, rhoncus eleifend justo enim in ante.
-                    Phasellus sodales, mauris et viverra scelerisque, arcu sem cursus nunc, gravida volutpat sem nibh vel nibh.
-                    Sed ac fringilla elit. Etiam sagittis dui quis mauris rhoncus auctor. Vivamus fringilla justo leo, vel aliquet elit tempus et.
-                    Donec sed purus sollicitudin, mattis elit vel, ornare sapien. Duis aliquam libero at nunc auctor, quis efficitur est vehicula.
-                    Aenean eget auctor velit, quis congue nisi.</p>
-                </div>
+                @foreach ($peraturan as $each)
+      		      <div class="tab-pane fade" id="v-pills-peraturan{{ $each->id }}" role="tabpanel" aria-labelledby="v-pills-peraturan{{ $each->id }}-tab">
+      						<h2 class="text-capitalize">{{ $each->judul }}</h2>
+      		      	{!! $each->deskripsi !!}
+      		      </div>
+      					@endforeach
               </div>
             </div>
           </div>
@@ -90,5 +56,8 @@
     <script src="{{ asset('assets/native.js') }}" charset="utf-8"></script>
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.js') }}" charset="utf-8"></script>
     <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+    <script>
+      
+    </script>
   </body>
 </html>

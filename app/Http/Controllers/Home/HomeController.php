@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Peraturan;
 
 class HomeController extends Controller
 {
@@ -29,7 +30,8 @@ class HomeController extends Controller
     }
     public function peraturan()
     {
-        return view('peraturan');
+        $peraturan = Peraturan::all();
+        return view('peraturan', ['peraturan' => $peraturan]);
     }
     public function profil()
     {
