@@ -52,7 +52,7 @@
           <a href="{{ route('admin.landing-page.index') }}" class="nav-link {{ (Request::segment(2) == "landing-page")? 'active' : '' }}">
             <i class="nav-icon fa fa-book"></i>
             <p>
-              Landing Page
+              Harga
             </p>
           </a>
         </li>

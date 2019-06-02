@@ -16,14 +16,18 @@
   <section>
     <div class="container">
       <h1>kirim pertanyaanmu melalui form ini</h1>
-      <form action="" class="row flex-column mx-0" method="post">
+      <form action="{{ route('support.send') }}" class="row flex-column mx-0" method="post">
+        @csrf
         <div class="col-12 px-0 mb-4">
-          <input type="text" name="" placeholder="Email Kamu">
+          <input type="email" name="email_pengirim" placeholder="Email Kamu" @auth value="{{ Auth::user()->email }}" readonly @endauth>
         </div>
         <div class="col-12 px-0 mb-3">
-          <textarea name="name" rows="12" placeholder="Apa yang ingin kamu tanyakan?"></textarea>
+          <textarea name="pertanyaan_pengirim" rows="12" placeholder="Apa yang ingin kamu tanyakan?"></textarea>
         </div>
-        <button type="submit" name="button" class="btn-secondary col-md-auto align-self-end">kirim pertanyaanmu <box-icon name='send' type='solid' color="white"></box-icon></button>
+        <button type="submit" name="button" class="btn-secondary col-md-auto align-self-end">
+          kirim pertanyaanmu
+          <box-icon name='send' type='solid' color="white"></box-icon>
+        </button>
       </form>
     </div>
   </section>

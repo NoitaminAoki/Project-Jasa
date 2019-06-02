@@ -28,6 +28,9 @@ $(document).ready(function() {
   });
   $("#peraturanPage .nav-pills .nav-link:first-of-type").addClass("active").attr("aria-selected", "true")
   $("#peraturanPage .tab-content .tab-pane.fade:first-of-type").addClass("show active");
+  $("#hargaDesktop .row > .col-12:first-of-type").addClass("bisnis");
+  $("#hargaDesktop .row > .col-12:nth-of-type(2)").addClass("profesional");
+  $("#hargaDesktop .row > .col-12:last-of-type").addClass("pemula");
   /*end of general js code*/
   /*plugin option down here*/
   $("#slideshowMobile").slick({

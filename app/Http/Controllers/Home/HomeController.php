@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Peraturan;
+use App\Models\Harga;
 
 class HomeController extends Controller
 {
     public function landing()
     {
-        return view('landing');
+        $price = Harga::all();
+        return view('landing', ['price' => $price]);
     }
     public function about()
     {

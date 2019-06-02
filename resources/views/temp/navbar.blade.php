@@ -50,11 +50,9 @@
     </li> --}}
     <li class="nav-item">
       @if (Auth::guard('web')->check())
-        <a class="nav-link" href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-          <i class="fa fa-power-off"></i>
-        </a>
-        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+        <form class="d-inline" action="{{ route('admin.logout') }}" method="post">
           @csrf
+          <button type="submit" name="button" class="nav-link btn btn-link"><i class="fa fa-power-off"></i></button>
         </form>
       @elseif (Auth::guard('member')->check())
         <a class="nav-link" href="{{ route('member.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
