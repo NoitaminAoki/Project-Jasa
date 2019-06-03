@@ -6,13 +6,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Peraturan;
 use App\Models\Harga;
+use App\Models\Partner;
 
 class HomeController extends Controller
 {
     public function landing()
     {
         $price = Harga::all();
-        return view('landing', ['price' => $price]);
+        $partners = Partner::all();
+        return view('landing', compact('price', 'partners'));
     }
     public function about()
     {

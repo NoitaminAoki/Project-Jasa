@@ -33,6 +33,14 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{{ route('admin.partner.index') }}" class="nav-link {{ (Request::segment(2) == "partner")? 'active' : '' }}">
+            <i class="nav-icon fas fa-handshake"></i>
+            <p>
+              Partner
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{{ route('admin.member.index') }}" class="nav-link {{ (Request::segment(2) == "member")? 'active' : '' }}">
             <i class="nav-icon fa fa-users"></i>
             <p>

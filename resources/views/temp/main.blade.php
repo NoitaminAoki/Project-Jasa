@@ -26,9 +26,6 @@
       @if (Auth::guard('web')->check())
         @include('temp.sidebarAdmin')
       @endif
-      @auth
-        @include('temp.sidebarAdmin')
-      @endauth
       @if (Auth::guard('member')->check())
         @include('temp.sidebarMember')
       @endif

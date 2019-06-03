@@ -2,7 +2,6 @@
 
 Route::get('/home', function () { return redirect(url('/')); })->name('home');
 Route::view('support/thank-you', 'member.thanks')->name('support.thanks');
-Route::post('support', 'SupportController@kirimsupport')->name('support.send');
 
 Route::prefix('admin')->namespace('Auth')->name('admin.')->group(function () {
   Route::get('login','LoginController@showLoginForm')->name('login');
@@ -45,6 +44,7 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->
   Route::resource('promosi', 'PromosiController');
   Route::resource('aturan', 'AturanController');
   Route::resource('bantuan', 'BantuanController');
+  Route::resource('partner', 'PartnerController');
 });
 
 Route::prefix('member')->namespace('Member')->name('member.')->middleware('auth:member')->group(function () {

@@ -40,7 +40,8 @@ $(document).ready(function() {
     autoplay: true,
     autoplaySpeed: 2000,
     arrows: true,
-    slidesPerRow: 1,
+    slidesToScroll: 1,
+    rows: 2,
     slidesToShow: 1
   });
   $("#slideshowDesktop").slick({
@@ -50,7 +51,7 @@ $(document).ready(function() {
     autoplay: true,
     autoplaySpeed: 2000,
     arrows: true,
-    slidesToScroll: 1,
+    slidesToScroll: 3,
     rows: 2,
     slidesToShow: 3
   });

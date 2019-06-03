@@ -65,80 +65,24 @@
       <div class="container">
         <h1>E-Bina telah dipercaya oleh partner partner di seluruh Indonesia</h1>
         <div class="row mx-0 klienSlideshow" id="slideshowMobile">
-          <div>
-            <img height="100" src="assets/img/klien/alazhar.svg">
-            <p>Nama Klien</p>
-          </div>
-          <div>
-            <img height="100" src="assets/img/klien/alhusnain.svg">
-            <p>Nama Klien</p>
-          </div>
-          <div>
-            <img height="100" src="assets/img/klien/jakartateknologi.svg">
-            <p>Nama Klien</p>
-          </div>
-          <div>
-            <img height="100" src="assets/img/klien/mbj.svg">
-            <p>Nama Klien</p>
-          </div>
-          <div>
-            <img height="100" src="assets/img/klien/suryaputra.svg">
-            <p>Nama Klien</p>
-          </div>
-          <div>
-            <img height="100" src="assets/img/klien/yipt.png">
-            <p>Nama Klien</p>
-          </div>
-          <div>
-            <img height="100" src="assets/img/klien/tranindo.png">
-            <p>Nama Klien</p>
-          </div>
-          <div>
-            <img height="100" src="assets/img/klien/verticalab.png">
-            <p>Nama Klien</p>
-          </div>
-          <div>
-            <img height="100" src="assets/img/klien/yipt.png">
-            <p>Nama Klien</p>
-          </div>
+          @foreach ($partners as $partner)
+            <figure style="margin-bottom: 30px;">
+              <img src="{{ Storage::url($partner->logo) }}" height="100" alt="{{ $partner->nama }}">
+              <figcaption>
+                {{ $partner->nama }}
+              </figcaption>
+            </figure>
+          @endforeach
         </div>
         <div class="row mx-0 klienSlideshow" id="slideshowDesktop">
-          <div>
-            <img height="100" src="assets/img/klien/alazhar.svg">
-            <p>Nama Klien</p>
-          </div>
-          <div>
-            <img height="100" src="assets/img/klien/alhusnain.svg">
-            <p>Nama Klien</p>
-          </div>
-          <div>
-            <img height="100" src="assets/img/klien/jakartateknologi.svg">
-            <p>Nama Klien</p>
-          </div>
-          <div>
-            <img height="100" src="assets/img/klien/mbj.svg">
-            <p>Nama Klien</p>
-          </div>
-          <div>
-            <img height="100" src="assets/img/klien/suryaputra.svg">
-            <p>Nama Klien</p>
-          </div>
-          <div>
-            <img height="100" src="assets/img/klien/yipt.png">
-            <p>Nama Klien</p>
-          </div>
-          <div>
-            <img height="100" src="assets/img/klien/tranindo.png">
-            <p>Nama Klien</p>
-          </div>
-          <div>
-            <img height="100" src="assets/img/klien/verticalab.png">
-            <p>Nama Klien</p>
-          </div>
-          <div>
-            <img height="100" src="assets/img/klien/yipt.png">
-            <p>Nama Klien</p>
-          </div>
+          @foreach ($partners as $partner)
+            <figure>
+              <img src="{{ Storage::url($partner->logo) }}" height="100" alt="{{ $partner->nama }}">
+              <figcaption>
+                {{ $partner->nama }}
+              </figcaption>
+            </figure>
+          @endforeach
         </div>
       </div>
     </section>

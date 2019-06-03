@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Member;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Support;
+use App\Models\Member;
+use Auth;
 
 class BantuanController extends Controller
 {
@@ -14,7 +17,8 @@ class BantuanController extends Controller
      */
     public function index()
     {
-        return view('member.bantuan.bantuan_index');
+      $supports = Support::where('email', Auth::user()->email)->paginate(10);
+      return view('member.bantuan.bantuan_index', ['supports' => $supports]);
     }
 
     /**
@@ -24,7 +28,7 @@ class BantuanController extends Controller
      */
     public function create()
     {
-        //
+        return view('member.bantuan.bantuan_create');
     }
 
     /**
@@ -35,41 +39,12 @@ class BantuanController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+      $support = new Support;
+      $support->email = $request->email_pengirim;
+      $support->pertanyaan = $request->pertanyaan_pengirim;
+      $support->save();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+      return redirect()->route('support.thanks');
     }
 
     /**
@@ -80,6 +55,8 @@ class BantuanController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $support = Support::findOrFail($id);
+      $support->delete();
+      return redirect()->back();
     }
 }

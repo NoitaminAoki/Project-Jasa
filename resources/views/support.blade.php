@@ -16,10 +16,15 @@
   <section>
     <div class="container">
       <h1>kirim pertanyaanmu melalui form ini</h1>
-      <form action="{{ route('support.send') }}" class="row flex-column mx-0" method="post">
+      <form action="{{ route('member.bantuan.store') }}" class="row flex-column mx-0" method="post">
         @csrf
         <div class="col-12 px-0 mb-4">
-          <input type="email" name="email_pengirim" placeholder="Email Kamu" @auth value="{{ Auth::user()->email }}" readonly @endauth>
+          @auth
+            <input type="email" name="email_pengirim" placeholder="Email Kamu" value="{{ Auth::guard('member')->email }}" readonly>
+          @endauth
+          @guest
+            <input type="email" name="email_pengirim" placeholder="Email Kamu">
+          @endguest
         </div>
         <div class="col-12 px-0 mb-3">
           <textarea name="pertanyaan_pengirim" rows="12" placeholder="Apa yang ingin kamu tanyakan?"></textarea>
