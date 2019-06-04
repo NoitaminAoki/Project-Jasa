@@ -9,7 +9,7 @@
   <a href="{{ route('home.profil') }}">tentang kami</a>
   @if(Auth::guard('member')->check())
     <a href="{{ url('member/dashboard') }}" id="loginBtn">my dashboard</a>
-  @else
-    <a href="{{ route('member.login') }}" id="loginBtn">login</a>
+  @elseif (Auth::check())
+    <a href="{{ route('admin.dashboard.index') }}" id="loginBtn">my dashboard</a>
   @endif
 </nav>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Harga;
 
 class LandingPageController extends Controller
 {
@@ -14,7 +15,8 @@ class LandingPageController extends Controller
      */
     public function index()
     {
-        return view('admin.landingPage.landing_page_index');
+        $price = Harga::all();
+        return view('admin.landingPage.landing_page_index', ['price' => $price]);
     }
 
     /**
@@ -24,7 +26,13 @@ class LandingPageController extends Controller
      */
     public function create()
     {
-        //
+        $price = Harga::all();
+        if (count($price) < 3) {
+          return view('admin.landingPage.create_harga');
+        }
+        else {
+          return redirect()->route('admin.landing-page.index');
+        }
     }
 
     /**
@@ -35,7 +43,12 @@ class LandingPageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tambah_harga = new Harga;
+        $tambah_harga->harga = $request->harga;
+        $tambah_harga->tingkat = $request->tingkat;
+        $tambah_harga->save();
+
+        return redirect()->route('admin.landing-page.index');
     }
 
     /**
@@ -57,7 +70,8 @@ class LandingPageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $price = Harga::findOrFail($id);
+        return view('admin.landingPage.edit_harga', ['price' => $price]);
     }
 
     /**
@@ -80,6 +94,8 @@ class LandingPageController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $delete_harga = Harga::findOrFail($id);
+      $delete_harga->delete();
+      return redirect()->back();
     }
 }

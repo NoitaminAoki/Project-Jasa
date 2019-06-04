@@ -13,19 +13,15 @@
 -->
 <body class="hold-transition sidebar-mini pr-0">
   <div class="wrapper">
-    <!-- Navbar -->
     @include('temp.navbar')
-    <!-- /.navbar -->
-
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-light-info elevation-4" style="z-index: 1040 !important;">
       <!-- Brand Logo -->
-      <a href="index3.html" class="brand-link bg-info">
-        <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="E-Bina Logo" class="brand-image img-circle elevation-3"
-        style="opacity: .8">
+      <a href="{{ url('/') }}" class="brand-link bg-info">
+        <img src="{{ asset('assets/img/e-bina.jpeg') }}" alt="E-Bina Logo" class="brand-image img-circle elevation-1">
         <span class="brand-text font-weight-light">E - Bina</span>
       </a>
-
+      
       <!-- Sidebar -->
       @if (Auth::guard('web')->check())
       @include('temp.sidebarAdmin')
@@ -34,7 +30,7 @@
       @endif
       <!-- /.sidebar -->
     </aside>
-
+    
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -54,14 +50,14 @@
         </div><!-- /.container-fluid -->
       </div>
       <!-- /.content-header -->
-
+      
       <!-- Main content -->
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-
+            
             @yield('content')
-
+            
           </div>
           <!-- /.row -->
         </div>
@@ -70,30 +66,11 @@
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
-
-    <!-- Control Sidebar -->
-    {{-- <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside> --}}
-    <!-- /.control-sidebar -->
-
-    <!-- Main Footer -->
-    <footer class="main-footer">
-      <!-- To the right -->
-      <div class="float-right d-none d-sm-block">
-        <b>Version</b>
-        1.0.0 Alpha
-      </div>
-      <!-- Default to the left -->
-      <strong>Copyright &copy; 2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <footer class="main-footer text-center">
+      Copyright 2019 | PT Jaya Bina Konsultan Grup
     </footer>
   </div>
   <!-- ./wrapper -->
-
-  <!-- REQUIRED SCRIPTS -->
-
-  <!-- jQuery -->
   @include('temp.scripts')
 </body>
 </html>

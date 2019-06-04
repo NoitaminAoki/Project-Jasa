@@ -1,9 +1,8 @@
 <?php
 
-Route::get('/home', function ()
-{
-  return redirect(url('/'));
-})->name('home');
+Route::permanentRedirect('home', '/');
+Route::view('support/thank-you', 'member.thanks')->name('support.thanks');
+Route::view('/adminss', 'admin')->name('adminpage');
 
 Route::prefix('admin')->namespace('Auth')->name('admin.')->group(function () {
   Route::get('login','LoginController@showLoginForm')->name('login');
@@ -12,11 +11,6 @@ Route::prefix('admin')->namespace('Auth')->name('admin.')->group(function () {
   Route::post('register', 'RegisterController@register')->name('register');
   Route::post('logout', 'LoginController@logout')->name('logout');
 });
-
-Route::get('/adminss', function(){
-  return view('admin');
-})->name('adminpage');
-
 
 Route::prefix('member')->namespace('Auth')->name('member.')->group(function () {
   Route::get('login','MemberLoginController@showLoginForm')->name('login');
@@ -48,6 +42,7 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->
   Route::resource('promosi', 'PromosiController');
   Route::resource('aturan', 'AturanController');
   Route::resource('bantuan', 'BantuanController');
+  Route::resource('partner', 'PartnerController');
 });
 
 Route::prefix('member')->namespace('Member')->name('member.')->middleware('auth:member')->group(function () {
@@ -61,4 +56,3 @@ Route::prefix('member')->namespace('Member')->name('member.')->middleware('auth:
   Route::resource('aturan', 'AturanController');
   Route::resource('bantuan', 'BantuanController');
 });
-

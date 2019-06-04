@@ -7,11 +7,8 @@
     <li class="nav-item d-none d-sm-inline-block">
       <a href="{{ url('/') }}" class="nav-link">Home</a>
     </li>
-    <li class="nav-item d-none d-sm-inline-block">
-      <a href="#" class="nav-link">Contact</a>
-    </li>
   </ul>
-  
+
   <!-- SEARCH FORM -->
   <form class="form-inline ml-3">
     <div class="input-group input-group-sm">
@@ -23,14 +20,13 @@
       </div>
     </div>
   </form>
-  
+
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
-    
     <!-- Notifications Dropdown Menu -->
-    <li class="nav-item dropdown">
+    {{-- <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
-        <i class="fa fa-bell-o"></i>
+        <i class="fas fa-bell"></i>
         <span class="badge badge-warning navbar-badge">15</span>
       </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -51,27 +47,20 @@
           <span class="float-right text-muted text-sm">2 days</span>
         </a>
       </div>
-    </li>
+    </li> --}}
     <li class="nav-item">
       @if (Auth::guard('web')->check())
-      <a class="nav-link" href="{{ route('admin.logout') }}"
-      onclick="event.preventDefault();
-      document.getElementById('logout-form').submit();"><i
-      class="fa fa-power-off"></i></a>
-      
-      <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
-        @csrf
-      </form>
-      @endif
-      @if (Auth::guard('member')->check())
-      <a class="nav-link" href="{{ route('member.logout') }}"
-      onclick="event.preventDefault();
-      document.getElementById('logout-form').submit();"><i
-      class="fa fa-power-off"></i></a>
-      
-      <form id="logout-form" action="{{ route('member.logout') }}" method="POST" style="display: none;">
-        @csrf
-      </form>
+        <form class="d-inline" action="{{ route('admin.logout') }}" method="post">
+          @csrf
+          <button type="submit" name="button" class="nav-link btn btn-link"><i class="fa fa-power-off"></i></button>
+        </form>
+      @elseif (Auth::guard('member')->check())
+        <a class="nav-link" href="{{ route('member.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+          <i class="fa fa-power-off"></i>
+        </a>
+        <form id="logout-form" action="{{ route('member.logout') }}" method="POST" style="display: none;">
+          @csrf
+        </form>
       @endif
     </li>
   </ul>

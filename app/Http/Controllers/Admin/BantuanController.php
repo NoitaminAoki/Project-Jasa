@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Support;
 
 class BantuanController extends Controller
 {
@@ -14,7 +15,8 @@ class BantuanController extends Controller
      */
     public function index()
     {
-        return view('admin.bantuan.bantuan_index');
+        $supports = Support::paginate(10);
+        return view('admin.bantuan.bantuan_index', ['support' => $supports]);
     }
 
     /**

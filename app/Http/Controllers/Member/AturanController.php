@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Member;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Peraturan;
 
 class AturanController extends Controller
 {
@@ -14,7 +15,8 @@ class AturanController extends Controller
      */
     public function index()
     {
-        return view('member.aturan.aturan_index');
+        $peraturan = Peraturan::all();
+        return view('member.aturan.aturan_index', ['peraturan' => $peraturan]);
     }
 
     /**

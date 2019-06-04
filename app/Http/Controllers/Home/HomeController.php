@@ -4,12 +4,19 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Peraturan;
+use App\Models\Partner;
+use App\Models\Member;
+use App\Models\Harga;
+use Auth;
 
 class HomeController extends Controller
 {
     public function landing()
     {
-        return view('landing');
+        $price = Harga::all();
+        $partners = Partner::all();
+        return view('landing', compact('price', 'partners'));
     }
     public function about()
     {
@@ -29,7 +36,8 @@ class HomeController extends Controller
     }
     public function peraturan()
     {
-        return view('peraturan');
+        $peraturan = Peraturan::all();
+        return view('peraturan', ['peraturan' => $peraturan]);
     }
     public function profil()
     {

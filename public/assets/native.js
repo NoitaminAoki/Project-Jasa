@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  /*general js code*/
   $("img").attr("draggable", "false");
   $("input, textarea, select").prop("required", true);
   $(".btn-modal").click(function() {
@@ -25,6 +26,13 @@ $(document).ready(function() {
   $("nav #brandNav box-icon").click(function() {
     $(this).parents("nav").toggleClass("navOpen");
   });
+  $("#peraturanPage .nav-pills .nav-link:first-of-type").addClass("active").attr("aria-selected", "true")
+  $("#peraturanPage .tab-content .tab-pane.fade:first-of-type").addClass("show active");
+  $("#hargaDesktop .row > .col-12:first-of-type").addClass("bisnis");
+  $("#hargaDesktop .row > .col-12:nth-of-type(2)").addClass("profesional");
+  $("#hargaDesktop .row > .col-12:last-of-type").addClass("pemula");
+  /*end of general js code*/
+  /*plugin option down here*/
   $("#slideshowMobile").slick({
     dots: true,
     infinite: false,
@@ -32,7 +40,8 @@ $(document).ready(function() {
     autoplay: true,
     autoplaySpeed: 2000,
     arrows: true,
-    slidesPerRow: 1,
+    slidesToScroll: 1,
+    rows: 2,
     slidesToShow: 1
   });
   $("#slideshowDesktop").slick({
@@ -42,7 +51,7 @@ $(document).ready(function() {
     autoplay: true,
     autoplaySpeed: 2000,
     arrows: true,
-    slidesToScroll: 1,
+    slidesToScroll: 3,
     rows: 2,
     slidesToShow: 3
   });
@@ -61,4 +70,5 @@ $(document).ready(function() {
     slidesPerRow: 2,
     centerPadding: "70px"
   });
+  /*end of plugin option*/
 });

@@ -8,16 +8,16 @@
             <a href="#" class="d-block text-capitalize">{{ Auth::guard('member')->user()->name }}</a>
           </div>
         </div>
-        
+
         <!-- Sidebar Menu -->
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
               with font-awesome or any other icon font library -->
-              
+
               <li class="nav-item">
                 <a href="{{ route('member.dashboard.index') }}" class="nav-link {{ (Request::segment(2) == "dashboard")? 'active' : '' }}">
-                  <i class="nav-icon fa fa-dashboard"></i>
+                  <i class="nav-icon fas fa-home"></i>
                   <p>
                     Dashboard
                   </p>
@@ -42,7 +42,7 @@
               </li>
               <li class="nav-item">
                 <a href="{{ route('member.penghasilan.index') }}" class="nav-link {{ (Request::segment(2) == "penghasilan")? 'active' : '' }}">
-                  <i class="nav-icon fa fa-sign-in"></i>
+                  <i class="nav-icon fas fa-money-bill-wave-alt"></i>
                   <p>
                     Penghasilan
                   </p>
@@ -58,7 +58,7 @@
               </li>
               <li class="nav-item">
                 <a href="{{ route('member.aturan.index') }}" class="nav-link {{ (Request::segment(2) == "aturan")? 'active' : '' }}">
-                  <i class="nav-icon fa fa-legal"></i>
+                  <i class="nav-icon fas fa-compact-disc"></i>
                   <p>
                     Aturan (Pricing)
                   </p>
@@ -66,7 +66,7 @@
               </li>
               <li class="nav-item">
                 <a href="{{ route('member.bantuan.index') }}" class="nav-link {{ (Request::segment(2) == "bantuan")? 'active' : '' }}">
-                  <i class="nav-icon fa fa-question-circle"></i>
+                  <i class="nav-icon fas fa-question-circle"></i>
                   <p>
                     Bantuan
                   </p>
