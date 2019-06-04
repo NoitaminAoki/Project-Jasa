@@ -45,7 +45,7 @@
 		@endforeach
 		<div class="row mx-0 justify-content-between position-relative">
 			{{ $supports->links('vendor.pagination.bootstrap-4') }}
-			<a href="{{ route('member.bantuan.create') }}" class="btn btn-info ml-auto text-capitalize">minta bantuan</a>
+			<a href="{{ route('member.bantuan.create') }}" class="btn btn-secondary ml-auto text-capitalize">minta bantuan <i class="ml-2 fas fa-question-circle"></i></a>
 		</div>
 	</ul>
 </div>

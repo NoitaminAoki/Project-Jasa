@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Peraturan;
-use App\Models\Harga;
 use App\Models\Partner;
+use App\Models\Member;
+use App\Models\Harga;
+use Auth;
 
 class HomeController extends Controller
 {

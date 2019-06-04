@@ -19,12 +19,11 @@
       <form action="{{ route('member.bantuan.store') }}" class="row flex-column mx-0" method="post">
         @csrf
         <div class="col-12 px-0 mb-4">
-          @auth
-            <input type="email" name="email_pengirim" placeholder="Email Kamu" value="{{ Auth::guard('member')->email }}" readonly>
-          @endauth
-          @guest
+          @auth ('member')
+            <input type="email" name="email_pengirim" placeholder="Email Kamu" value="{{ Auth::guard('member')->user()->email }}" readonly>
+          @else
             <input type="email" name="email_pengirim" placeholder="Email Kamu">
-          @endguest
+          @endauth
         </div>
         <div class="col-12 px-0 mb-3">
           <textarea name="pertanyaan_pengirim" rows="12" placeholder="Apa yang ingin kamu tanyakan?"></textarea>

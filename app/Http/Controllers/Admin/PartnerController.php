@@ -84,11 +84,8 @@ class PartnerController extends Controller
     {
       $partner = Partner::findOrFail($id);
       $partner->nama = $request->nama;
-      $uploadLogo = $request->file('logo');
-      $path = $uploadLogo->store('public/files');
-      $file = Partner::update(['nama' => $request->nama, 'logo' => $path]);
-
       $partner->save();
+      
       return redirect()->route('admin.partner.index');
     }
 

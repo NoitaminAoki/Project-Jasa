@@ -2,7 +2,13 @@
 
 @section('title-page', 'E-Bina | Member - Minta Bantuan')
 @section('css')
-<link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap4.css') }}">
+	<link rel="stylesheet" href="{{ asset('plugins/trumbowyg/dist/ui/trumbowyg.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap4.css') }}">
+	<style media="screen">
+		.trumbowyg-box .trumbowyg-editor {
+			background-color: #fff;
+		}
+	</style>
 @endsection
 
 @section ('title-body', 'Minta Bantuan')
@@ -27,11 +33,16 @@
 @endsection
 
 @section('script')
-<script src="{{ asset('plugins/datatables/jquery.dataTables.js') }}"></script>
-<script src="{{ asset('plugins/datatables/dataTables.bootstrap4.js') }}"></script>
+<script src="{{ asset('plugins/trumbowyg/dist/trumbowyg.min.js') }}" charset="utf-8"></script>
+<script src="{{ asset('plugins/trumbowyg/dist/plugins/cleanpaste/trumbowyg.cleanpaste.min.js') }}"></script>
 <script>
 	$(document).ready(function() {
 		$('.message-session').delay(3000).slideUp(600);
+		$("textarea[name='pertanyaan_pengirim']").trumbowyg({
+      semantic: true,
+      removeformatPasted: false,
+      minimalLinks: true
+    });
 	});
 </script>
 @endsection

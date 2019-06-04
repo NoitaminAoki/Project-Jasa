@@ -90,7 +90,7 @@
         </li>
         <li class="nav-item">
           <a href="{{ route('admin.bantuan.index') }}" class="nav-link {{ (Request::segment(2) == "bantuan")? 'active' : '' }}">
-            <i class="nav-icon fa fa-question-circle"></i>
+            <i class="nav-icon fas fa-question-circle"></i>
             <p>
               Bantuan
             </p>
