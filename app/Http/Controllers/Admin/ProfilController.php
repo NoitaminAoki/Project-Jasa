@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Auth;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -69,7 +71,18 @@ class ProfilController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $adminId =  Auth::guard('web')->user()->id;
+        $request->validate([
+            'name' => 'required|string|max:199|unique:users,name,'.$adminId,
+            'email' => 'required|string|email|max:255|unique:users,email,'.$adminId
+        ]);
+
+        User::where('id', $adminId)->update([
+            'name' => $request->name,
+            'email' => $request->email
+        ]);
+        $request->session()->flash('success_message', 'Success Changed Profil');
+        return redirect()->route('admin.profil.index');
     }
 
     /**
@@ -81,5 +94,13 @@ class ProfilController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function changePassword(Request $request)
+    {
+        $request->validate(['password' => 'required|string|min:6|confirmed']);
+        User::where('id', Auth::guard('web')->user()->id)->update(['password' => bcrypt($request->password)]);
+        $request->session()->flash('success_message', 'Success Changed Password');
+        return redirect()->route('admin.profil.index');
     }
 }
