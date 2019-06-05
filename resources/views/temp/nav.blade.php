@@ -11,5 +11,7 @@
     <a href="{{ url('member/dashboard') }}" id="loginBtn">my dashboard</a>
   @elseif (Auth::check())
     <a href="{{ route('admin.dashboard.index') }}" id="loginBtn">my dashboard</a>
+  @else
+    <a href="{{ route('member.login') }}" id="loginBtn">Login</a>
   @endif
 </nav>
