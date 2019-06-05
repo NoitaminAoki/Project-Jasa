@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Session;
-use App\Models\Member;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Models\Member;
+use Session;
+use Illuminate\Support\Str;
 
 class MemberLoginController extends Controller
 {
@@ -61,12 +62,17 @@ class MemberLoginController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:199',
+            'name' => 'required|string|max:199|unique:members',
+            'noTelp' => 'required|string|max:25',
             'email' => 'required|string|email|max:255|unique:members',
             'password' => 'required|string|min:6|confirmed'
         ]);
+
+        $generateCode = 'id-'.Str::studly($request->name);
         Member::create([
+            'code' => $generateCode,
             'name' => $request->name,
+            'noTelp' => $request->noTelp,
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);

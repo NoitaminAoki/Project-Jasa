@@ -21,17 +21,16 @@
         <img src="{{ asset('assets/img/e-bina.jpeg') }}" alt="E-Bina Logo" class="brand-image img-circle elevation-1">
         <span class="brand-text font-weight-light">E - Bina</span>
       </a>
-
+      
       <!-- Sidebar -->
       @if (Auth::guard('web')->check())
-        @include('temp.sidebarAdmin')
-      @endif
-      @if (Auth::guard('member')->check())
-        @include('temp.sidebarMember')
+      @include('temp.sidebarAdmin')
+      @elseif (Auth::guard('member')->check())
+      @include('temp.sidebarMember')
       @endif
       <!-- /.sidebar -->
     </aside>
-
+    
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -51,14 +50,14 @@
         </div><!-- /.container-fluid -->
       </div>
       <!-- /.content-header -->
-
+      
       <!-- Main content -->
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-
+            
             @yield('content')
-
+            
           </div>
           <!-- /.row -->
         </div>
