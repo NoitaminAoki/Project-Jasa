@@ -23,7 +23,8 @@
 	<form action="{{ route('member.bantuan.store') }}" class="row flex-column mx-0" method="post">
 		@csrf
 		<input type="hidden" value="{{ Auth::user()->email }}" name="email_pengirim">
-		<textarea name="pertanyaan_pengirim" class="form-control mb-4" rows="8" placeholder="Apa Yang Ingin Kamu Tanyakan Ke Admin?"></textarea>
+		<input type="text" class="form-control" name="subjek" placeholder="Subjek Pertanyaan Kamu">
+		<textarea name="pertanyaan_pengirim" class="form-control mb-4" rows="8" placeholder="Jelaskan Secara Detail Pertanyaanmu"></textarea>
 		<button type="submit" name="button" class="btn btn-success col-md-auto align-self-end">
 			Kirim Pertanyaanmu <i class="fas fa-paper-plane ml-2"></i>
 			<box-icon name='send' type='solid' color="white"></box-icon>

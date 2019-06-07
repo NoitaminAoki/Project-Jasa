@@ -16,6 +16,8 @@ class CreateSupportsTable extends Migration
         Schema::create('support', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('email');
+            $table->string('subjek');
+            $table->enum('tampilkanPertanyaan', ['iya', 'tidak'])->default('tidak');
             $table->text('pertanyaan');
             $table->timestamps();
         });

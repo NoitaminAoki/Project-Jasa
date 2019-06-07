@@ -26,6 +26,9 @@
           @endauth
         </div>
         <div class="col-12 px-0 mb-3">
+          <input type="text" name="subjek" placeholder="Subjek Pertanyaan Kamu">
+        </div>
+        <div class="col-12 px-0 mb-3">
           <textarea name="pertanyaan_pengirim" rows="12" placeholder="Apa yang ingin kamu tanyakan?"></textarea>
         </div>
         <button type="submit" name="button" class="btn-secondary col-md-auto align-self-end">

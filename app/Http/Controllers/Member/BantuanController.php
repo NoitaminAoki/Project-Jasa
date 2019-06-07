@@ -41,6 +41,7 @@ class BantuanController extends Controller
     {
       $support = new Support;
       $support->email = $request->email_pengirim;
+      $support->subjek = $request->subjek;
       $support->pertanyaan = $request->pertanyaan_pengirim;
       $support->save();
 
