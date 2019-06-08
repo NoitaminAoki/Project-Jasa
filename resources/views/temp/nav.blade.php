@@ -6,7 +6,7 @@
   <a href="{{ route('home.promosi') }}">promo</a>
   <a href="{{ route('home.mitra') }}">mitra</a>
   <a href="{{ route('home.support') }}">support</a>
-  <a href="{{ route('home.profil') }}">tentang kami</a>
+  <a href="{{ route('home.about') }}">tentang kami</a>
   @if(Auth::guard('member')->check())
     <a href="{{ url('member/dashboard') }}" id="loginBtn">my dashboard</a>
   @elseif (Auth::check())
