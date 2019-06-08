@@ -17,7 +17,7 @@ class CreateSupportsTable extends Migration
             $table->bigIncrements('id');
             $table->string('email');
             $table->string('subjek');
-            $table->enum('tampilkanPertanyaan', ['iya', 'tidak'])->default('tidak');
+            $table->enum('status_terbalas', ['sudah', 'belum'])->default('belum');
             $table->text('pertanyaan');
             $table->timestamps();
         });
