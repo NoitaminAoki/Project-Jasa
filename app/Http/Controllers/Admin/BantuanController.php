@@ -43,7 +43,7 @@ class BantuanController extends Controller
 
       Mail::send('admin.bantuan.template_mail', $data, function($message) use ($to_email) {
           $message->to($to_email)->subject("Balasan Dari Customer Service E-Bina");
-          $message->from('dharmawan.muhammad03@gmail.com', 'Artisans Web');
+          $message->from('support@e-bina.co.id', 'Artisans Web');
       });
       return redirect()->back()->with('berhasil', 'Berhasil Balas Ke Email' . $to_email);
     }

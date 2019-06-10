@@ -73,16 +73,16 @@ class ProfilController extends Controller
     {
         $adminId =  Auth::guard('web')->user()->id;
         $request->validate([
-            'name' => 'required|string|max:199|unique:users,name,'.$adminId,
-            'email' => 'required|string|email|max:255|unique:users,email,'.$adminId
+            'name' => 'required|string|max:199|unique:users,name,' . $adminId,
+            'email' => 'required|string|email|max:255|unique:users,email,' . $adminId
         ]);
 
         User::where('id', $adminId)->update([
-            'name' => $request->name,
-            'email' => $request->email
+          'name' => $request->name,
+          'email' => $request->email
         ]);
         $request->session()->flash('success_message', 'Success Changed Profil');
-        return redirect()->route('admin.profil.index');
+        return redirect()->back();
     }
 
     /**
@@ -102,5 +102,17 @@ class ProfilController extends Controller
         User::where('id', Auth::guard('web')->user()->id)->update(['password' => bcrypt($request->password)]);
         $request->session()->flash('success_message', 'Success Changed Password');
         return redirect()->route('admin.profil.index');
+    }
+
+    public function UpdateProfile(Request $request)
+    {
+      $request->validate(['profile_picture' => 'required|file|max:4000']);
+
+      $profilePicture = $request->file('profile_picture');
+      $path = $profilePicture->store('public/files');
+
+      User::where('id', Auth::guard('web')->user()->id)->update(['profile_picture' => $request->profile_picture]);
+      $request->session()->flash('success_message', 'Profile Picture Updated');
+      return redirect()->back();
     }
 }

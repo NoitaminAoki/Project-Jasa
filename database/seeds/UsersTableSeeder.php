@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
         'code' => '017126756',
         'noTelp' => '087776196047',
         'email' => 'rizky@ebina.com',
-        'password' => bcrypt('rizky123'),
+        'password' => bcrypt('rizkyebina'),
       ]);
     }
 }
