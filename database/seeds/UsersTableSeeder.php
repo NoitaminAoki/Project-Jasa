@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
         'name' => 'Admin E-Bina',
         'email' => 'admin@ebina.com',
         'profile_picture' => 'public/files/avatar5.png',
-        'password' => Hash::make('adminebina'),
+        'password' => bcrypt(Hash::make('adminebina')),
       ]);
       DB::table('members')->insert([
         'name' => 'Rizky',
@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
         'profile_picture' => 'public/files/avatar3.png',
         'noTelp' => '087776196047',
         'email' => 'rizky@ebina.com',
-        'password' => Hash::make('rizkyebina'),
+        'password' => bcrypt(Hash::make('rizkyebina')),
       ]);
     }
 }

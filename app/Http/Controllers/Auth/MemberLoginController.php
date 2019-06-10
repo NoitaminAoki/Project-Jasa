@@ -75,7 +75,7 @@ class MemberLoginController extends Controller
             'name' => $request->name,
             'noTelp' => $request->noTelp,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => bcrypt(Hash::make($request->password)),
         ]);
         return redirect()->route('member.login')->with('success','Registration Success');
     }
