@@ -1,5 +1,5 @@
 @extends('temp.main')
-@section('title-page') E-Bina | Admin - Bantuan  @endsection
+@section('title-page', 'E-Bina | Admin - Bantuan')
 @section('css')
 	<link rel="stylesheet" href="{{ asset('plugins/trumbowyg/dist/ui/trumbowyg.min.css') }}">
 	<style media="screen">

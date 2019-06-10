@@ -1,11 +1,11 @@
 @extends('temp.main')
 
-@section('title-page') E-Bina | Member - Profil  @endsection
+@section('title-page', 'E-Bina | Member - Profil')
 
 @section('css')
 @endsection
 
-@section ('title-body') Profil @endsection
+@section ('title-body', 'Profil')
 
 @section('content')
 @if (Session::has('success_message') || Session::has('failed_message'))

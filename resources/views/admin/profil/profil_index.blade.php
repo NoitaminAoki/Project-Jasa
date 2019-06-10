@@ -1,6 +1,6 @@
 @extends('temp.main')
 
-@section('title-page') E-Bina | Admin - Profil  @endsection
+@section('title-page', 'E-Bina | Admin - Profil')
 
 @section('css')
 	<style media="screen">
@@ -15,7 +15,7 @@
 	</style>
 @endsection
 
-@section ('title-body') Profil @endsection
+@section ('title-body', 'Profil')
 
 @section('content')
 @if (Session::has('success_message') || Session::has('failed_message'))
