@@ -15,7 +15,7 @@
 	</div>
 	@endif
 	<div class="col-12">
-		<div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+		<div class="alert message-session alert-warning alert-dismissible fade show text-center" role="alert">
 		  Please make sure your email can be access because in case we send you an email you can check your email from us!
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		    <span aria-hidden="true">&times;</span>
@@ -29,7 +29,7 @@
 	<script src="{{ asset('plugins/datatables/dataTables.bootstrap4.js') }}"></script>
 	<script>
 		$(document).ready(function() {
-			$('.message-session').delay(3000).slideUp(600);
+			$('.message-session').delay(7000).slideUp(600);
 		});
 	</script>
 @endsection
