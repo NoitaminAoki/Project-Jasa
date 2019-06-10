@@ -88,7 +88,7 @@ class ProfilController extends Controller
     public function changePassword(Request $request)
     {
         $request->validate(['password' => 'required|string|min:6|confirmed']);
-        User::where('id', Auth::guard('web')->user()->id)->update(['password' => bcrypt($request->password)]);
+        User::where('id', Auth::guard('web')->user()->id)->update(['password' => Hask::make($request->password)]);
         $request->session()->flash('success_message', 'Success Changed Password');
         return redirect()->route('admin.profil.index');
     }

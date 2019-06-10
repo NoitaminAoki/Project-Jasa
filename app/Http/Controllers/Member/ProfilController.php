@@ -8,6 +8,7 @@ use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class ProfilController extends Controller
 {
@@ -106,7 +107,7 @@ class ProfilController extends Controller
     public function changePassword(Request $request)
     {
         $request->validate(['password' => 'required|string|min:6|confirmed']);
-        Member::where('id', Auth::guard('member')->user()->id)->update(['password' => bcrypt($request->password)]);
+        Member::where('id', Auth::guard('member')->user()->id)->update(['password' => Hash::make($request->password)]);
         $request->session()->flash('success_message', 'Success Changed Password');
         return redirect()->route('member.profil.index');
     }
