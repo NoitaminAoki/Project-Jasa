@@ -19,6 +19,7 @@ class CreateMembersTable extends Migration
             $table->string('name')->unique();
             $table->string('noTelp', 25);
             $table->string('email')->unique();
+            $table->string('profile_picture');
             $table->string('password');
             $table->timestamps();
         });

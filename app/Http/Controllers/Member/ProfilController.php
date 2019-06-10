@@ -20,7 +20,7 @@ class ProfilController extends Controller
     {
         return view('member.profil.profil_index');
     }
-    
+
     /**
     * Show the form for creating a new resource.
     *
@@ -30,7 +30,7 @@ class ProfilController extends Controller
     {
         //
     }
-    
+
     /**
     * Store a newly created resource in storage.
     *
@@ -41,7 +41,7 @@ class ProfilController extends Controller
     {
         //
     }
-    
+
     /**
     * Display the specified resource.
     *
@@ -52,7 +52,7 @@ class ProfilController extends Controller
     {
         //
     }
-    
+
     /**
     * Show the form for editing the specified resource.
     *
@@ -63,7 +63,7 @@ class ProfilController extends Controller
     {
         //
     }
-    
+
     /**
     * Update the specified resource in storage.
     *
@@ -91,7 +91,7 @@ class ProfilController extends Controller
         $request->session()->flash('success_message', 'Success Changed Profil');
         return redirect()->route('member.profil.index');
     }
-    
+
     /**
     * Remove the specified resource from storage.
     *
@@ -102,12 +102,25 @@ class ProfilController extends Controller
     {
         //
     }
-    
+
     public function changePassword(Request $request)
     {
         $request->validate(['password' => 'required|string|min:6|confirmed']);
         Member::where('id', Auth::guard('member')->user()->id)->update(['password' => bcrypt($request->password)]);
         $request->session()->flash('success_message', 'Success Changed Password');
         return redirect()->route('member.profil.index');
+    }
+
+    public function UpdateProfile(Request $request)
+    {
+      $this->validate($request, ['profile_picture' => 'required|file|max:2000']);
+      $uploadLogo = $request->file('profile_picture');
+      $path = $uploadLogo->store('public/files');
+
+      $profile_picture = Member::findOrFail(Auth::guard('member')->user()->id);
+      $profile_picture->profile_picture = $path;
+      $profile_picture->save();
+      $request->session()->flash('success_message', 'Profile Picture Updated');
+      return redirect()->back();
     }
 }

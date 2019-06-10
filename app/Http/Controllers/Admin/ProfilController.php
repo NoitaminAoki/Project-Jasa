@@ -85,17 +85,6 @@ class ProfilController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function changePassword(Request $request)
     {
         $request->validate(['password' => 'required|string|min:6|confirmed']);
@@ -106,12 +95,13 @@ class ProfilController extends Controller
 
     public function UpdateProfile(Request $request)
     {
-      $request->validate(['profile_picture' => 'required|file|max:4000']);
+      $this->validate($request, ['profile_picture' => 'required|file|max:2000']);
+      $uploadLogo = $request->file('profile_picture');
+      $path = $uploadLogo->store('public/files');
 
-      $profilePicture = $request->file('profile_picture');
-      $path = $profilePicture->store('public/files');
-
-      User::where('id', Auth::guard('web')->user()->id)->update(['profile_picture' => $request->profile_picture]);
+      $profile_picture = User::findOrFail(Auth::guard('web')->user()->id);
+      $profile_picture->profile_picture = $path;
+      $profile_picture->save();
       $request->session()->flash('success_message', 'Profile Picture Updated');
       return redirect()->back();
     }
