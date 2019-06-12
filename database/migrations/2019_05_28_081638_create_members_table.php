@@ -20,6 +20,7 @@ class CreateMembersTable extends Migration
             $table->string('noTelp', 25);
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('status')->default('active');
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Member;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return view('admin.member.member_index');
+        $data['member'] = Member::all();
+        return view('admin.member.member_index')->with($data);
     }
 
     /**
@@ -78,8 +80,17 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        Member::where('id', $id)->update(['status' => 'unactive']);
+        $request->session()->flash('success_message', 'Success ...');
+        return redirect()->route('admin.member.index');
+    }
+
+    public function activating(Request $request, $id)
+    {
+        Member::where('id', $id)->update(['status' => 'active']);
+        $request->session()->flash('success_message', 'Success ...');
+        return redirect()->route('admin.member.index');
     }
 }

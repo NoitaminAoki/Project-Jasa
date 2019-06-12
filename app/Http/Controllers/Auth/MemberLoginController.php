@@ -81,7 +81,7 @@ class MemberLoginController extends Controller
 
     public function login(Request $request)
     {
-        if (auth()->guard('member')->attempt(['email' => $request->email, 'password' => $request->password ])) {
+        if (auth()->guard('member')->attempt(['email' => $request->email, 'password' => $request->password, 'status' => 'active' ])) {
             return redirect(url('/member/dashboard'));
         }
         return back()->withErrors(['email' => 'Email or password are wrong.']);

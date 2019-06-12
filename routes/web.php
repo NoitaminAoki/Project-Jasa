@@ -35,6 +35,8 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->
   
   Route::put('profil/change-password', 'ProfilController@changePassword')->name('profil.change.password');
   Route::resource('profil', 'ProfilController');
+
+  Route::put('member/activating/{id}', 'MemberController@activating')->name('member.activating');
   Route::resource('member', 'MemberController');
   Route::resource('klien', 'KlienController');
   Route::resource('penghasilan', 'PenghasilanController');

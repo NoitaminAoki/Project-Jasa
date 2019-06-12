@@ -11,7 +11,7 @@ class Member extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'name', 'code','email', 'noTelp','password',
+        'name', 'code','email', 'noTelp','password', 'status'
     ];
 
     protected $hidden = [
