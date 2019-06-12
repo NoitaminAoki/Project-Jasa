@@ -3,8 +3,8 @@
 @section ('title-body', 'Ubah Harga')
 @section('content')
 <div class="col-12">
-  <form action="{{ route('admin.landing-page.store', $price->id) }}" class="needs-validation" method="post" novalidate>
-    @csrf
+  <form action="{{ route('admin.landing-page.update', $price->id) }}" class="needs-validation" method="post" novalidate>
+    @csrf @method('PUT')
     <select class="custom-select mb-3 text-capitalize" name="tingkat">
       <option disabled>Kategori Harga</option>
       <option value="bisnis" @if ($price->tingkat == 'bisnis') selected @endif>bisnis</option>

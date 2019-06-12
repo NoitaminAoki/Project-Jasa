@@ -15,7 +15,7 @@ class LandingPageController extends Controller
      */
     public function index()
     {
-        $price = Harga::all();
+        $price = Harga::limit(3)->oldest()->get();
         return view('admin.landingPage.landing_page_index', ['price' => $price]);
     }
 
@@ -83,7 +83,11 @@ class LandingPageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $ubah_harga = Harga::findOrFail($id);
+      $ubah_harga->harga = $request->harga;
+      $ubah_harga->tingkat = $request->tingkat;
+      $ubah_harga->save();
+      return redirect()->route('admin.landing-page.index');
     }
 
     /**
