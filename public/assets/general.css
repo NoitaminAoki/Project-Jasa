@@ -32,7 +32,11 @@ table {
 box-icon {
   margin-left: 10px;
 }
-input:read-only {
+input:read-only, input[readonly] {
+  border: 1px solid #ced4da;
+  background-color: #e9ecef;
+}
+input:-moz-read-only {
   border: 1px solid #ced4da;
   background-color: #e9ecef;
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Support;
+use Mail;
 
 class BantuanController extends Controller
 {
@@ -37,7 +38,14 @@ class BantuanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $to_email = $request->pengirim;
+      $data = array("balasan" => $request->balasan, "subject" => $request->subject);
+
+      Mail::send('admin.bantuan.template_mail', $data, function($message) use ($to_email) {
+          $message->to($to_email)->subject("Balasan Dari Customer Service E-Bina");
+          $message->from('support@e-bina.co.id', 'Artisans Web');
+      });
+      return redirect()->back()->with('berhasil', 'Berhasil Balas Ke Email' . $to_email);
     }
 
     /**

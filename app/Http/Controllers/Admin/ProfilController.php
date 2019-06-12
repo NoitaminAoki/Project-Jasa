@@ -73,34 +73,36 @@ class ProfilController extends Controller
     {
         $adminId =  Auth::guard('web')->user()->id;
         $request->validate([
-            'name' => 'required|string|max:199|unique:users,name,'.$adminId,
-            'email' => 'required|string|email|max:255|unique:users,email,'.$adminId
+            'name' => 'required|string|max:199|unique:users,name,' . $adminId,
+            'email' => 'required|string|email|max:255|unique:users,email,' . $adminId
         ]);
 
         User::where('id', $adminId)->update([
-            'name' => $request->name,
-            'email' => $request->email
+          'name' => $request->name,
+          'email' => $request->email
         ]);
         $request->session()->flash('success_message', 'Success Changed Profil');
-        return redirect()->route('admin.profil.index');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect()->back();
     }
 
     public function changePassword(Request $request)
     {
         $request->validate(['password' => 'required|string|min:6|confirmed']);
-        User::where('id', Auth::guard('web')->user()->id)->update(['password' => bcrypt($request->password)]);
+        User::where('id', Auth::guard('web')->user()->id)->update(['password' => Hask::make($request->password)]);
         $request->session()->flash('success_message', 'Success Changed Password');
         return redirect()->route('admin.profil.index');
+    }
+
+    public function UpdateProfile(Request $request)
+    {
+      $this->validate($request, ['profile_picture' => 'required|file|max:2000']);
+      $uploadLogo = $request->file('profile_picture');
+      $path = $uploadLogo->store('public/files');
+
+      $profile_picture = User::findOrFail(Auth::guard('web')->user()->id);
+      $profile_picture->profile_picture = $path;
+      $profile_picture->save();
+      $request->session()->flash('success_message', 'Profile Picture Updated');
+      return redirect()->back();
     }
 }

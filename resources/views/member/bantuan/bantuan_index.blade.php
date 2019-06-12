@@ -32,13 +32,20 @@
 					</button>
 					<form class="d-inline" action="{{ route('member.bantuan.destroy', $bantuan->id) }}" method="post">
 						@csrf @method("DELETE")
-						<button type="submit" class="btn btn-link text-danger">unsent</button>
+						<button type="submit" class="btn btn-outline-danger">unsent</button>
 					</form>
 				</h2>
 			</div>
 			<div id="collapse{{ $bantuan->id }}" class="collapse" aria-labelledby="heading{{ $bantuan->id }}" data-parent="#accordionExample">
 				<div class="card-body">
 					{!! $bantuan->pertanyaan !!}
+				</div>
+				<div class="card-footer text-capitalize">
+					@if ($bantuan->status_terbalas == 'belum')
+						<span class="text-danger">status: {{ $bantuan->status_terbalas }} dibalas admin</span>
+					@else
+						<span class="text-success">status: {{ $bantuan->status_terbalas }} dibalas admin lewat email kamu</span>
+					@endif
 				</div>
 			</div>
 		</div>

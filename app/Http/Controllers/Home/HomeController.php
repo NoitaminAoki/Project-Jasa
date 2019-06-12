@@ -16,7 +16,7 @@ class HomeController extends Controller
     {
         $price = Harga::all();
         $partners = Partner::all();
-        return view('landing', compact('price', 'partners'));
+        return view('landing', ['price' => $price, 'partners' => $partners]);
     }
     public function about()
     {

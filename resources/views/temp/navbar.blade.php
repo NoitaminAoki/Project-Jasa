@@ -10,7 +10,7 @@
   </ul>
 
   <!-- SEARCH FORM -->
-  <form class="form-inline ml-3">
+  {{-- <form class="form-inline ml-3">
     <div class="input-group input-group-sm">
       <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
       <div class="input-group-append">
@@ -19,7 +19,7 @@
         </button>
       </div>
     </div>
-  </form>
+  </form> --}}
 
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
@@ -55,11 +55,9 @@
           <button type="submit" name="button" class="nav-link btn btn-link"><i class="fa fa-power-off"></i></button>
         </form>
       @elseif (Auth::guard('member')->check())
-        <a class="nav-link" href="{{ route('member.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-          <i class="fa fa-power-off"></i>
-        </a>
-        <form id="logout-form" action="{{ route('member.logout') }}" method="POST" style="display: none;">
+        <form id="logout-form" action="{{ route('member.logout') }}" method="POST">
           @csrf
+          <button type="submit" class="btn btn-link nav-link"><i class="fa fa-power-off"></i></button>
         </form>
       @endif
     </li>

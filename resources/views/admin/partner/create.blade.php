@@ -14,7 +14,10 @@
           <label class="custom-file-label" for="logoPartner">Pilih Gambar Perusahaan</label>
         </div>
       </div>
-      <button type="submit" class="btn btn-success float-right">Tambah Partner</button>
+      <div class="form-row mx-0 justify-content-between">
+        <a href="{{ route('admin.partner.index') }}" class="btn btn-link text-warning"><i class="fas fa-long-arrow-alt-left"></i> Tidak Jadi</a>
+        <button type="submit" class="btn btn-success">Tambah Partner</button>
+      </div>
     </form>
   </div>
 @endsection

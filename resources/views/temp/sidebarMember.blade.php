@@ -60,7 +60,7 @@
                 <a href="{{ route('member.aturan.index') }}" class="nav-link {{ (Request::segment(2) == "aturan")? 'active' : '' }}">
                   <i class="nav-icon fas fa-compact-disc"></i>
                   <p>
-                    Aturan (Pricing)
+                    Aturan
                   </p>
                 </a>
               </li>

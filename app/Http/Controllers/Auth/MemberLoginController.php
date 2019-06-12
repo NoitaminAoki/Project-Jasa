@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Models\Member;
 use Session;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class MemberLoginController extends Controller
 {
@@ -29,7 +30,7 @@ class MemberLoginController extends Controller
      *
      * @var string
      */
-    
+
     protected $guard = 'member';
 
     protected $redirectTo = '/member/dashboard';
@@ -48,7 +49,7 @@ class MemberLoginController extends Controller
     {
         return view('auth.memberLogin');
     }
-    
+
     public function guard()
     {
         return auth()->guard('member');
@@ -74,7 +75,7 @@ class MemberLoginController extends Controller
             'name' => $request->name,
             'noTelp' => $request->noTelp,
             'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'password' => Hash::make($request->password),
         ]);
         return redirect()->route('member.login')->with('success','Registration Success');
     }

@@ -1,6 +1,6 @@
 @extends('temp.main')
 
-@section('title-page') E-Bina | Member - Aturan  @endsection
+@section('title-page', 'E-Bina | Member - Aturan')
 
 	@section('css')
 		<link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap4.css') }}">
@@ -38,7 +38,7 @@
 		</style>
 	@endsection
 
-@section ('title-body') Aturan @endsection
+@section ('title-body', 'Aturan')
 
 @section('content')
 	@if (Session::has('success_message') || Session::has('failed_message'))

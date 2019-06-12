@@ -1,11 +1,11 @@
 @extends('temp.main')
 
-@section('title-page') E-Bina | Member - Profil  @endsection
+@section('title-page', 'E-Bina | Member - Profil')
 
 @section('css')
 @endsection
 
-@section ('title-body') Profil @endsection
+@section ('title-body', 'Profil')
 
 @section('content')
 @if (Session::has('success_message') || Session::has('failed_message'))
@@ -23,20 +23,19 @@
 </div> --}}
 @endif
 <div class="col-md-3">
-	
+
 	<!-- Profile Image -->
 	<div class="card card-primary card-outline">
 		<div class="card-body box-profile">
 			<div class="text-center">
 				<img class="profile-user-img img-fluid img-circle"
-				src="../../dist/img/avatar5.png"
-				alt="User profile picture">
+				src="{{ Storage::url(Auth::guard('member')->user()->profile_picture) }}" alt="User profile picture">
 			</div>
-			
+
 			<h3 class="profile-username text-center">{{ Auth::guard('member')->user()->name }}</h3>
-			
+
 			<p class="text-muted text-center">Member</p>
-			
+
 			<ul class="list-group list-group-unbordered mb-3">
 				<li class="list-group-item">
 					<b>Klien</b> <a class="float-right">1,322</a>
@@ -62,25 +61,34 @@
 				<div class="tab-pane {{ ($errors->any())? '' : 'active' }}" id="aboutMe">
 					<div class="col-12">
 						<strong># My ID</strong>
-						
+
 						<p class="text-muted">
 							{{ Auth::guard('member')->user()->code }}
 						</p>
-						
+
 						<hr>
 						<strong><i class="fa fa-phone mr-1"></i> No Whatsapp</strong>
-						
+
 						<p class="text-muted">
 							{{ Auth::guard('member')->user()->noTelp }}
 						</p>
-						
+
 						<hr>
-						
+
 						<strong><i class="fa fa-envelope mr-1"></i> E-Mail</strong>
-						
+
 						<p class="text-muted">
 							{{ Auth::guard('member')->user()->email }}
 						</p>
+						<hr>
+						<strong class="d-block mb-2" title="upload your profile picture"><i class="fas fa-upload"></i> Change Profile Picture</strong>
+						<form id="profile_update" action="{{ route('member.profil.picture_update') }}" method="POST" enctype="multipart/form-data">
+							@csrf @method('PUT')
+							<div class="custom-file" title="upload your profile picture">
+						    <input type="file" class="custom-file-input" name="profile_picture" id="profile_picture" aria-describedby="profile_picture">
+						    <label class="custom-file-label" for="profile_picture">Choose To Change Your Profile</label>
+						  </div>
+						</form>
 					</div>
 				</div>
 				<!-- /.tab-pane -->
@@ -90,10 +98,10 @@
 						@method('PUT')
 						<div class="form-group">
 							<label for="name" class="col-sm-4 control-label">Name</label>
-							
+
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{ Auth::guard('member')->user()->name }}" required>
-								
+
 								@if ($errors->has('name'))
 								<span class="text-danger">
 									<strong>{{ $errors->first('name') }}</strong>
@@ -103,10 +111,10 @@
 						</div>
 						<div class="form-group">
 							<label for="noTelp" class="col-sm-4 control-label">No Whatsapp</label>
-							
+
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="noTelp" name="noTelp" placeholder="No Whatsapp" value="{{ Auth::guard('member')->user()->noTelp }}" required>
-								
+
 								@if ($errors->has('noTelp'))
 								<span class="text-danger">
 									<strong>{{ $errors->first('noTelp') }}</strong>
@@ -116,10 +124,10 @@
 						</div>
 						<div class="form-group">
 							<label for="email" class="col-sm-4 control-label">Email</label>
-							
+
 							<div class="col-sm-10">
 								<input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ Auth::guard('member')->user()->email }}" required>
-								
+
 								@if ($errors->has('email'))
 								<span class="text-danger">
 									<strong>{{ $errors->first('email') }}</strong>
@@ -141,10 +149,10 @@
 						@method('PUT')
 						<div class="form-group">
 							<label for="password" class="col-sm-4 control-label">New Password</label>
-							
+
 							<div class="col-sm-10">
 								<input type="password" class="form-control" id="password" name="password" placeholder="New Password" required>
-								
+
 								@if ($errors->has('password'))
 								<span class="text-danger">
 									<strong>{{ $errors->first('password') }}</strong>
@@ -154,7 +162,7 @@
 						</div>
 						<div class="form-group">
 							<label for="password-confirm" class="col-sm-4 control-label">Confirm New Password</label>
-							
+
 							<div class="col-sm-10">
 								<input type="password" class="form-control" id="password-confirm" name="password_confirmation" placeholder="Confirm New Password" required>
 							</div>
@@ -177,9 +185,28 @@
 @endsection
 
 @section('script')
-<script>
-	$(document).ready(function() {
-		$('.message-session').delay(3000).slideUp(600);
-	});
-</script>
+	<script src="{{ asset('plugins/bootstrap/js/bs-inputfile.js') }}" charset="utf-8"></script>
+	<script>
+		$(document).ready(function() {
+			bsCustomFileInput.init();
+			$('.message-session').delay(3000).slideUp(600);
+			$('.message-session').delay(3000).slideUp(600);
+			function readURL(input) {
+				if (input.files && input.files[0]) {
+						var reader = new FileReader();
+
+						reader.onload = function (e) {
+								$('#picture_profile').attr('src', e.target.result);
+						}
+						reader.readAsDataURL(input.files[0]);
+				}
+			}
+			$("#profile_picture").change(function(){
+					readURL(this);
+			});
+			$("#profile_picture").change(function() {
+				$("#profile_update").submit();
+			});
+		});
+	</script>
 @endsection

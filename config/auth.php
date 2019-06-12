@@ -103,12 +103,12 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
-            'expire' => 60,
+            'expire' => 10,
         ],
         'members' => [
             'provider' => 'members',
             'table' => 'password_reset',
-            'expire' => 60,
+            'expire' => 10,
         ],
     ],
 
