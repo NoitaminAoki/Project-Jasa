@@ -16,6 +16,8 @@ class MemberController extends Controller
     public function index()
     {
         $data['member'] = Member::all();
+        $data['jumlah_active_member'] = Member::where('status', 'active')->count();
+        $data['jumlah_unactive_member'] = Member::where('status', 'unactive')->count();
         return view('admin.member.member_index')->with($data);
     }
 

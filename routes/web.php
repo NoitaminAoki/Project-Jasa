@@ -33,6 +33,7 @@ Route::namespace('Home')->name('home.')->group(function () {
 
 Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->group(function () {
   Route::resource('dashboard', 'DashboardController');
+
   Route::put('profil/change-password', 'ProfilController@changePassword')->name('profil.change.password');
   Route::put('profil/picture-update', 'ProfilController@UpdateProfile')->name('profil.picture_update');
   Route::resource('profil', 'ProfilController');
@@ -50,6 +51,7 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->
 
 Route::prefix('member')->namespace('Member')->name('member.')->middleware(['auth:member'])->group(function () {
   Route::resource('dashboard', 'DashboardController');
+  
   Route::put('profil/change-password', 'ProfilController@changePassword')->name('profil.change.password');
   Route::put('profil/picture-update', 'ProfilController@UpdateProfile')->name('profil.picture_update');
   Route::resource('profil', 'ProfilController');

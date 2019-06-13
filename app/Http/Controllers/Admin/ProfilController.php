@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Auth;
 use App\User;
+use App\Models\Member;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +17,8 @@ class ProfilController extends Controller
      */
     public function index()
     {
-        return view('admin.profil.profil_index');
+        $data['jumlah_member'] = Member::count();
+        return view('admin.profil.profil_index')->with($data);
     }
 
     /**
