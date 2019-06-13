@@ -14,7 +14,7 @@ class HomeController extends Controller
 {
     public function landing()
     {
-        $price = Harga::all();
+        $price = Harga::limit(3)->oldest()->get();
         $partners = Partner::all();
         return view('landing', ['price' => $price, 'partners' => $partners]);
     }
