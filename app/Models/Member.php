@@ -13,7 +13,7 @@ class Member extends Authenticatable implements MustVerifyEmail
     use Notifiable;
 
     protected $fillable = [
-        'name', 'code','email', 'noTelp','password',
+        'name', 'code','email', 'noTelp','password', 'status'
     ];
 
     protected $hidden = [

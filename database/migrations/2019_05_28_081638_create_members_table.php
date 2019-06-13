@@ -22,6 +22,7 @@ class CreateMembersTable extends Migration
             $table->string('email')->unique();
             $table->string('profile_picture')->default('public/files/avatar5.png');
             $table->string('password');
+            $table->string('status')->default('active');
             $table->timestamps();
         });
     }

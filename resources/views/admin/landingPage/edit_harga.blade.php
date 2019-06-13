@@ -3,9 +3,15 @@
 @section ('title-body', 'Ubah Harga')
 @section('content')
 <div class="col-12">
+<<<<<<< HEAD
+  <form action="{{ route('admin.landing-page.store', $price->id) }}" class="needs-validation" method="post" novalidate>
+    @csrf
+    <select class="custom-select mb-3 text-capitalize" name="tingkat" required>
+=======
   <form action="{{ route('admin.landing-page.update', $price->id) }}" class="needs-validation" method="post" novalidate>
     @csrf @method('PUT')
     <select class="custom-select mb-3 text-capitalize" name="tingkat">
+>>>>>>> d69e21e6cf0a6accfad04b70dfcd38e5977c5c56
       <option disabled>Kategori Harga</option>
       <option value="bisnis" @if ($price->tingkat == 'bisnis') selected @endif>bisnis</option>
       <option value="profesional" @if ($price->tingkat == 'profesional') selected @endif>profesional</option>
@@ -15,7 +21,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="hargaPrepend">Rp.</span>
       </div>
-      <input id="harga" type="number" name="harga" max="999" min="1" aria-describedby="hargaHelpBlock" class="form-control" placeholder="Harga" value="{{ $price->harga }}">
+      <input id="harga" type="number" name="harga" max="999" min="1" aria-describedby="hargaHelpBlock" class="form-control" placeholder="Harga" value="{{ $price->harga }}" required>
       <div class="invalid-feedback">
         Please fill the price
       </div>

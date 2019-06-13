@@ -41,7 +41,7 @@
 
 			<ul class="list-group list-group-unbordered mb-3">
 				<li class="list-group-item">
-					<b>Member</b> <a class="float-right">322</a>
+					<b>Member</b> <a class="float-right">{{$jumlah_member}}</a>
 				</li>
 				<li class="list-group-item">
 					<b>Klien</b> <a class="float-right">1,322</a>

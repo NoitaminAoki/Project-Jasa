@@ -20,12 +20,12 @@ class UsersTableSeeder extends Seeder
         'password' => Hash::make('adminebina'),
       ]);
       DB::table('members')->insert([
+        'code' => 'id-Rizky',
         'name' => 'Rizky',
-        'code' => '017126756',
-        'profile_picture' => 'public/files/avatar3.png',
-        'noTelp' => '087776196047',
+        'noTelp' => '0899912371',
         'email' => 'rizky@ebina.com',
-        'password' => Hash::make('rizkyebina'),
+        'password' => bcrypt('rizky123'),
+        'status' => 'active',
       ]);
     }
 }

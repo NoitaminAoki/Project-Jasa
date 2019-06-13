@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Harga;
+use App\Models\Penghasilan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +16,8 @@ class PenghasilanController extends Controller
      */
     public function index()
     {
-        return view('admin.penghasilan.penghasilan_index');
+        $data['penghasilan'] = Penghasilan::all();
+        return view('admin.penghasilan.penghasilan_index')->with($data);
     }
 
     /**
@@ -24,7 +27,8 @@ class PenghasilanController extends Controller
      */
     public function create()
     {
-        //
+        $data['harga'] = Harga::all();
+        return view('admin.penghasilan.penghasilan_create')->with($data);
     }
 
     /**
@@ -35,7 +39,19 @@ class PenghasilanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'idHarga' => 'required|int|unique:penghasilans',
+            'point' => 'required|int',
+            'fee' => 'required|int'
+        ]);
+
+        Penghasilan::create([
+            'idHarga' => $request->idHarga,
+            'point' => $request->point,
+            'fee' => $request->fee
+        ]);
+        $request->session()->flash('success_message', 'Success Adding Konfigurasi Penghasilan');
+        return redirect()->route('admin.penghasilan.index');
     }
 
     /**
@@ -57,7 +73,9 @@ class PenghasilanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['harga'] = Harga::all();
+        $data['penghasilan'] = Penghasilan::findOrfail($id);
+        return view('admin.penghasilan.penghasilan_edit')->with($data);
     }
 
     /**
@@ -69,7 +87,19 @@ class PenghasilanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'idHarga' => 'required|int|unique:penghasilans,idHarga,' . $id,
+            'point' => 'required|int',
+            'fee' => 'required|int'
+        ]);
+
+        Penghasilan::where('id', $id)->update([
+            'idHarga' => $request->idHarga,
+            'point' => $request->point,
+            'fee' => $request->fee
+        ]);
+        $request->session()->flash('success_message', 'Success Updating Konfigurasi Penghasilan');
+        return redirect()->route('admin.penghasilan.index');
     }
 
     /**
@@ -78,8 +108,10 @@ class PenghasilanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        Penghasilan::where('id', $id)->delete();
+        $request->session()->flash('success_message', 'Success Deleting Konfigurasi Penghasilan');
+        return redirect()->route('admin.penghasilan.index');
     }
 }
