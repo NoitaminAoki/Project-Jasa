@@ -118,9 +118,9 @@ class ProfilController extends Controller
       $uploadLogo = $request->file('profile_picture');
       $path = $uploadLogo->store('public/files');
 
-      $profile_picture = Member::findOrFail(Auth::guard('member')->user()->id);
-      $profile_picture->profile_picture = $path;
-      $profile_picture->save();
+      $profilePicture = Member::findOrFail(Auth::guard('member')->user()->id);
+      $profilePicture->profile_picture = $path;
+      $profilePicture->save();
       $request->session()->flash('success_message', 'Profile Picture Updated');
       return redirect()->back();
     }
