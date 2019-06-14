@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
           PartnerSeeder::class,
           PeraturanSeeder::class,
           BantuanSeeder::class,
+          PromosiSeeder::class,
         ]);
     }
 }
