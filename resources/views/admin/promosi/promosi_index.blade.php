@@ -1,6 +1,6 @@
 @extends('temp.main')
 
-@section('title-page', 'E-Bina | Admin - Promosi')
+@section('title-page', 'E-Bina | Promosi')
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap4.css') }}">

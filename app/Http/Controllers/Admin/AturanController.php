@@ -65,8 +65,8 @@ class AturanController extends Controller
      */
     public function edit($id)
     {
-        $edit_aturan = Peraturan::findOrFail($id);
-        return view('admin.aturan.aturan_edit', ['edit_aturan' => $edit_aturan]);
+        $editAturan = Peraturan::findOrFail($id);
+        return view('admin.aturan.aturan_edit', ['editAturan' => $editAturan]);
     }
 
     /**
@@ -78,12 +78,12 @@ class AturanController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $update_peraturan = Peraturan::findOrFail($id);
+      $updatePeraturan = Peraturan::findOrFail($id);
 
-      $update_peraturan->judul = $request->judul;
-      $update_peraturan->deskripsi = $request->deskripsi;
+      $updatePeraturan->judul = $request->judul;
+      $updatePeraturan->deskripsi = $request->deskripsi;
 
-      $update_peraturan->save();
+      $updatePeraturan->save();
       return redirect()->route('admin.aturan.index');
     }
 
@@ -95,8 +95,8 @@ class AturanController extends Controller
      */
     public function destroy($id)
     {
-      $hapus_peraturan = Peraturan::findOrFail($id);
-      $hapus_peraturan->delete();
+      $hapusPeraturan = Peraturan::findOrFail($id);
+      $hapusPeraturan->delete();
       return redirect()->back();
     }
 }

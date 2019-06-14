@@ -42,11 +42,6 @@ class PromosiController extends Controller
     {
       $this->validate($request, [
         'gambar' => 'required|file|max:2000'
-        // 'title' => 'required',
-        // 'isi' => 'required',
-        // 'kode' => 'required|unique:promosi',
-        // 'startDate' => 'required',
-        // 'endDate' => 'required',
       ]);
       $uploadGambar = $request->file('gambar');
       $gambar = $uploadGambar->store('public/files');
@@ -97,19 +92,19 @@ class PromosiController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $update_promosi = Promosi::findOrFail($id);
-      $update_promosi->title = $request->title;
-      $update_promosi->isi = $request->isi;
+      $updatePromosi = Promosi::findOrFail($id);
+      $updatePromosi->title = $request->title;
+      $updatePromosi->isi = $request->isi;
 
       $this->validate($request, ['gambar' => 'required|file|max:2000']);
       $uploadLogo = $request->file('gambar');
       $updateGambar = $uploadLogo->store('public/files');
 
-      $update_promosi->gambar = $updateGambar;
-      $update_promosi->startDate = $request->startDate;
-      $update_promosi->endDate = $request->endDate;
+      $updatePromosi->gambar = $updateGambar;
+      $updatePromosi->startDate = $request->startDate;
+      $updatePromosi->endDate = $request->endDate;
 
-      $update_promosi->save();
+      $updatePromosi->save();
       return redirect()->route('admin.promosi.index')->with('success_message', 'Berhasil Mengubah Promosi');
     }
 
@@ -121,8 +116,8 @@ class PromosiController extends Controller
      */
     public function destroy($id)
     {
-      $hapus_promo = Promosi::findOrFail($id);
-      $hapus_promo->delete();
+      $hapusPromo = Promosi::findOrFail($id);
+      $hapusPromo->delete();
       return redirect()->route('admin.promosi.index')->with('success_message', 'Berhasil Hapus Promosi');
     }
 }

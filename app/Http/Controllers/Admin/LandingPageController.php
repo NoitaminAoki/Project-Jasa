@@ -43,10 +43,10 @@ class LandingPageController extends Controller
      */
     public function store(Request $request)
     {
-        $tambah_harga = new Harga;
-        $tambah_harga->harga = $request->harga;
-        $tambah_harga->tingkat = $request->tingkat;
-        $tambah_harga->save();
+        $tambahHarga = new Harga;
+        $tambahHarga->harga = $request->harga;
+        $tambahHarga->tingkat = $request->tingkat;
+        $tambahHarga->save();
 
         return redirect()->route('admin.landing-page.index');
     }
@@ -83,10 +83,10 @@ class LandingPageController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $ubah_harga = Harga::findOrFail($id);
-      $ubah_harga->harga = $request->harga;
-      $ubah_harga->tingkat = $request->tingkat;
-      $ubah_harga->save();
+      $ubahHarga = Harga::findOrFail($id);
+      $ubahHarga->harga = $request->harga;
+      $ubahHarga->tingkat = $request->tingkat;
+      $ubahHarga->save();
       return redirect()->route('admin.landing-page.index');
     }
 
@@ -98,8 +98,8 @@ class LandingPageController extends Controller
      */
     public function destroy($id)
     {
-      $delete_harga = Harga::findOrFail($id);
-      $delete_harga->delete();
+      $deleteHarga = Harga::findOrFail($id);
+      $deleteHarga->delete();
       return redirect()->back();
     }
 }
