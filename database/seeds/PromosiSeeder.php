@@ -20,8 +20,8 @@ class PromosiSeeder extends Seeder
                     Integer turpis urna, aliquet non enim id, ultrices pharetra orci. Suspendisse convallis sapien libero,
                     sit amet vestibulum.',
           'kode' => 'www.e-bina.id/promo/promosi-pertama/rizky',
-          'startDate' => '14 June 2019',
-          'endDate' => '18 June 2019',
+          'startDate' => '2019-06-14 14:05:00',
+          'endDate' => '2019-07-13 23:59:59',
         ],
         [
           'slug' => 'promosi-kedua',
@@ -31,8 +31,8 @@ class PromosiSeeder extends Seeder
                     Integer turpis urna, aliquet non enim id, ultrices pharetra orci. Suspendisse convallis sapien libero,
                     sit amet vestibulum.',
           'kode' => 'www.e-bina.id/promo/promosi-kedua/rizky',
-          'startDate' => '14 June 2019',
-          'endDate' => '18 June 2019',
+          'startDate' => '2019-06-14 14:05:00',
+          'endDate' => '2019-07-13 23:59:59',
         ],
         [
           'slug' => 'promosi-ketiga',
@@ -42,8 +42,8 @@ class PromosiSeeder extends Seeder
                     Integer turpis urna, aliquet non enim id, ultrices pharetra orci. Suspendisse convallis sapien libero,
                     sit amet vestibulum.',
           'kode' => 'www.e-bina.id/promo/promosi-ketiga/rizky',
-          'startDate' => '14 June 2019',
-          'endDate' => '18 June 2019',
+          'startDate' => '2019-06-14 14:05:00',
+          'endDate' => '2019-07-13 23:59:59',
         ],
         [
           'slug' => 'promosi-keempat',
@@ -53,8 +53,8 @@ class PromosiSeeder extends Seeder
                     Integer turpis urna, aliquet non enim id, ultrices pharetra orci. Suspendisse convallis sapien libero,
                     sit amet vestibulum.',
           'kode' => 'www.e-bina.id/promo/promosi-keempat/rizky',
-          'startDate' => '14 June 2019',
-          'endDate' => '18 June 2019',
+          'startDate' => '2019-06-14 14:05:00',
+          'endDate' => '2019-07-13 23:59:59',
         ],
         [
           'slug' => 'promosi-kelima',
@@ -64,8 +64,8 @@ class PromosiSeeder extends Seeder
                     Integer turpis urna, aliquet non enim id, ultrices pharetra orci. Suspendisse convallis sapien libero,
                     sit amet vestibulum.',
           'kode' => 'www.e-bina.id/promo/promosi-kelima/rizky',
-          'startDate' => '14 June 2019',
-          'endDate' => '18 June 2019',
+          'startDate' => '2019-05-14 14:05:00',
+          'endDate' => '2019-06-13 23:59:59',
         ]
       ]);
     }

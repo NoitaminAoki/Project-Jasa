@@ -8,6 +8,7 @@ use App\Models\Promosi;
 use Illuminate\Support\Str;
 use Auth;
 use App\Models\Member;
+use Carbon\Carbon;
 
 class PromosiController extends Controller
 {
@@ -18,7 +19,7 @@ class PromosiController extends Controller
      */
     public function index()
     {
-        $promos = Promosi::paginate(10);
+        $promos = Promosi::where('endDate', '>=', Carbon::now())->paginate(10);
         return view('admin.promosi.promosi_index', ['promos' => $promos]);
     }
 
@@ -52,8 +53,8 @@ class PromosiController extends Controller
       $tambahPromo->gambar = $gambar;
       $tambahPromo->isi = $request->isi;
       $tambahPromo->kode = url()->current() . '/' . Str::slug(strtolower($request->title)) . '/' . Str::slug(strtolower(Auth::user()->name));
-      $tambahPromo->startDate = $request->startDate;
-      $tambahPromo->endDate = $request->endDate;
+      $tambahPromo->startDate = $request->startDate . "00:00:01";
+      $tambahPromo->endDate = $request->endDate . "23:59:59";
       $tambahPromo->save();
 
       return redirect()->route('admin.promosi.index');
