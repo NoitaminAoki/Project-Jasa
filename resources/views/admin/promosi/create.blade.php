@@ -20,10 +20,10 @@
     </div>
     <div class="form-row">
       <div class="col-12 col-md-6">
-        <input type="text" name="startDate" class="form-control datepicker-here" placeholder="Start Date">
+        <input type="text" name="startDate" class="form-control datepicker-here" placeholder="Start Date" autocomplete="off">
       </div>
       <div class="col-12 col-md-6">
-        <input type="text" name="endDate" class="form-control datepicker-here" placeholder="End Date">
+        <input type="text" name="endDate" class="form-control datepicker-here" placeholder="End Date" autocomplete="off">
       </div>
     </div>
     <textarea name="isi" rows="10" placeholder="Jelaskan Detail Promonya"></textarea>
@@ -59,6 +59,12 @@
       language: 'en',
       dateFormat: 'dd MM yyyy',
       minDate: new Date()
+    });
+    $("input").change(function() {
+      var startDate = $("input[name='startDate']").val();
+      $("input[name='endDate']").datepicker({
+        minDate: startDate
+      });
     });
   </script>
 @endsection

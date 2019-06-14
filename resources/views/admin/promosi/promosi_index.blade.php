@@ -24,17 +24,24 @@
 		position: absolute;
 		opacity: 0;
 		visibility: hidden;
-		padding: 10px 2rem;
-		right:  0;
+		padding: 10px 0;
+		right: 5px;
 		background-color: #f2f2f2;
-		top: 0;
+		top: 5px;
+		box-shadow: 0 2px 2px 1px rgba(48, 48, 48, 0.26);
+		border-radius: 4px;
 	}
 	.more-option li {
 		width: 100%;
+		padding: 5px 2rem;
 		text-align: right;
+		transition: all 250ms;
+	}
+	.more-option li:hover {
+		background-color: #e4e2e2;
 	}
 	.more-option li:first-child {
-		margin-bottom: 10px;
+		/* margin-bottom: 10px; */
 	}
 </style>
 @endsection
@@ -52,13 +59,17 @@
 	@foreach ($promos as $promo)
 		<div class="col-12 col-md-4 mb-3">
 			<div class="card">
-				<a href="javascript:void(0);" class="more-option-btn">more option</a>
+				<a href="javascript:void(0);" class="more-option-btn"><i class="fas fa-ellipsis-v"></i></a>
 				<ul class="more-option">
-					<li><a href="{{ route('admin.promosi.edit', $promo->id) }}" class="text-warning">Edit</a></li>
+					<li>
+						<a href="{{ route('admin.promosi.edit', $promo->id) }}" class="text-warning">
+							Edit <i class="fas fa-pen" style="margin-left: 5px;"></i>
+						</a>
+					</li>
 					<li>
 						<form action="{{ route('admin.promosi.destroy', $promo->id) }}" method="post">
 							@csrf @method("DELETE")
-							<button type="submit" class="btn btn-link p-0 text-danger">Delete</button>
+							<button type="submit" class="btn btn-link p-0 text-danger">Delete <i class="fas fa-trash" style="margin-left: 5px;"></i></button>
 						</form>
 					</li>
 				</ul>
@@ -68,7 +79,7 @@
 					<p class="card-text">{!! $promo->isi !!}</p>
 				</div>
 				<div class="card-footer justify-content-between d-flex">
-					<time><span>{{ $promo->startDate }}</span> s/d <span>{{ $promo->endDate }}</span></time>
+					<time><span>{{ $promo->startDate->format('d F Y') }}</span> s/d <span>{{ $promo->endDate->format('d F Y') }}</span></time>
 					<button type="button" class="card-link btn btn-link p-0" data-clipboard-text="{{ route('admin.promosi.show', $promo->slug) }}"
 						data-toggle="tooltip" data-placement="top" data-trigger="click" title="Copied!">
 						Copy This Link <i class="far fa-copy" style="margin-left: 5px;"></i>
