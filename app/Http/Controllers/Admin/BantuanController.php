@@ -16,7 +16,7 @@ class BantuanController extends Controller
      */
     public function index()
     {
-        $supports = Support::paginate(10);
+        $supports = Support::where('status_terbalas', 'belum')->paginate(10);
         return view('admin.bantuan.bantuan_index', ['support' => $supports]);
     }
 
@@ -45,6 +45,7 @@ class BantuanController extends Controller
           $message->to($toEmail)->subject("Balasan Dari Customer Service E-Bina");
           $message->from('support@e-bina.co.id', 'Artisans Web');
       });
+      Support::where('id', $request->id)->update(['status_terbalas' => 'sudah']);
       return redirect()->back()->with('berhasil', 'Berhasil Balas Ke Email' . $toEmail);
     }
 

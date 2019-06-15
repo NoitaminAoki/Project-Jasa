@@ -45,6 +45,7 @@
 						<div class="card-footer">
 							<form action="{{ route('admin.bantuan.store') }}" method="post">
 								@csrf
+								<input type="hidden" name="id" value="{{ $bantuan->id }}">
 								<input type="hidden" name="pengirim" value="{{ $bantuan->email }}">
 								<input type="hidden" name="subject" value="Balasan Untuk Keluhanmu Tentang {{ $bantuan->subjek }}">
 								<textarea name="balasan" class="form-control" rows="8" placeholder="Balas Ke Email {{ $bantuan->email }}"></textarea>

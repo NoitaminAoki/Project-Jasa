@@ -635,14 +635,15 @@ footer {
 }
 footer small {
   font-size: 16px;
+  margin-right: auto;
 }
 footer a {
   font-size: 12px;
+  margin-left: 10px;
 }
 footer .container {
   height: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 footer time {
