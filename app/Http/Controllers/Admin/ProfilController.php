@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Storage;
 use Auth;
 use App\User;
+use App\Models\Klien;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,6 +20,7 @@ class ProfilController extends Controller
     public function index()
     {
         $data['jumlah_member'] = Member::count();
+        $data['jumlah_klien'] = Klien::count();
         return view('admin.profil.profil_index')->with($data);
     }
 
@@ -102,6 +105,7 @@ class ProfilController extends Controller
       $path = $uploadLogo->store('public/files');
 
       $profile_picture = User::findOrFail(Auth::guard('web')->user()->id);
+      Storage::delete($profile_picture->profile_picture);
       $profile_picture->profile_picture = $path;
       $profile_picture->save();
       $request->session()->flash('success_message', 'Profile Picture Updated');

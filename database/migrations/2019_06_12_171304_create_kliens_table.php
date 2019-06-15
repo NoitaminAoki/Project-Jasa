@@ -21,6 +21,7 @@ class CreateKliensTable extends Migration
             $table->string('tempatTinggal');
             $table->string('noTelp', 20);
             $table->string('email');
+            $table->enum('status', ['pending', 'negosiasi', 'deal']);
             $table->timestamps();
         });
     }

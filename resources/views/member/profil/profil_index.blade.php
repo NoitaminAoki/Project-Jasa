@@ -29,7 +29,7 @@
 		<div class="card-body box-profile">
 			<div class="text-center">
 				<img class="profile-user-img img-fluid img-circle"
-				src="{{ Storage::url(Auth::guard('member')->user()->profile_picture) }}" alt="User profile picture">
+				src="{{ (Storage::exists(Auth::guard('member')->user()->profile_picture))? Storage::url(Auth::guard('member')->user()->profile_picture) : asset('dist/img/avatar5.png') }}" alt="User profile picture">
 			</div>
 
 			<h3 class="profile-username text-center">{{ Auth::guard('member')->user()->name }}</h3>
@@ -38,7 +38,7 @@
 
 			<ul class="list-group list-group-unbordered mb-3">
 				<li class="list-group-item">
-					<b>Klien</b> <a class="float-right">1,322</a>
+					<b>Klien</b> <a class="float-right">{{$jumlah_klien}}</a>
 				</li>
 			</ul>
 		</div>

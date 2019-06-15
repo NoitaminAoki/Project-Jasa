@@ -19,5 +19,10 @@
     <script src="{{ asset('assets/slick.min.js') }}" charset="utf-8"></script>
     <script src="{{ asset('assets/native.js') }}" charset="utf-8"></script>
     <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+    <script>
+    $(document).ready(function() {
+      $('input[name="codeMember"]').removeAttr('required');
+    });
+    </script>
   </body>
 </html>

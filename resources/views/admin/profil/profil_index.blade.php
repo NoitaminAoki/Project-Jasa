@@ -32,7 +32,7 @@
 		<div class="card-body box-profile">
 			<div class="text-center">
 				<img class="profile-user-img img-fluid img-circle" id="picture_profile"
-				src="{{ Storage::url(Auth::guard('web')->user()->profile_picture) }}" alt="User profile picture">
+				src="{{ (Storage::exists(Auth::guard('web')->user()->profile_picture))? Storage::url(Auth::guard('web')->user()->profile_picture) : asset('dist/img/avatar5.png') }}" alt="User profile picture">
 			</div>
 
 			<h3 class="profile-username text-center">{{ Auth::guard('web')->user()->name }}</h3>
@@ -44,7 +44,7 @@
 					<b>Member</b> <a class="float-right">{{$jumlah_member}}</a>
 				</li>
 				<li class="list-group-item">
-					<b>Klien</b> <a class="float-right">1,322</a>
+					<b>Klien</b> <a class="float-right">{{$jumlah_klien}}</a>
 				</li>
 			</ul>
 		</div>
@@ -57,23 +57,14 @@
 	<div class="card">
 		<div class="card-header p-2">
 			<ul class="nav nav-pills">
-				<li class="nav-item">
-					<a class="nav-link active" href="#aboutMe" data-toggle="tab">About Me</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link"
-					href="#settings" data-toggle="tab">Settings</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#changePassword" data-toggle="tab">
-						Change Password
-					</a>
-				</li>
+				<li class="nav-item"><a class="nav-link {{ ($errors->any())? '' : 'active' }}" href="#aboutMe" data-toggle="tab">About Me</a></li>
+				<li class="nav-item"><a class="nav-link {{ ($errors->has('name') || $errors->has('email'))? 'active' : '' }}" href="#settings" data-toggle="tab">Settings</a></li>
+				<li class="nav-item"><a class="nav-link {{ ($errors->has('password'))? 'active' : '' }}" href="#changePassword" data-toggle="tab">Change Password</a></li>
 			</ul>
 		</div><!-- /.card-header -->
 		<div class="card-body">
 			<div class="tab-content">
-				<div class="tab-pane active" id="aboutMe">
+				<div class="tab-pane {{ ($errors->any())? '' : 'active' }}" id="aboutMe">
 					<div class="col-12">
 						<strong class="d-block mb-1"><i class="fa fa-envelope mr-1"></i> E-Mail</strong>
 						<span class="text-muted d-block mb-2">{{ Auth::guard('web')->user()->email }}</span>
@@ -88,7 +79,7 @@
 					</div>
 				</div>
 				<!-- /.tab-pane -->
-				<div class="tab-pane" id="settings">
+				<div class="tab-pane {{ ($errors->has('name') || $errors->has('email'))? 'active' : '' }}" id="settings">
 					<form class="form-horizontal" method="POST" action="{{ route('admin.profil.update', ['profil' => 'update']) }}">
 						@csrf
 						@method('PUT')
@@ -124,7 +115,7 @@
 					</form>
 				</div>
 				<!-- /.tab-pane -->
-				<div class="tab-pane" id="changePassword">
+				<div class="tab-pane {{ ($errors->has('password'))? 'active' : '' }}" id="changePassword">
 					<form class="form-horizontal" method="POST" action="{{ route('admin.profil.change.password') }}">
 						@csrf
 						@method('PUT')

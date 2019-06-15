@@ -38,7 +38,7 @@ class HargaSeeder extends Seeder
           'fee' => 5000000
         ],
         [
-          'idHarga' => 1,
+          'idHarga' => 3,
           'point' => 2,
           'fee' => 2000000
         ]

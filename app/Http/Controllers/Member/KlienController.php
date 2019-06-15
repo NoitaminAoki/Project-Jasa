@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Member;
 
+use Auth;
+use App\Models\Klien;
+use App\Models\Penghasilan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +17,26 @@ class KlienController extends Controller
      */
     public function index()
     {
-        return view('member.klien.klien_index');
+        $data['klien'] = Klien::where('idMember', Auth::guard('member')->user()->id)->get();
+        $data['pendapatan'] = 0;
+        $data['point'] = 0;
+        $data['potensi_pendapatan'] = 0;
+        foreach ($data['klien'] as $value) {
+            $getFee = Penghasilan::where('idHarga', $value->idHarga)->select(['point', 'fee'])->first();
+            if ($value->status == "pending" || $value->status == "negosiasi") {
+                $data['potensi_pendapatan'] += $getFee['fee'];
+            }
+            elseif ($value->status == "deal") {
+                $data['pendapatan'] += $getFee['fee'];
+                $data['point'] += $getFee['point'];
+            }
+        }
+        $totalFee = $data['pendapatan'] + $data['potensi_pendapatan'];
+        $data['percentage'] = [
+            'pendapatan' => ($data['pendapatan']/$totalFee*100),
+            'potensi_pendapatan' => ($data['potensi_pendapatan']/$totalFee*100)
+        ];
+        return view('member.klien.klien_index')->with($data);
     }
 
     /**

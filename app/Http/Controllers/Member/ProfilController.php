@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Member;
 
+use Storage;
 use Auth;
 use Session;
+use App\Models\Klien;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -19,7 +21,8 @@ class ProfilController extends Controller
     */
     public function index()
     {
-        return view('member.profil.profil_index');
+        $data['jumlah_klien'] = Klien::count();
+        return view('member.profil.profil_index')->with($data);
     }
 
     /**
@@ -119,6 +122,7 @@ class ProfilController extends Controller
       $path = $uploadLogo->store('public/files');
 
       $profile_picture = Member::findOrFail(Auth::guard('member')->user()->id);
+      Storage::delete($profile_picture->profile_picture);
       $profile_picture->profile_picture = $path;
       $profile_picture->save();
       $request->session()->flash('success_message', 'Profile Picture Updated');

@@ -18,6 +18,11 @@
       <option value="profesional">profesional</option>
       <option value="pemula">pemula</option>
     </select>
+    @if ($errors->has('tingkat'))
+    <span class="text-danger">
+        <strong>Tingkat harga sudah dipakai.</strong>
+    </span>
+    @endif
     <input type="number" class="form-control my-3" max="999" min="1" name="harga" placeholder="Harga" required>
     <small id="hargaHelpBlock" class="form-text text-muted">
       Harga sudah dalam bentuk ribuan. Contoh: Rp. 350 dibaca Rp. 350.000

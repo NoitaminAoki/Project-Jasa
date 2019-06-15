@@ -29,6 +29,8 @@ Route::namespace('Home')->name('home.')->group(function () {
   Route::get('promo', 'HomeController@promosi')->name('promosi');
   Route::get('syarat-dan-ketentuan', 'HomeController@peraturan')->name('peraturan');
   Route::get('profil', 'HomeController@profil')->name('profil');
+  
+  Route::post('klien/create', 'HomeController@klienStore')->name('klien.store');
 });
 
 Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->group(function () {
@@ -40,6 +42,9 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->
 
   Route::put('member/activating/{id}', 'MemberController@activating')->name('member.activating');
   Route::resource('member', 'MemberController');
+
+  Route::get('klien/edit-api/{id?}', 'KlienController@editApi')->name('klien.editAjax');
+  Route::post('klien/update-api/{id?}', 'KlienController@updateApi')->name('klien.updateAjax');
   Route::resource('klien', 'KlienController');
   Route::resource('penghasilan', 'PenghasilanController');
   Route::resource('landing-page', 'LandingPageController');
