@@ -45,7 +45,12 @@ class BantuanController extends Controller
           $message->to($toEmail)->subject("Balasan Dari Customer Service E-Bina");
           $message->from('support@e-bina.co.id', 'Artisans Web');
       });
-      Support::where('id', $request->id)->update(['status_terbalas' => 'sudah']);
+      $ubah = Support::findOrFail($request->id);
+      $ubah->status_terbalas = 'sudah';
+      if ($request->tampilkan) {
+        $ubah->tampilkan = $request->tampilkan;
+      }
+      $ubah->save();
       return redirect()->back()->with('berhasil', 'Berhasil Balas Ke Email' . $toEmail);
     }
 

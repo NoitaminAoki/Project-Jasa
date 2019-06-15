@@ -49,7 +49,13 @@
 								<input type="hidden" name="pengirim" value="{{ $bantuan->email }}">
 								<input type="hidden" name="subject" value="Balasan Untuk Keluhanmu Tentang {{ $bantuan->subjek }}">
 								<textarea name="balasan" class="form-control" rows="8" placeholder="Balas Ke Email {{ $bantuan->email }}"></textarea>
-								<button type="submit" class="btn btn-success float-right mt-3">Balas <i class="fas fa-paper-plane ml-2"></i></button>
+								<div class="form-row mx-0 justify-content-between align-items-center mt-3">
+									<div class="custom-control custom-checkbox">
+									  <input type="checkbox" name="tampilkan" class="custom-control-input" id="tampilkan{{ $bantuan->id }}" value="iya">
+									  <label class="custom-control-label" for="tampilkan{{ $bantuan->id }}">Tampilkan Dihalaman Utama?</label>
+									</div>
+									<button type="submit" class="btn btn-success float-right">Balas <i class="fas fa-paper-plane ml-2"></i></button>
+								</div>
 							</form>
 						</div>
 			    </div>
