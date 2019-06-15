@@ -30,8 +30,6 @@ Route::namespace('Home')->name('home.')->group(function () {
   Route::get('promo', 'HomeController@promosi')->name('promosi');
   Route::get('syarat-dan-ketentuan', 'HomeController@peraturan')->name('peraturan');
   Route::get('profil', 'HomeController@profil')->name('profil');
-  Route::get('pertanyaan', 'HomeController@faq')->name('faq');
-  Route::post('faq/store', 'HomeController@faqStore')->name('faq.store');
   Route::post('klien/create', 'HomeController@klienStore')->name('klien.store');
 });
 

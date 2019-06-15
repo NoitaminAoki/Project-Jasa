@@ -68,19 +68,6 @@ class HomeController extends Controller
     {
         return view('profil');
     }
-    public function faq()
-    {
-      return view('faq');
-    }
-    public function faqStore(Request $request)
-    {
-      $faq = new Faq;
-      $faq->email = $request->email;
-      $faq->pertanyaan = $request->pertanyaan;
-      $faq->save();
-
-      return redirect()->back()->with('success_message', 'Pertanyaanmu Telah Dikirim');
-    }
 
     public function klienStore(Request $request)
     {
