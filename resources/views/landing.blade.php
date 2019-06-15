@@ -163,12 +163,21 @@ foreach ($price as $harga) {
       </div>
       <div class="col-12 col-md-4 px-md-0">
         <div class="profesional">
+<<<<<<< HEAD
             <h2>{{$profesional['tingkat']}}</h2>
             @if ($profesional['harga'] > 0)
             <p><sup>Rp.</sup><var>{{$profesional['harga']}}</var><sub>k/bulan</sub></p>
             @else
             <small>(belum tersedia)</small>
             @endif
+=======
+          <h2>{{$profesional['tingkat']}}</h2>
+          @if ($profesional['harga'] > 0)
+          <p><sup>Rp.</sup><var>{{$profesional['harga']}}</var><sub>rb/bulan</sub></p>
+          @else
+          <small>(belum tersedia)</small>
+          @endif
+>>>>>>> 520a9a3bd3e304d57d776481e48fb49106d8c376
         </div>
         <details>
           <summary>Lihat Fitur</summary>
@@ -217,12 +226,12 @@ foreach ($price as $harga) {
       </div>
       <div class="col-12 col-md-4 px-md-0">
         <div class="pemula">
-            <h2>{{$pemula['tingkat']}}</h2>
-            @if ($pemula['harga'] > 0)
-            <p><sup>Rp.</sup><var>{{$pemula['harga']}}</var><sub>k/bulan</sub></p>
-            @else
-            <small>(belum tersedia)</small>
-            @endif
+          <h2>{{$pemula['tingkat']}}</h2>
+          @if ($pemula['harga'] > 0)
+          <p><sup>Rp.</sup><var>{{$pemula['harga']}}</var><sub>k/bulan</sub></p>
+          @else
+          <small>(belum tersedia)</small>
+          @endif
         </div>
         <details>
           <summary>Lihat Fitur</summary>
@@ -467,7 +476,7 @@ foreach ($price as $harga) {
         <input type="text" name="email" placeholder="email aktif" required>
       </div>
       <div class="col-12 mb-3">
-        <input type="text" name="codeMember" placeholder="kode referal">
+        <input type="text" name="codeMember" placeholder="kode referal" value=" @if (isset($getMember)){{$getMember->code}}@endif" readonly>
       </div>
       <div class="col-12 d-flex justify-content-end">
         <button type="submit" name="button" class="btn-secondary">ya aku tertarik <box-icon name='send' type='solid' color="white"></box-icon></button>
@@ -532,4 +541,100 @@ foreach ($price as $harga) {
     </div>
   </div>
 </section>
+@if (Session::has('success_daftar'))
+<div id="myNav" class="overlays">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlays-content">
+    <h5>Terima Kasih!</h5>
+    <small class="small-title">{{Session::get('success_daftar')}}</small>
+  </div>
+</div>
+@endif
 @endsection
+
+@if (Session::has('success_daftar'))
+@section('css')
+<style>
+  .overlays {
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+  }
+
+  .overlays-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .overlays h5, .overlays .small-title, .overlays a {
+    padding-right: 8px;
+    padding-left: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  .small-title {
+    font-size: 20px !important;
+  }
+
+  .overlays h5, .overlays .small-title, .overlays a:hover, .overlay a:focus {
+    color: #f1f1f1;
+  }
+
+  .overlays .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+  }
+
+  @media screen and (max-height: 450px) {
+    .overlays a, .overlays h5 {font-size: 20px !important}
+    .overlays .small-title {font-size: 18px !important}
+    .overlays .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px;
+    }
+  }
+</style>
+@endsection
+@section('footer-landing')
+<script>
+  $(document).ready(function () {
+    document.getElementById("myNav").style.display = "block";
+  });
+
+  function closeNav() {
+    document.getElementById("myNav").style.display = "none";
+  }
+</script>
+@endsection
+@endif
+@section('footer-landing')
+@if (isset($getMember))
+<script>
+  $(document).ready(function () {
+    $('html,body').animate({
+      scrollTop: $("#diskonSection").offset().top},
+      'slow');
+      document.getElementById("myNav").style.display = "block";
+    });
+
+    function closeNav() {
+      document.getElementById("myNav").style.display = "none";
+    }
+  </script>
+  @endif
+  @endsection

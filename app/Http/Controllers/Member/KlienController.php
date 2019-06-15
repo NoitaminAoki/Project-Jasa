@@ -17,7 +17,7 @@ class KlienController extends Controller
      */
     public function index()
     {
-        $data['klien'] = Klien::where('idMember', Auth::guard('member')->user()->id)->get();
+        $data['klien'] = Klien::where('idMember', Auth::guard('member')->user()->id)->orderBy('created_at', 'DESC')->get();
         $data['pendapatan'] = 0;
         $data['point'] = 0;
         $data['potensi_pendapatan'] = 0;

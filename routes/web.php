@@ -30,7 +30,6 @@ Route::namespace('Home')->name('home.')->group(function () {
   Route::get('promo', 'HomeController@promosi')->name('promosi');
   Route::get('syarat-dan-ketentuan', 'HomeController@peraturan')->name('peraturan');
   Route::get('profil', 'HomeController@profil')->name('profil');
-  // Route::get('/{promo}/{member}', 'HomeController@getPromo')->name('getpromo');
 
   Route::post('klien/create', 'HomeController@klienStore')->name('klien.store');
 });
@@ -66,4 +65,8 @@ Route::prefix('member')->namespace('Member')->name('member.')->middleware(['auth
   Route::resource('promosi', 'PromosiController');
   Route::resource('aturan', 'AturanController');
   Route::resource('bantuan', 'BantuanController');
+});
+
+Route::namespace('Home')->name('home.')->group(function () {
+Route::get('/{promo}/{member}', 'HomeController@getPromo')->name('getpromo')->where(['promo' => '^(?!admin$).*$', 'promo' => '^(?!member$).*$']);
 });
