@@ -77,6 +77,7 @@ class HomeController extends Controller
             'status' => 'pending'
         ]);
 
+        $request->session()->flash('success_daftar', 'Permintaan Anda akan segera kami proses.');
         return redirect(url('/'));
     }
 }

@@ -68,7 +68,7 @@
 				</div>
 				<div class="card-footer justify-content-between d-flex">
 					<time><span>{{ $promo->startDate->format('d F Y') }}</span> s/d <span>{{ $promo->endDate->format('d F Y') }}</span></time>
-					<button type="button" class="card-link btn btn-link p-0" data-clipboard-text="{{ route('member.promosi.show', $promo->slug) }}"
+					<button type="button" class="card-link btn btn-link p-0" data-clipboard-text="{{ route('home.getpromo', ['promo' => $promo->slug, 'member' => Str::slug(Auth::guard('member')->user()->name, '-')]) }}"
 						data-toggle="tooltip" data-placement="top" data-trigger="click" title="Copied!">
 						Copy This Link <i class="far fa-copy" style="margin-left: 5px;"></i>
 					</button>

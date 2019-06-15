@@ -17,7 +17,7 @@ class KlienController extends Controller
      */
     public function index()
     {
-        $data['klien'] = Klien::all();
+        $data['klien'] = Klien::orderBy('created_at', 'DESC')->get();
         $data['price'] = Harga::all();
         $data['pendapatan'] = 0;
         $data['point'] = 0;
