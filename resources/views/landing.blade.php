@@ -441,7 +441,7 @@ foreach ($price as $harga) {
           </div>
         </div>
         <div id="showDetails" class="col-12">
-          <span class="d-flex align-items-center">Lihat Pekandingan <box-icon name='chevron-down' color="white"></box-icon></span>
+          <span class="d-flex align-items-center">Lihat Perbandingan <box-icon name='chevron-down' color="white"></box-icon></span>
         </div>
       </div>
     </div>
@@ -452,7 +452,7 @@ foreach ($price as $harga) {
 <section id="diskonSection">
   <div class="container">
     <h1>diskon untukmu</h1>
-    <p>Jika kamu tertarik menggunakan layanan kami <br> dan ingin mendapatkan diskon tekaru silahkan isi form dibawah ini</p>
+    <p>Jika kamu tertarik menggunakan layanan kami <br> dan ingin mendapatkan diskon terbaru silahkan isi form dibawah ini</p>
     <form action="{{ route('home.klien.store') }}" class="row mx-0" method="post">
       @csrf
       <div class="col-12 mb-3">
