@@ -9,6 +9,7 @@ use App\Models\Klien;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class ProfilController extends Controller
 {
@@ -93,7 +94,7 @@ class ProfilController extends Controller
     public function changePassword(Request $request)
     {
         $request->validate(['password' => 'required|string|min:6|confirmed']);
-        User::where('id', Auth::guard('web')->user()->id)->update(['password' => Hask::make($request->password)]);
+        User::where('id', Auth::guard('web')->user()->id)->update(['password' => Hash::make($request->password)]);
         $request->session()->flash('success_message', 'Success Changed Password');
         return redirect()->route('admin.profil.index');
     }

@@ -63,11 +63,11 @@
 			<div class="card">
 				<img src="{{ Storage::url($promo->gambar) }}" class="card-img-top" height="180" alt="Promo {{ $promo->title }}">
 				<div class="card-body position-relative">
-					<h2>{{ $promo->title }}</h2>
+					<h2><a href="{{ route('member.promosi.show', $promo->slug) }}">{{ $promo->title }}</a></h2>
 					<p class="card-text">{!! $promo->isi !!}</p>
 				</div>
 				<div class="card-footer justify-content-between d-flex">
-					<time><span>{{ $promo->startDate->format('d F Y') }}</span> s/d <span>{{ $promo->endDate->format('d F Y') }}</span></time>
+					<time>{{ $promo->startDate->format('d F Y') . " - " . $promo->endDate->format('d F Y') }}</time>
 					<button type="button" class="card-link btn btn-link p-0" data-clipboard-text="{{ route('member.promosi.show', $promo->slug) }}"
 						data-toggle="tooltip" data-placement="top" data-trigger="click" title="Copied!">
 						Copy This Link <i class="far fa-copy" style="margin-left: 5px;"></i>

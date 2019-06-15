@@ -11,7 +11,9 @@
 </style>
 @endsection
 
-@section ('title-body', 'Detail Promo')
+@section ('title-body')
+	{{ $promo->title }}
+@endsection
 
 @section('content')
 	@if (Session::has('success_message') || Session::has('failed_message'))
@@ -26,20 +28,37 @@
 		<figcaption class="text-left py-4">
 			<h1 class="text-center mb-4 font-weight-bold">{{ $promo->title }}</h1>
 			<p class="card-text">{!! $promo->isi !!}</p>
-			<div class="d-flex justify-content-between my-4">
-				<time class="text-info btn px-0"><span>{{ $promo->startDate->format('d F Y') }}</span> s/d <span>{{ $promo->endDate->format('d F Y') }}</span></time>
-				<a href="#" class="btn btn-success" style="border-radius: 20px;">Copy This Link</a>
+			<div class="d-flex align-items-center justify-content-between my-4">
+				<time class="text-info py-2">
+					{{ $promo->startDate->format('d F Y') . " - " . $promo->endDate->format('d F Y') }}
+				</time>
+				<button type="button" class="btn btn-success" data-clipboard-text="{{ route('member.promosi.show', $promo->slug) }}"
+					data-toggle="tooltip" data-placement="top" data-trigger="click" title="Copied!">
+					Copy This Link <i class="far fa-copy" style="margin-left: 10px;"></i>
+				</button>
 			</div>
 		</figcaption>
+		<a href="{{ route('member.promosi.index') }}">
+			<i class="fas fa-long-arrow-alt-left" style="margin-right: 10px"></i>Kembali Ke Halaman Sebelumya
+		</a>
 	</figure>
 @endsection
 
 @section('script')
 <script src="{{ asset('plugins/datatables/jquery.dataTables.js') }}"></script>
 <script src="{{ asset('plugins/datatables/dataTables.bootstrap4.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
 <script>
 	$(document).ready(function() {
 		$('.message-session').delay(3000).slideUp(600);
+		var clipboard = new ClipboardJS(".btn-success");
+		$('[data-toggle="tooltip"]').tooltip();
+		$('[data-toggle="tooltip"]').mouseleave(function() {
+			$(this).tooltip("hide");
+		});
+		$("[data-toggle='tooltip']").click(function() {
+			$(this).parent().prev().find("input").select();
+		});
 	});
 </script>
 @endsection

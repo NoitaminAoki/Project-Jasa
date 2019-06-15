@@ -20,13 +20,13 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="hargaPrepend">Rp.</span>
       </div>
-      <input id="harga" type="number" name="harga" max="999" min="1" aria-describedby="hargaHelpBlock" class="form-control" placeholder="Harga" value="{{ $price->harga }}" required>
+      <input id="harga" type="number" name="harga" min="1" aria-describedby="hargaHelpBlock" class="form-control" placeholder="Harga" value="{{ $price->harga }}" required>
       <div class="invalid-feedback">
         Please fill the price
       </div>
     </div>
     <small id="hargaHelpBlock" class="form-text text-muted">
-      Harga sudah dalam bentuk ribuan. Contoh: Rp. 350 dibaca Rp. 350.000
+      Harga sudah dalam bentuk ribuan. Contoh: Rp. 350k dibaca Rp. 350.000
     </small>
     <button type="submit" class="btn btn-success float-right">Update Harga</button>
   </form>

@@ -11,6 +11,8 @@ use App\Models\Harga;
 use App\Models\Klien;
 use Auth;
 use Str;
+use Carbon\Carbon;
+use App\Models\Support;
 use App\Models\Promosi;
 
 class HomeController extends Controller
@@ -41,9 +43,20 @@ class HomeController extends Controller
     {
         return view('support');
     }
+    public function supportStore(Request $request)
+    {
+      $support = new Support;
+      $support->email = $request->email_pengirim;
+      $support->subjek = $request->subjek;
+      $support->pertanyaan = $request->pertanyaan_pengirim;
+      $support->save();
+
+      return redirect()->back()->with('success_message', 'Bantuanmu Telah Terkirim dan akan dibalas maksimal 2x24 jam');
+    }
     public function promosi()
     {
-        return view('promosi');
+        $promos = Promosi::where('endDate', '>=', Carbon::now())->paginate(10);
+        return view('promosi', ['promos' => $promos]);
     }
     public function peraturan()
     {

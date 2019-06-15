@@ -22,6 +22,7 @@
     <script>
     $(document).ready(function() {
       $('input[name="codeMember"]').removeAttr('required');
+      $('.message-session').delay(1000).slideUp(600);
     });
     </script>
   </body>

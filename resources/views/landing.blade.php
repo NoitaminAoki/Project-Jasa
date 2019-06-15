@@ -111,7 +111,7 @@ foreach ($price as $harga) {
         <div class="bisnis">
           <h2>{{$bisnis['tingkat']}}</h2>
           @if ($bisnis['harga'] > 0)
-          <p><sup>Rp.</sup><var>{{$bisnis['harga']}}</var><sub>rb/bulan</sub></p>
+          <p><sup>Rp.</sup><var>{{$bisnis['harga']}}</var><sub>k/bulan</sub></p>
           @else
           <small>(belum tersedia)</small>
           @endif
@@ -165,7 +165,7 @@ foreach ($price as $harga) {
         <div class="profesional">
             <h2>{{$profesional['tingkat']}}</h2>
             @if ($profesional['harga'] > 0)
-            <p><sup>Rp.</sup><var>{{$profesional['harga']}}</var><sub>rb/bulan</sub></p>
+            <p><sup>Rp.</sup><var>{{$profesional['harga']}}</var><sub>k/bulan</sub></p>
             @else
             <small>(belum tersedia)</small>
             @endif
@@ -219,7 +219,7 @@ foreach ($price as $harga) {
         <div class="pemula">
             <h2>{{$pemula['tingkat']}}</h2>
             @if ($pemula['harga'] > 0)
-            <p><sup>Rp.</sup><var>{{$pemula['harga']}}</var><sub>rb/bulan</sub></p>
+            <p><sup>Rp.</sup><var>{{$pemula['harga']}}</var><sub>k/bulan</sub></p>
             @else
             <small>(belum tersedia)</small>
             @endif
@@ -278,7 +278,7 @@ foreach ($price as $harga) {
           <div class="col-12 col-md-4">
             <h2>{{ $bisnis['tingkat'] }}</h2>
             @if ($bisnis['harga'] > 0)
-            <p><sup>Rp.</sup><var>{{$bisnis['harga']}}</var><sub>rb/bulan</sub></p>
+            <p><sup>Rp.</sup><var>{{$bisnis['harga']}}</var><sub>k/bulan</sub></p>
             @else
             <small>(belum tersedia)</small>
             @endif
@@ -286,7 +286,7 @@ foreach ($price as $harga) {
           <div class="col-12 col-md-4">
             <h2>{{ $profesional['tingkat'] }}</h2>
             @if ($profesional['harga'] > 0)
-            <p><sup>Rp.</sup><var>{{$profesional['harga']}}</var><sub>rb/bulan</sub></p>
+            <p><sup>Rp.</sup><var>{{$profesional['harga']}}</var><sub>k/bulan</sub></p>
             @else
             <small>(belum tersedia)</small>
             @endif
@@ -294,7 +294,7 @@ foreach ($price as $harga) {
           <div class="col-12 col-md-4">
             <h2>{{ $pemula['tingkat'] }}</h2>
             @if ($pemula['harga'] > 0)
-            <p><sup>Rp.</sup><var>{{$pemula['harga']}}</var><sub>rb/bulan</sub></p>
+            <p><sup>Rp.</sup><var>{{$pemula['harga']}}</var><sub>k/bulan</sub></p>
             @else
             <small>(belum tersedia)</small>
             @endif
@@ -432,7 +432,7 @@ foreach ($price as $harga) {
           </div>
         </div>
         <div id="showDetails" class="col-12">
-          <span class="d-flex align-items-center">Lihat Perbandingan <box-icon name='chevron-down' color="white"></box-icon></span>
+          <span class="d-flex align-items-center">Lihat Pekandingan <box-icon name='chevron-down' color="white"></box-icon></span>
         </div>
       </div>
     </div>
@@ -443,7 +443,7 @@ foreach ($price as $harga) {
 <section id="diskonSection">
   <div class="container">
     <h1>diskon untukmu</h1>
-    <p>Jika kamu tertarik menggunakan layanan kami <br> dan ingin mendapatkan diskon terbaru silahkan isi form dibawah ini</p>
+    <p>Jika kamu tertarik menggunakan layanan kami <br> dan ingin mendapatkan diskon tekaru silahkan isi form dibawah ini</p>
     <form action="{{ route('home.klien.store') }}" class="row mx-0" method="post">
       @csrf
       <div class="col-12 mb-3">
@@ -482,25 +482,25 @@ foreach ($price as $harga) {
       <div>
         <h3>Apa yang saya perlukan?</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan ante a dapibus auctor.
-          Morbi sit amet sollicitudin arcu. Etiam facilisis, elit et
+          Moki sit amet sollicitudin arcu. Etiam facilisis, elit et
         </p>
       </div>
       <div>
         <h3>Apa yang saya perlukan</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan ante a dapibus auctor.
-          Morbi sit amet sollicitudin arcu. Etiam facilisis, elit et
+          Moki sit amet sollicitudin arcu. Etiam facilisis, elit et
         </p>
       </div>
       <div>
         <h3>Apa yang saya perlukan</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan ante a dapibus auctor.
-          Morbi sit amet sollicitudin arcu. Etiam facilisis, elit et
+          Moki sit amet sollicitudin arcu. Etiam facilisis, elit et
         </p>
       </div>
       <div>
         <h3>Apa yang saya perlukan</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan ante a dapibus auctor.
-          Morbi sit amet sollicitudin arcu. Etiam facilisis, elit et
+          Moki sit amet sollicitudin arcu. Etiam facilisis, elit et
         </p>
       </div>
     </div>
@@ -508,25 +508,25 @@ foreach ($price as $harga) {
       <div>
         <h3>Apa yang saya perlukan?</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan ante a dapibus auctor.
-          Morbi sit amet sollicitudin arcu. Etiam facilisis, elit et
+          Moki sit amet sollicitudin arcu. Etiam facilisis, elit et
         </p>
       </div>
       <div>
         <h3>Apa yang saya perlukan</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan ante a dapibus auctor.
-          Morbi sit amet sollicitudin arcu. Etiam facilisis, elit et
+          Moki sit amet sollicitudin arcu. Etiam facilisis, elit et
         </p>
       </div>
       <div>
         <h3>Apa yang saya perlukan</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan ante a dapibus auctor.
-          Morbi sit amet sollicitudin arcu. Etiam facilisis, elit et
+          Moki sit amet sollicitudin arcu. Etiam facilisis, elit et
         </p>
       </div>
       <div>
         <h3>Apa yang saya perlukan</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan ante a dapibus auctor.
-          Morbi sit amet sollicitudin arcu. Etiam facilisis, elit et
+          Moki sit amet sollicitudin arcu. Etiam facilisis, elit et
         </p>
       </div>
     </div>

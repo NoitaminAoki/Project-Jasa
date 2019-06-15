@@ -9,6 +9,11 @@
         <h4 class="mr-5">Hubungi WhatsApp kami:&nbsp;<a href="https://wa.me/6281280029849">081280029849</a></h4>
         <h4>atau isi form dibawah ini</h4>
       </div>
+      @if (Session::has('success_message'))
+      <div class="col-6 alert-success message-session">
+      		Bantuanmu telah terkirim dan akan dibalas dalam 2x24 jam
+      </div>
+      @endif
     </div>
   </header>
 @endsection
@@ -16,7 +21,7 @@
   <section>
     <div class="container">
       <h1>kirim pertanyaanmu melalui form ini</h1>
-      <form action="{{ route('member.bantuan.store') }}" class="row flex-column mx-0" method="post">
+      <form action="{{ route('home.support.store') }}" class="row flex-column mx-0" method="post">
         @csrf
         <div class="col-12 px-0 mb-4">
           @auth ('member')

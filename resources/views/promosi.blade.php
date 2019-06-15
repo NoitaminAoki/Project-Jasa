@@ -14,61 +14,19 @@
   <section>
     <div class="container">
       <div class="row">
-        <div class="col-12 col-md-4">
-            <figure>
-              <a href="">
-                <img src="{{ asset('assets/img/contoh_promo.svg') }}" height="200" alt="Gambar Promosi">
-                <figcaption>
-                  <h2>Judul promo lumayan panjaaaaang banget kan yaa</h2>
-                  <time>20 Mei - 30 Mei 2019</time>
-                </figcaption>
-              </a>
-            </figure>
-        </div>
-        <div class="col-12 col-md-4">
-          <figure>
-            <a href="">
-              <img src="{{ asset('assets/img/contoh_promo.svg') }}" height="200" alt="Gambar Promosi">
-              <figcaption>
-                <h2>Judul promo lumayan panjaaaaang banget kan yaa</h2>
-                <time>20 Mei - 30 Mei 2019</time>
-              </figcaption>
-            </a>
-          </figure>
-        </div>
-        <div class="col-12 col-md-4">
-          <figure>
-            <a href="">
-              <img src="{{ asset('assets/img/contoh_promo.svg') }}" height="200" alt="Gambar Promosi">
-              <figcaption>
-                <h2>Judul promo lumayan panjaaaaang banget kan yaa</h2>
-                <time>20 Mei - 30 Mei 2019</time>
-              </figcaption>
-            </a>
-          </figure>
-        </div>
-        <div class="col-12 col-md-4">
-          <figure>
-            <a href="">
-              <img src="{{ asset('assets/img/contoh_promo.svg') }}" height="200" alt="Gambar Promosi">
-              <figcaption>
-                <h2>Judul promo lumayan panjaaaaang banget kan yaa</h2>
-                <time>20 Mei - 30 Mei 2019</time>
-              </figcaption>
-            </a>
-          </figure>
-        </div>
-        <div class="col-12 col-md-4">
-          <figure>
-            <a href="">
-              <img src="{{ asset('assets/img/contoh_promo.svg') }}" height="200" alt="Gambar Promosi">
-              <figcaption>
-                <h2>Judul promo lumayan panjaaaaang banget kan yaa</h2>
-                <time>20 Mei - 30 Mei 2019</time>
-              </figcaption>
-            </a>
-          </figure>
-        </div>
+        @foreach ($promos as $promo)
+          <div class="col-12 col-md-4">
+              <figure>
+                <a href="#!">
+                  <img src="{{ Storage::url($promo->gambar) }}" height="200" alt="Promo {{ $promo->title }}">
+                  <figcaption>
+                    <h2>{{ $promo->title }}</h2>
+                    <time>{{ $promo->startDate->format('d F Y') . " - " . $promo->endDate->format('d F Y') }}</time>
+                  </figcaption>
+                </a>
+              </figure>
+          </div>
+        @endforeach
       </div>
     </div>
   </section>
