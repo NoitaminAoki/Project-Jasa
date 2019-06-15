@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Promosi;
+use Illuminate\Support\Str;
+use Auth;
+use App\Models\Member;
+use Carbon\Carbon;
 
 class PromosiController extends Controller
 {
@@ -14,7 +19,8 @@ class PromosiController extends Controller
      */
     public function index()
     {
-        return view('admin.promosi.promosi_index');
+        $promos = Promosi::where('endDate', '>=', Carbon::now())->paginate(10);
+        return view('admin.promosi.promosi_index', ['promos' => $promos]);
     }
 
     /**
@@ -24,7 +30,7 @@ class PromosiController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.promosi.create');
     }
 
     /**
@@ -35,7 +41,23 @@ class PromosiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request, [
+        'gambar' => 'required|file|max:2000'
+      ]);
+      $uploadGambar = $request->file('gambar');
+      $gambar = $uploadGambar->store('public/files');
+
+      $tambahPromo = new Promosi;
+      $tambahPromo->slug = Str::slug($request->title);
+      $tambahPromo->title = $request->title;
+      $tambahPromo->gambar = $gambar;
+      $tambahPromo->isi = $request->isi;
+      $tambahPromo->kode = url()->current() . '/' . Str::slug(strtolower($request->title)) . '/' . Str::slug(strtolower(Auth::user()->name));
+      $tambahPromo->startDate = $request->startDate . "00:00:01";
+      $tambahPromo->endDate = $request->endDate . "23:59:59";
+      $tambahPromo->save();
+
+      return redirect()->route('admin.promosi.index');
     }
 
     /**
@@ -44,9 +66,10 @@ class PromosiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $promo = Promosi::where('slug', $slug)->firstOrFail();
+        return view('admin.promosi.show_promo', ['promo' => $promo]);
     }
 
     /**
@@ -57,7 +80,8 @@ class PromosiController extends Controller
      */
     public function edit($id)
     {
-        //
+      $updatePromosi = Promosi::findOrFail($id);
+      return view('admin.promosi.edit', ['updatePromosi' => $updatePromosi]);
     }
 
     /**
@@ -69,7 +93,20 @@ class PromosiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $updatePromosi = Promosi::findOrFail($id);
+      $updatePromosi->title = $request->title;
+      $updatePromosi->isi = $request->isi;
+
+      $this->validate($request, ['gambar' => 'required|file|max:2000']);
+      $uploadLogo = $request->file('gambar');
+      $updateGambar = $uploadLogo->store('public/files');
+
+      $updatePromosi->gambar = $updateGambar;
+      $updatePromosi->startDate = $request->startDate;
+      $updatePromosi->endDate = $request->endDate;
+
+      $updatePromosi->save();
+      return redirect()->route('admin.promosi.index')->with('success_message', 'Berhasil Mengubah Promosi');
     }
 
     /**
@@ -80,6 +117,8 @@ class PromosiController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $hapusPromo = Promosi::findOrFail($id);
+      $hapusPromo->delete();
+      return redirect()->route('admin.promosi.index')->with('success_message', 'Berhasil Hapus Promosi');
     }
 }

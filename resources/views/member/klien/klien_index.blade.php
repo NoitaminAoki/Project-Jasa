@@ -9,9 +9,11 @@
 @section ('title-body', 'Klien')
 
 @section('content')
-@if (Session::has('success_message') || Session::has('failed_message'))
+@if (Session::has('success_message') OR Session::has('failed_message'))
 <div class="col-12 message-session">
-	<div class="alert alert-{{(Session::has('success_message'))? 'success' : 'danger'}} text-center">{{(Session::has('success_message'))? Session::get('success_message') : Session::get('failed_message')}}</div>
+	<div class="alert alert-{{(Session::has('success_message'))? 'success' : 'danger'}} text-center">
+		{{ (Session::has('success_message'))? Session::get('success_message') : Session::get('failed_message') }}
+	</div>
 </div>
 @endif
 <div class="col-md-3 col-sm-6 col-12">

@@ -12,10 +12,10 @@
 @section('title-body', 'Edit Aturan')
 @section('content')
 <main class="col-12">
-  <form action="{{ route('admin.aturan.update', $edit_aturan->id) }}" method="post">
+  <form action="{{ route('admin.aturan.update', $editAturan->id) }}" method="post">
     @csrf @method('PUT')
-    <input type="text" name="judul" class="form-control mb-3" placeholder="Judul Peraturan" value="{{ $edit_aturan->judul }}">
-    <textarea name="deskripsi" rows="10" placeholder="Deskripsi Peraturan">{{ $edit_aturan->deskripsi }}</textarea>
+    <input type="text" name="judul" class="form-control mb-3" placeholder="Judul Peraturan" value="{{ $editAturan->judul }}">
+    <textarea name="deskripsi" rows="10" placeholder="Deskripsi Peraturan">{{ $editAturan->deskripsi }}</textarea>
     <button type="submit" class="btn btn-success float-right mt-3">Update Peraturan</button>
   </form>
 </main>
