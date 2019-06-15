@@ -19,4 +19,17 @@ class PromosiController extends Controller
         $promos = Promosi::where('endDate', '>=', Carbon::now())->paginate(10);
         return view('member.promosi.promosi_index', ['promos' => $promos]);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($slug)
+    {
+        $promo = Promosi::where('slug', $slug)->firstOrFail();
+        return view('member.promosi.show_promo', ['promo' => $promo]);
+    }
+
 }
