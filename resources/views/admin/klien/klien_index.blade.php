@@ -17,11 +17,11 @@
 <div class="col-md-3 col-sm-6 col-12">
 	<div class="info-box bg-success-gradient">
 		<span class="info-box-icon"><i class="fa fa-money-bill-wave-alt"></i></span>
-		
+
 		<div class="info-box-content">
 			<span class="info-box-text">Pendapatan</span>
 			<span class="info-box-number">Rp {{number_format($pendapatan, 0, ',', '.')}}</span>
-			
+
 			<div class="progress">
 				<div class="progress-bar" style="width: {{$percentage['pendapatan']}}%"></div>
 			</div>
@@ -36,11 +36,11 @@
 <div class="col-md-3 col-sm-6 col-12">
 	<div class="info-box bg-warning-gradient">
 		<span class="info-box-icon"><i class="fa fa-money-bill-wave-alt"></i></span>
-		
+
 		<div class="info-box-content">
 			<span class="info-box-text">Potensi Pendapatan</span>
 			<span class="info-box-number">Rp {{number_format($potensi_pendapatan, 0, ',', '.')}}</span>
-			
+
 			<div class="progress">
 				<div class="progress-bar" style="width: {{$percentage['potensi_pendapatan']}}%"></div>
 			</div>
@@ -91,7 +91,7 @@
 							@endif
 							<td style="width: 90px !important;">
 								<button data-id="{{$value->id}}" data-toggle="custom-modal" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button>
-								<form action="{{ route('admin.klien.destroy', ['id'=>$value->id]) }}" onsubmit="return confirm('are you sure?')" method="POST" style="display: contents !important;">
+								<form action="{{ route('admin.klien.destroy', ['id'=>$value->id]) }}" onsubmit="return confirm('are you sure?')" method="POST" style="display: inline-block !important;">
 									@csrf
 									@method('DELETE')
 									<button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Delete Klien"><i class="fa fa-trash"></i></button>
@@ -157,7 +157,7 @@
 	$(document).ready(function() {
 		$('.datatables').dataTable();
 		$('.message-session').delay(3000).slideUp(600);
-		
+
 		$('[data-toggle="custom-modal"]').on('click', function() {
 			let getId = $(this).data('id');
 			let route = '{{route("admin.klien.editAjax")}}/'+getId;
