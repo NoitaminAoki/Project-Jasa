@@ -93,8 +93,8 @@ class PromosiController extends Controller
   public function update(Request $request, $id)
   {
     $updatePromosi = Promosi::findOrFail($id);
-    $updatePromosi->title = $request->title;
     $tambahPromo->slug = Str::slug($request->title);
+    $updatePromosi->title = $request->title;
     $updatePromosi->isi = $request->isi;
     if ($request->hasFile('gambar') && $request->file('gambar')->isValid()) {
       $this->validate($request, ['gambar' => 'file|max:2000']);
