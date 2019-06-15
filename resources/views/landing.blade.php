@@ -41,7 +41,7 @@ foreach ($price as $harga) {
     <div class="row">
       <div class="col-12 col-md-6">
         <figure>
-          <img src="assets/img/calculator.svg" height="50">
+          <img src="{{ asset('assets/img/calculator.svg') }}" height="50">
           <figcaption>
             <h2>Jasa Akuntansi</h2>
             <p>Membuat laporan keuangan dimulai dari pencatatan transaksi sampai dengan penyajian laporan keuangan sesuai dengan Standar Akuntansi.</p>
@@ -50,7 +50,7 @@ foreach ($price as $harga) {
       </div>
       <div class="col-12 col-md-6">
         <figure>
-          <img src="assets/img/dollar.svg" height="50">
+          <img src="{{ asset('assets/img/dollar.svg') }}" height="50">
           <figcaption>
             <h2>Jasa Perpajakan</h2>
             <p>Melakukan perencanaan pajak, menghitung,membuat e-SPT, sampai dengan pelaporan pajak PPh, PPn & lainnya.</p>
@@ -59,7 +59,7 @@ foreach ($price as $harga) {
       </div>
       <div class="col-12 col-md-6">
         <figure>
-          <img src="assets/img/list.svg" height="50">
+          <img src="{{ asset('assets/img/list.svg') }}" height="50">
           <figcaption>
             <h2>Jasa Perencanaan</h2>
             <p>Melakukan perencanaan keuangan dan perpajakan demi lancarnya bisnis</p>
@@ -68,7 +68,7 @@ foreach ($price as $harga) {
       </div>
       <div class="col-12 col-md-6">
         <figure>
-          <img src="assets/img/idcard.svg" height="50">
+          <img src="{{ asset('assets/img/idcard.svg') }}" height="50">
           <figcaption>
             <h2>Jasa Administrasi</h2>
             <p>Melakukan dokumentasi laporan dan backup data perusahaam</p>
@@ -270,7 +270,7 @@ foreach ($price as $harga) {
         </details>
       </div>
     </div>
-    
+
     @if (count($price) > 0)
     <div class="row mx-0 justify-content-center" id="hargaDesktop">
       <div class="col-10 px-0">
@@ -437,7 +437,7 @@ foreach ($price as $harga) {
       </div>
     </div>
     @endif
-    
+
   </div>
 </section>
 <section id="diskonSection">

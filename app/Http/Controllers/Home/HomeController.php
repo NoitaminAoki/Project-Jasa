@@ -10,6 +10,8 @@ use App\Models\Member;
 use App\Models\Harga;
 use App\Models\Klien;
 use Auth;
+use Str;
+use App\Models\Promosi;
 
 class HomeController extends Controller
 {
@@ -18,6 +20,14 @@ class HomeController extends Controller
         $price = Harga::limit(3)->get();
         $partners = Partner::all();
         return view('landing', ['price' => $price, 'partners' => $partners]);
+    }
+    public function getPromo($promo, $member)
+    {
+        $price = Harga::limit(3)->get();
+        $partners = Partner::all();
+        $getPromo = Promosi::where('slug', $promo)->firstOrFail();
+        $getMember = Member::where('name', str_replace('-', ' ', $member))->firstOrFail();
+        return view('landing', ['getMember' => $getMember, 'price' => $price, 'partners' => $partners]);
     }
     public function about()
     {
@@ -66,7 +76,7 @@ class HomeController extends Controller
             'email' => $request->email,
             'status' => 'pending'
         ]);
-        
+
         return redirect(url('/'));
     }
 }

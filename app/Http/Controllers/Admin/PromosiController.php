@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Auth;
 use App\Models\Member;
 use Carbon\Carbon;
+use DateTime;
 
 class PromosiController extends Controller
 {
@@ -20,6 +21,7 @@ class PromosiController extends Controller
     public function index()
     {
         $promos = Promosi::where('endDate', '>=', Carbon::now())->paginate(10);
+
         return view('admin.promosi.promosi_index', ['promos' => $promos]);
     }
 
@@ -97,13 +99,15 @@ class PromosiController extends Controller
       $updatePromosi->title = $request->title;
       $updatePromosi->isi = $request->isi;
 
-      $this->validate($request, ['gambar' => 'required|file|max:2000']);
-      $uploadLogo = $request->file('gambar');
-      $updateGambar = $uploadLogo->store('public/files');
+      if ($request->hasFile('gambar') && $request->file('gambar')->isValid()) {
+        $this->validate($request, ['gambar' => 'file|max:2000']);
+        $uploadLogo = $request->file('gambar');
+        $updateGambar = $uploadLogo->store('public/files');
+        $updatePromosi->gambar = $updateGambar;
+      }
 
-      $updatePromosi->gambar = $updateGambar;
-      $updatePromosi->startDate = $request->startDate;
-      $updatePromosi->endDate = $request->endDate;
+      $updatePromosi->startDate = new DateTime($request->startDate);
+      $updatePromosi->endDate = new DateTime($request->endDate);
 
       $updatePromosi->save();
       return redirect()->route('admin.promosi.index')->with('success_message', 'Berhasil Mengubah Promosi');

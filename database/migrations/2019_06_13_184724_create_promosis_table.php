@@ -20,8 +20,8 @@ class CreatePromosisTable extends Migration
             $table->string('gambar');
             $table->text('isi');
             $table->string('kode', 100);
-            $table->timestamp('startDate')->nullable();
-            $table->timestamp('endDate')->nullable();
+            $table->dateTime('startDate')->nullable();
+            $table->dateTime('endDate')->nullable();
             $table->timestamps();
         });
     }

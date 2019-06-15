@@ -9,10 +9,11 @@
 		content: none !important;
 	}
 	.more-option-btn {
-		color: #f4f0ea;
+		color: #323232;
 		position: absolute;
 		right: 1.25rem;
-		top: 10px;
+		top: calc(1.25rem + 19px);
+		transform: translateY(-50%);
 	}
 	.visible {
 		opacity: 1 !important;
@@ -25,10 +26,11 @@
 		opacity: 0;
 		visibility: hidden;
 		padding: 10px 0;
-		right: 5px;
-		background-color: #f2f2f2;
-		top: 5px;
-		box-shadow: 0 2px 2px 1px rgba(48, 48, 48, 0.26);
+		right: 10px;
+		background-color: #ffffff;
+		top: 10px;
+		border: 1px solid #dedede;
+		box-shadow: 0 2px 3px 1px rgba(48, 48, 48, 0.26);
 		border-radius: 4px;
 	}
 	.more-option li {
@@ -59,23 +61,23 @@
 	@foreach ($promos as $promo)
 		<div class="col-12 col-md-4 mb-3">
 			<div class="card">
-				<a href="javascript:void(0);" class="more-option-btn"><i class="fas fa-ellipsis-v"></i></a>
-				<ul class="more-option">
-					<li>
-						<a href="{{ route('admin.promosi.edit', $promo->id) }}" class="text-warning">
-							Edit <i class="fas fa-pen" style="margin-left: 5px;"></i>
-						</a>
-					</li>
-					<li>
-						<form action="{{ route('admin.promosi.destroy', $promo->id) }}" method="post">
-							@csrf @method("DELETE")
-							<button type="submit" class="btn btn-link p-0 text-danger">Delete <i class="fas fa-trash" style="margin-left: 5px;"></i></button>
-						</form>
-					</li>
-				</ul>
 				<img src="{{ Storage::url($promo->gambar) }}" class="card-img-top" height="180" alt="Promo {{ $promo->title }}">
-				<div class="card-body">
+				<div class="card-body position-relative">
 					<h2>{{ $promo->title }}</h2>
+					<a href="javascript:void(0);" class="more-option-btn"><i class="fas fa-ellipsis-v"></i></a>
+					<ul class="more-option">
+						<li>
+							<a href="{{ route('admin.promosi.edit', $promo->id) }}" class="text-warning">
+								Edit <i class="fas fa-pen" style="margin-left: 5px;"></i>
+							</a>
+						</li>
+						<li>
+							<form action="{{ route('admin.promosi.destroy', $promo->id) }}" method="post">
+								@csrf @method("DELETE")
+								<button type="submit" class="btn btn-link p-0 text-danger">Delete <i class="fas fa-trash" style="margin-left: 5px;"></i></button>
+							</form>
+						</li>
+					</ul>
 					<p class="card-text">{!! $promo->isi !!}</p>
 				</div>
 				<div class="card-footer justify-content-between d-flex">

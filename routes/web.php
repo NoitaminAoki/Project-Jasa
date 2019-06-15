@@ -29,7 +29,8 @@ Route::namespace('Home')->name('home.')->group(function () {
   Route::get('promo', 'HomeController@promosi')->name('promosi');
   Route::get('syarat-dan-ketentuan', 'HomeController@peraturan')->name('peraturan');
   Route::get('profil', 'HomeController@profil')->name('profil');
-  
+  Route::get('/{promo}/{member}', 'HomeController@getPromo')->name('getpromo');
+
   Route::post('klien/create', 'HomeController@klienStore')->name('klien.store');
 });
 

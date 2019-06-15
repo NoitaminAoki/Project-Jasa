@@ -1,5 +1,5 @@
 @extends('temp.main')
-@section('title-page', 'Tambah Promo Baru')
+@section('title-page', 'Ubah Detail Promo')
 @section('css')
   <link rel="stylesheet" href="{{ asset('plugins/air-datepicker/dist/css/datepicker.min.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/trumbowyg/dist/ui/trumbowyg.min.css') }}">
@@ -10,7 +10,7 @@
     }
   </style>
 @endsection
-@section('title-body', 'Tambah Promo Baru')
+@section('title-body', 'Ubah Detail')
 @section('content')
 <main class="col-12">
   <form action="{{ route('admin.promosi.update', $updatePromosi->id) }}" method="post" enctype="multipart/form-data">
@@ -20,7 +20,8 @@
     </div>
     <div class="form-row">
       <div class="col-12 col-md-6">
-        <input type="text" name="startDate" class="form-control datepicker-here" placeholder="Start Date" autocomplete="off">
+        <input type="text" name="startDate" class="form-control datepicker-here"
+        placeholder="Start Date">
       </div>
       <div class="col-12 col-md-6">
         <input type="text" name="endDate" class="form-control datepicker-here" placeholder="End Date" autocomplete="off">
@@ -31,7 +32,10 @@
       <input type="file" class="custom-file-input" name="gambar" id="gambarPromo" value="{{ $updatePromosi->gambar }}">
       <label class="custom-file-label" for="gambarPromo">{{ $updatePromosi->gambar }}</label>
     </div>
-    <button type="submit" class="btn btn-success float-right mt-3">Ubah Aturan</button>
+    @error ('gambar')
+      <span class="text-danger">{{ $message }}</span>
+    @enderror
+    <button type="submit" class="btn btn-success float-right mt-3">Ubah Promosi</button>
   </form>
 </main>
 @endsection
@@ -44,7 +48,7 @@
   <script src="{{ asset('plugins/air-datepicker/dist/js/i18n/datepicker.en.js') }}" charset="utf-8"></script>
   <script>
     bsCustomFileInput.init();
-    $("input, textarea").prop("required", true);
+    $("input:not([type='file']), textarea").prop("required", true);
     $("textarea[name='isi']").trumbowyg({
       semantic: true,
       removeformatPasted: false,
@@ -55,6 +59,8 @@
         ['foreColor', 'backColor']
       ]
     });
+    $("input[name='startDate']").datepicker().data('datepicker').selectDate(new Date("{{ $updatePromosi->startDate }}"));
+    $("input[name='endDate']").datepicker().data('datepicker').selectDate(new Date("{{ $updatePromosi->endDate }}"));
     $(".datepicker-here").datepicker({
       language: 'en',
       dateFormat: 'dd MM yyyy',

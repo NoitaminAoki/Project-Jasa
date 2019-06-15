@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class UsersTableSeeder extends Seeder
+class UserSeeder extends Seeder
 {
   /**
    * Run the database seeds.
@@ -85,7 +85,7 @@ class UsersTableSeeder extends Seeder
       'password' => bcrypt('bariq123'),
       'status' => 'active',
     ]);
-    for ($i=0; $i < 25; $i++) { 
+    for ($i=0; $i < 25; $i++) {
       $fullname = array_random($firstName).' '.array_random($lastName);
       $idHarga = rand(1, 3);
       $idMember = array_random($arrIdMember);
@@ -93,8 +93,8 @@ class UsersTableSeeder extends Seeder
       $email = Str::slug($fullname, '.').'@gmail.com';
       $noTelp = '08';
       $status = array_random($arrStatus);
-      for ($tlp=0; $tlp < 10; $tlp++) { 
-        $noTelp =$noTelp.rand('1','9'); 
+      for ($tlp=0; $tlp < 10; $tlp++) {
+        $noTelp =$noTelp.rand('1','9');
       }
       DB::table('kliens')->insert([
         'nama' => $fullname,
