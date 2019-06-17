@@ -22,7 +22,8 @@ class HomeController extends Controller
     {
         $price = Harga::limit(3)->get();
         $partners = Partner::all();
-        return view('landing', ['price' => $price, 'partners' => $partners]);
+        $support = Support::where('tampilkan', 'iya')->get();
+        return view('landing', ['price' => $price, 'partners' => $partners, 'support' => $support]);
     }
     public function getPromo($promo, $member)
     {

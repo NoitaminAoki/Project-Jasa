@@ -12,7 +12,7 @@
   <main class="col-12">
     <div class="row">
       @foreach ($partners as $partner)
-        <div class="col-12 col-md-4">
+        <div class="card-group col-12 col-md-3">
           <div class="card">
             <img src="{{ Storage::url($partner->logo) }}" height="100" class="card-img-top" alt="{{ $partner->nama }}">
             <div class="card-body">
