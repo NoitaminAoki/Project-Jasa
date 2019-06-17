@@ -59,6 +59,7 @@ $(document).ready(function() {
     infinite: false,
     mobileFirst: true,
     dots: true,
+    arrows: false,
     adaptiveHeight: true
   });
   $("#faqDesktop").slick({

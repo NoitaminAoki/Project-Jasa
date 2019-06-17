@@ -163,21 +163,18 @@ foreach ($price as $harga) {
       </div>
       <div class="col-12 col-md-4 px-md-0">
         <div class="profesional">
-<<<<<<< HEAD
             <h2>{{$profesional['tingkat']}}</h2>
             @if ($profesional['harga'] > 0)
             <p><sup>Rp.</sup><var>{{$profesional['harga']}}</var><sub>k/bulan</sub></p>
             @else
             <small>(belum tersedia)</small>
             @endif
-=======
           <h2>{{$profesional['tingkat']}}</h2>
           @if ($profesional['harga'] > 0)
           <p><sup>Rp.</sup><var>{{$profesional['harga']}}</var><sub>rb/bulan</sub></p>
           @else
           <small>(belum tersedia)</small>
           @endif
->>>>>>> 520a9a3bd3e304d57d776481e48fb49106d8c376
         </div>
         <details>
           <summary>Lihat Fitur</summary>
@@ -488,56 +485,20 @@ foreach ($price as $harga) {
   <div class="container">
     <h1>tanya jawab</h1>
     <div id="faqMobile" class="d-md-none">
-      <div>
-        <h3>Apa yang saya perlukan?</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan ante a dapibus auctor.
-          Moki sit amet sollicitudin arcu. Etiam facilisis, elit et
-        </p>
-      </div>
-      <div>
-        <h3>Apa yang saya perlukan</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan ante a dapibus auctor.
-          Moki sit amet sollicitudin arcu. Etiam facilisis, elit et
-        </p>
-      </div>
-      <div>
-        <h3>Apa yang saya perlukan</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan ante a dapibus auctor.
-          Moki sit amet sollicitudin arcu. Etiam facilisis, elit et
-        </p>
-      </div>
-      <div>
-        <h3>Apa yang saya perlukan</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan ante a dapibus auctor.
-          Moki sit amet sollicitudin arcu. Etiam facilisis, elit et
-        </p>
-      </div>
+      @foreach ($support as $pertanyaan)
+        <div>
+          <h3 style="text-transform: capitalize;">{{ $pertanyaan->subjek }}</h3>
+          <p style="text-transform: capitalize;">{{ $pertanyaan->pertanyaan }}</p>
+        </div>
+      @endforeach
     </div>
     <div id="faqDesktop" class="d-none d-md-block">
-      <div>
-        <h3>Apa yang saya perlukan?</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan ante a dapibus auctor.
-          Moki sit amet sollicitudin arcu. Etiam facilisis, elit et
-        </p>
-      </div>
-      <div>
-        <h3>Apa yang saya perlukan</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan ante a dapibus auctor.
-          Moki sit amet sollicitudin arcu. Etiam facilisis, elit et
-        </p>
-      </div>
-      <div>
-        <h3>Apa yang saya perlukan</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan ante a dapibus auctor.
-          Moki sit amet sollicitudin arcu. Etiam facilisis, elit et
-        </p>
-      </div>
-      <div>
-        <h3>Apa yang saya perlukan</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan ante a dapibus auctor.
-          Moki sit amet sollicitudin arcu. Etiam facilisis, elit et
-        </p>
-      </div>
+      @foreach ($support as $pertanyaan)
+        <div>
+          <h3 style="text-transform: capitalize;">{{ $pertanyaan->subjek }}</h3>
+          <p style="text-transform: capitalize;">{{ $pertanyaan->pertanyaan }}</p>
+        </div>
+      @endforeach
     </div>
   </div>
 </section>
