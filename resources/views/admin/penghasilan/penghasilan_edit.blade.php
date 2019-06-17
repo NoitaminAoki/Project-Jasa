@@ -1,12 +1,12 @@
 @extends('temp.main')
 
-@section('title-page', 'E-Bina | Admin - Penghasilan')
+@section('title-page', 'E-Bina | Admin - Pengaturan Fee')
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap4.css') }}">
 @endsection
 
-@section ('title-body', 'Ubah Konfigurasi Penghasilan')
+@section ('title-body', 'Ubah Konfigurasi Fee')
 
 @section('content')
 @if (Session::has('success_message') || Session::has('failed_message'))

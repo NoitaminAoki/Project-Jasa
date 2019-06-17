@@ -77,7 +77,6 @@
 		</div>
 	@endforeach
 	<div class="col-12 d-flex mb-4 justify-content-between">
-		<a href="{{ route('admin.promosi.create') }}" class="btn btn-info">Buat Promo</a>
 		{{ $promos->links('vendor.pagination.bootstrap-4') }}
 	</div>
 @endsection

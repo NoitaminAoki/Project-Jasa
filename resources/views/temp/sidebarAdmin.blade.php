@@ -65,7 +65,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('admin.penghasilan.index') }}" class="nav-link {{ (Request::segment(2) == "penghasilan")? 'active' : '' }}">
+          <a href="{{ route('admin.penghasilan.fee') }}" class="nav-link {{ (Request::segment(2) == "penghasilan" && Request::segment(3) == "fee")? 'active' : '' }}">
+            <i class="nav-icon fa fa-cog"></i>
+            <p>
+              Pengaturan Fee
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('admin.penghasilan.index') }}" class="nav-link {{ (Request::segment(2) == "penghasilan" && Request::segment(3) <> "fee")? 'active' : '' }}">
             <i class="nav-icon fas fa-money-bill-wave-alt"></i>
             <p>
               Penghasilan
