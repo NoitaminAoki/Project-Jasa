@@ -50,13 +50,13 @@ class HomeController extends Controller
     }
     public function supportStore(Request $request)
     {
-      $support = new Support;
-      $support->email = $request->email_pengirim;
-      $support->subjek = $request->subjek;
-      $support->pertanyaan = $request->pertanyaan_pengirim;
-      $support->save();
-
-      return redirect()->back()->with('success_message', 'Bantuanmu Telah Terkirim dan akan dibalas maksimal 2x24 jam');
+        $support = new Support;
+        $support->email = $request->email_pengirim;
+        $support->subjek = $request->subjek;
+        $support->pertanyaan = $request->pertanyaan_pengirim;
+        $support->save();
+        
+        return redirect()->back()->with('success_message', 'Bantuanmu Telah Terkirim dan akan dibalas maksimal 2x24 jam');
     }
     public function promosi()
     {
@@ -72,7 +72,7 @@ class HomeController extends Controller
     {
         return view('profil');
     }
-
+    
     public function klienStore(Request $request)
     {
         $request->validate([
@@ -81,21 +81,22 @@ class HomeController extends Controller
             'tempatTinggal' => 'required',
             'email' => 'required',
             'noTelp' => 'required'
-        ]);
-
-        $getMember = Member::Where('code', $request->codeMember)->first();
-
-        Klien::create([
-            'nama' => $request->nama,
-            'idHarga' => $request->harga,
-            'idMember' => (!empty($getMember->id))? $getMember->id : null,
-            'tempatTinggal' => $request->tempatTinggal,
-            'noTelp' => $request->noTelp,
-            'email' => $request->email,
-            'status' => 'pending'
-        ]);
-
-        $request->session()->flash('success_daftar', 'Permintaan Anda akan segera kami proses.');
-        return redirect(url('/'));
-    }
-}
+            ]);
+            
+            $getMember = Member::Where('code', $request->codeMember)->first();
+            
+            Klien::create([
+                'nama' => $request->nama,
+                'idHarga' => $request->harga,
+                'idMember' => (!empty($getMember->id))? $getMember->id : null,
+                'tempatTinggal' => $request->tempatTinggal,
+                'noTelp' => $request->noTelp,
+                'email' => $request->email,
+                'status' => 'pending'
+                ]);
+                
+                $request->session()->flash('success_daftar', 'Permintaan Anda akan segera kami proses.');
+                return redirect(url('/'));
+            }
+        }
+        

@@ -10,6 +10,7 @@ use Auth;
 use App\Models\Member;
 use Carbon\Carbon;
 use DateTime;
+use Storage;
 
 class PromosiController extends Controller
 {
@@ -53,8 +54,8 @@ class PromosiController extends Controller
     $tambahPromo->gambar = $gambar;
     $tambahPromo->isi = $request->isi;
     $tambahPromo->kode = url()->current() . '/' . Str::slug(strtolower($request->title)) . '/' . Str::slug(strtolower(Auth::user()->name));
-    $tambahPromo->startDate = $request->startDate . "00:00:01";
-    $tambahPromo->endDate = $request->endDate . "23:59:59";
+    $tambahPromo->startDate = new DateTime($request->startDate);
+    $tambahPromo->endDate = new DateTime($request->endDate);
     $tambahPromo->save();
     return redirect()->route('admin.promosi.index');
   }
@@ -93,11 +94,12 @@ class PromosiController extends Controller
   public function update(Request $request, $id)
   {
     $updatePromosi = Promosi::findOrFail($id);
-    $tambahPromo->slug = Str::slug($request->title);
+    $updatePromosi->slug = Str::slug($request->title);
     $updatePromosi->title = $request->title;
     $updatePromosi->isi = $request->isi;
     if ($request->hasFile('gambar') && $request->file('gambar')->isValid()) {
       $this->validate($request, ['gambar' => 'file|max:2000']);
+      Storage::delete($updatePromosi->gambar);
       $uploadLogo = $request->file('gambar');
       $updateGambar = $uploadLogo->store('public/files');
       $updatePromosi->gambar = $updateGambar;

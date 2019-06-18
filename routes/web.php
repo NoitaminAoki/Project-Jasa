@@ -30,6 +30,7 @@ Route::namespace('Home')->name('home.')->group(function () {
   Route::get('promo', 'HomeController@promosi')->name('promosi');
   Route::get('syarat-dan-ketentuan', 'HomeController@peraturan')->name('peraturan');
   Route::get('profil', 'HomeController@profil')->name('profil');
+  Route::get('profil/asd', 'HomeController@profil')->name('profil');
   Route::post('klien/create', 'HomeController@klienStore')->name('klien.store');
 });
 
@@ -44,6 +45,8 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->
   Route::get('klien/edit-api/{id?}', 'KlienController@editApi')->name('klien.editAjax');
   Route::post('klien/update-api/{id?}', 'KlienController@updateApi')->name('klien.updateAjax');
   Route::resource('klien', 'KlienController');
+
+  Route::get('penghasilan/fee', 'PenghasilanController@fee')->name('penghasilan.fee');
   Route::resource('penghasilan', 'PenghasilanController');
   Route::resource('landing-page', 'LandingPageController');
   Route::resource('promosi', 'PromosiController');
@@ -68,5 +71,19 @@ Route::prefix('member')->namespace('Member')->name('member.')->middleware(['auth
 });
 
 Route::namespace('Home')->name('home.')->group(function () {
-Route::get('/{promo}/{member}', 'HomeController@getPromo')->name('getpromo')->where(['promo' => '^(?!admin$).*$', 'promo' => '^(?!member$).*$']);
+  // $member = App\Models\Member::all()->toArray();
+  // $configMember = Str::slug($member[0]['name'], '-');
+  // $member = array_splice($member, 1);
+  // foreach ($member as $value) {
+  //   $configMember = $configMember."||".Str::slug($value['name'], '-');
+  // }
+  $promo = App\Models\Promosi::all()->toArray();
+  $configPromo = $promo[0]['slug'];
+  $promo = array_splice($promo, 1);
+  foreach ($promo as $value) {
+    $configPromo = $configPromo."||".$value['slug'];
+  }
+Route::get('/{promo}/{member}', 'HomeController@getPromo')->name('getpromo')
+->where('promo', $configPromo);
+// ->where(['promo' => '^(?!admin$).*$', 'promo' => '^(?!member$).*$', 'member' => $configMember]);
 });

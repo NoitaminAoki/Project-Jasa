@@ -103,7 +103,8 @@ class UserSeeder extends Seeder
         'tempatTinggal' => $tempatTinggal,
         'noTelp' => $noTelp,
         'email' => $email,
-        'status' => $status
+        'status' => $status,
+        'created_at' => date("Y-m-d", strtotime("+".rand(0,7)." days"))
     ]);
     }
   }
