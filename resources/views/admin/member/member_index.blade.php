@@ -56,7 +56,7 @@
 					        </button>
 					      </div>
 					      <div class="modal-body">
-					        <form class="" action="{{ route('admin.member.store') }}" method="post">
+					        <form action="{{ route('admin.member.store') }}" method="post">
 					        	@csrf
 										<div class="form-group">
 											<input type="text" class="form-control" name="name" placeholder="Name">
@@ -141,6 +141,7 @@
 @section('script')
 <script src="{{ asset('plugins/datatables/jquery.dataTables.js') }}"></script>
 <script src="{{ asset('plugins/datatables/dataTables.bootstrap4.js') }}"></script>
+<script src="{{ asset('plugins/bootstrap/js/bs-inputfile.js') }}" charset="utf-8"></script>
 <script>
 	$(document).ready(function() {
 		bsCustomFileInput.init();
