@@ -73,13 +73,19 @@
 			</table>
 	  </div>
 	</div>
-	<ul class="list-group">
-		@foreach ($price as $harga)
-	  <li class="list-group-item d-flex justify-content-between align-items-center">
-			<span class="font-weight-bold">{{ $harga->tingkat }}</span> <var>Harga: {{ $harga->harga . 'k' }} IDR</var>
-		</li>
-		@endforeach
-	</ul>
+	<div class="card my-3">
+		<div class="card-body">
+			<h1 class="h3 mb-3">Detail Harga</h1>
+			<ul class="list-group">
+				@foreach ($price as $harga)
+			  <li class="list-group-item d-flex justify-content-between align-items-center">
+					<span class="font-weight-bold text-capitalize">{{ $harga->tingkat }}</span> <var>Harga: {{ $harga->harga . 'k' }} IDR</var>
+				</li>
+				@endforeach
+				<a class="btn btn-outline-info align-self-start mx-auto mt-4" href="{{ route('admin.landing-page.index') }}">Lihat Lebih Lanjut</a>
+			</ul>
+		</div>
+	</div>
 	<div class="card my-3">
 		<div class="card-body">
 			<h1 class="h3">Partner</h1>
