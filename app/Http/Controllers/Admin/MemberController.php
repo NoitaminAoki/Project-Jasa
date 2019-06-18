@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class MemberController extends Controller
 {
@@ -39,7 +40,22 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $tambahMember = new Member;
+
+      $tambahMember->code = 'id-'.Str::studly($request->name);
+      $tambahMember->name = $request->name;
+      $tambahMember->noTelp = $request->noTelp;
+      $tambahMember->email = $request->email;
+
+      $this->validate($request, ['profile_picture' => 'required|file|max:2000']);
+      $uploadLogo = $request->file('profile_picture');
+      $path = $uploadLogo->store('public/files');
+      // $tambahMember->profile_picture = $path;
+
+      $tambahMember->password = Hash::make($request->password);
+
+      $tambahMember->save();
+      return redirect()->back()->with('success_message', 'Berhasil Menambah Member');
     }
 
     /**

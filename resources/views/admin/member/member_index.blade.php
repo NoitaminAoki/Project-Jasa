@@ -14,7 +14,7 @@
 			<div class="alert alert-{{(Session::has('success_message'))? 'success' : 'danger'}} text-center">{{(Session::has('success_message'))? Session::get('success_message') : Session::get('failed_message')}}</div>
 		</div>
 	@endif
-	<div class="col-md-3 col-sm-6 col-12">
+	<div class="col-md-4 col-sm-6 col-12">
 		<div class="info-box">
 			<span class="info-box-icon bg-info"><i class="fa fa-users"></i></span>
 
@@ -26,7 +26,7 @@
 		</div>
 		<!-- /.info-box -->
 	</div>
-	<div class="col-md-3 col-sm-6 col-12">
+	<div class="col-md-4 col-sm-6 col-12">
 		<div class="info-box">
 			<span class="info-box-icon bg-danger"><i class="fa fa-users"></i></span>
 
@@ -41,7 +41,48 @@
 	<div class="col-12">
 		<div class="card">
 			<div class="card-body">
-				<div class="card-title text-center mb-4"><h3>List Member</h3></div>
+				<div class="card-title text-center mb-4">
+					<h3>List Member</h3>
+					<button type="button" class="btn btn-link text-info" data-toggle="modal" data-target="#tambahMember">
+					  <i class="nav-icon fa fa-users"></i> Tambah Member
+					</button>
+					<div class="modal fade" id="tambahMember" tabindex="-1" role="dialog" aria-labelledby="tambahMemberLabel" aria-hidden="true">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="exampleModalLabel">Tambah Member</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body">
+					        <form class="" action="{{ route('admin.member.store') }}" method="post">
+					        	@csrf
+										<div class="form-group">
+											<input type="text" class="form-control" name="name" placeholder="Name">
+										</div>
+										<div class="form-group">
+											<input type="text" class="form-control" name="noTelp" placeholder="No Telephone">
+										</div>
+										<div class="form-group">
+											<input type="email" class="form-control" name="email" placeholder="Email">
+										</div>
+										<div class="form-group">
+											<div class="custom-file">
+											  <input type="file" class="custom-file-input" name="profile_picture" id="profile_picture">
+											  <label class="custom-file-label text-left" for="profile_picture" style="font-size: 16px;">Upload Profil Picture</label>
+											</div>
+										</div>
+										<div class="form-group">
+											<input type="password" class="form-control" name="password" placeholder="Password">
+										</div>
+										<button type="submit" class="btn btn-success">Tambah Member</button>
+					        </form>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				</div>
 				<div class="table-responsive">
 					<table class="table table-bordered table-hover datatables">
 						<thead>
@@ -102,6 +143,8 @@
 <script src="{{ asset('plugins/datatables/dataTables.bootstrap4.js') }}"></script>
 <script>
 	$(document).ready(function() {
+		bsCustomFileInput.init();
+		$('input, textarea, select').prop("required", true);
 		$('.datatables').dataTable();
 		$('.message-session').delay(3000).slideUp(600);
 		$('[data-toggle="tooltip"]').tooltip();
