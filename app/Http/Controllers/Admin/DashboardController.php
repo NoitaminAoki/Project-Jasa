@@ -4,6 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Support;
+use App\Models\Member;
+use App\Models\Klien;
+use App\Models\Partner;
+use App\Models\Promosi;
+use App\Models\Peraturan;
+use App\Models\Harga;
 
 class DashboardController extends Controller
 {
@@ -14,7 +21,15 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.admin_dashboard');
+        $support = Support::all();
+        $memberActive = Member::where('status', 'active')->count();
+        $memberUnactive = Member::where('status', 'unactive')->count();
+        $klien = Klien::all();
+        $partners = Partner::all();
+        $promosi = Promosi::all();
+        $aturan = Peraturan::all();
+        $price = Harga::all();
+        return view('admin.admin_dashboard', compact('support', 'memberActive', 'memberUnactive', 'klien', 'partners', 'promosi', 'aturan', 'price'));
     }
 
     /**
