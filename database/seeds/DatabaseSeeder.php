@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
           PeraturanSeeder::class,
           BantuanSeeder::class,
           PromosiSeeder::class,
+          FiturSeeder::class,
         ]);
     }
 }

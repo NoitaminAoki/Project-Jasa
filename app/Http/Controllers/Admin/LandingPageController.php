@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Harga;
+use App\Models\Fitur;
 
 class LandingPageController extends Controller
 {
@@ -15,10 +16,11 @@ class LandingPageController extends Controller
   */
   public function index()
   {
-    $price = Harga::limit(3)->oldest()->get();
-    return view('admin.landingPage.landing_page_index', ['price' => $price]);
+    $price = Harga::limit(3)->oldest()->with('GetFitur')->get();
+    $features = Fitur::all();
+    return view('admin.landingPage.landing_page_index', ['price' => $price, 'features' => $features]);
   }
-  
+
   /**
   * Show the form for creating a new resource.
   *
@@ -34,7 +36,7 @@ class LandingPageController extends Controller
       return redirect()->route('admin.landing-page.index');
     }
   }
-  
+
   /**
   * Store a newly created resource in storage.
   *
@@ -50,10 +52,10 @@ class LandingPageController extends Controller
     $tambah_harga->harga = $request->harga;
     $tambah_harga->tingkat = $request->tingkat;
     $tambah_harga->save();
-    
+
     return redirect()->route('admin.landing-page.index');
   }
-  
+
   /**
   * Display the specified resource.
   *
@@ -64,7 +66,7 @@ class LandingPageController extends Controller
   {
     //
   }
-  
+
   /**
   * Show the form for editing the specified resource.
   *
@@ -76,7 +78,7 @@ class LandingPageController extends Controller
     $price = Harga::findOrFail($id);
     return view('admin.landingPage.edit_harga', ['price' => $price]);
   }
-  
+
   /**
   * Update the specified resource in storage.
   *
@@ -95,17 +97,13 @@ class LandingPageController extends Controller
     $ubah_harga->save();
     return redirect()->route('admin.landing-page.index');
   }
-  
-  /**
-  * Remove the specified resource from storage.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
-  public function destroy($id)
+
+  public function tampilkanFitur(Request $request, $id)
   {
-    $delete_harga = Harga::findOrFail($id);
-    $delete_harga->delete();
-    return redirect()->back();
+    $tampilkan = Fitur::findOrFail($id);
+  }
+  public function hapusFitur(Request $request, $id)
+  {
+    $tampilkan = Fitur::findOrFail($id);
   }
 }

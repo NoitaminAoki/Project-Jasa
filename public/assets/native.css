@@ -95,7 +95,7 @@ header ul {
 
 .show {
   padding: 1rem 2rem;
-  max-height: 200vh !important;
+  max-height: 500vh !important;
 }
 .overlay {
   position: absolute;
@@ -285,12 +285,16 @@ nav #loginBtn {
   background-size: 17px;
   background-repeat: no-repeat;
   background-position: right center;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 #landingPage + main #hargaSection .col-12 details li:not(.no):not(.submenu), #landingPage + main #hargaSection #hargaDesktop li:not(.no):not(.submenu) {
-  background-image: url('img/yes.svg');
+  /* background-image: url('img/yes.svg'); */
 }
 #landingPage + main #hargaSection .col-12 details .no, #landingPage + main #hargaSection #hargaDesktop .no {
-  background-image: url('img/no.svg');
+  /* background-image: url('img/no.svg'); */
 }
 #landingPage + main #hargaSection .col-12 details li ul, #landingPage + main #hargaSection #hargaDesktop li ul {
   text-indent: 12px;

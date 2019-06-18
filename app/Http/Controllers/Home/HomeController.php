@@ -20,10 +20,13 @@ class HomeController extends Controller
 {
     public function landing()
     {
-        $price = Harga::limit(3)->get();
+        $price = Harga::limit(3)->oldest()->with('GetFitur')->get();
+        $fiturPemula = Harga::oldest()->with('GetFitur')->where('tingkat', 'pemula')->get();
+        $fiturProfesional = Harga::oldest()->with('GetFitur')->where('tingkat', 'profesional')->get();
+        $fiturBisnis = Harga::oldest()->with('GetFitur')->where('tingkat', 'bisnis')->get();
         $partners = Partner::all();
         $support = Support::where('tampilkan', 'iya')->get();
-        return view('landing', ['price' => $price, 'partners' => $partners, 'support' => $support]);
+        return view('landing', compact('price', 'partners', 'support', 'fiturPemula', 'fiturProfesional', 'fiturBisnis'));
     }
     public function getPromo($promo, $member)
     {

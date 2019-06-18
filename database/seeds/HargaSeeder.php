@@ -13,15 +13,15 @@ class HargaSeeder extends Seeder
     {
       DB::table('harga')->insert([
         [
-          'harga' => 350,
+          'harga' => 350, 
           'tingkat' => 'bisnis',
         ],
         [
-          'harga' => 500,
+          'harga' => 500, 
           'tingkat' => 'profesional',
         ],
         [
-          'harga' => 200,
+          'harga' => 200, 
           'tingkat' => 'pemula',
         ]
       ]);

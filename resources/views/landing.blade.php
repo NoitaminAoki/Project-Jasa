@@ -16,7 +16,9 @@ foreach ($price as $harga) {
 @endphp
 
 @extends('layouts.master_static')
+
 @section('title', 'Konsultan Manajemen Keuangan')
+
 @section('header')
 <header id="landingPage">
   <div class="overlay">
@@ -119,59 +121,26 @@ foreach ($price as $harga) {
         <details>
           <summary>Lihat Fitur</summary>
           <ul>
-            <li>Rekap Transaksi</li>
-            <li class="no">Jurnal</li>
-            <li class="no">Laporan Buku Besar</li>
-            <li>Laporan daftar aset</li>
-            <li class="submenu">
-              <b>Laporan Keuangan :</b>
-              <ul>
-                <li>Laporan Posisi Keuangan</li>
-                <li>Laporan Laba Rugi Komprehensif</li>
-                <li>Laporan Perubahan ekuitas</li>
-                <li>Laporan Arus Kas</li>
-                <li class="no">Catatan Laporan Keuangan</li>
-              </ul>
-            </li>
-            <li class="submenu">
-              <b>laporan perpajakan :</b>
-              <ul>
-                <li>PPh Pasal 21</li>
-                <li>PPh Pasal 22</li>
-                <li>PPh Pasal 23</li>
-                <li>PPh Pasal 25</li>
-                <li>PPh Pasal 26</li>
-                <li>PPh Pasal 29</li>
-                <li>PPh Pasal 4 (2)</li>
-                <li>PPh Final</li>
-                <li>PPN</li>
-                <li>Dll</li>
-              </ul>
-            </li>
-            <li>Membuat e-billing</li>
-            <li>Membayarkan Pajak</li>
-            <li>Membuat & Melapor SPT PPh Masa</li>
-            <li class="no">Membuat & Melapor SPT Tahunan</li>
-            <li>Perencanaan Keuangan</li>
-            <li>Perencanaan Pajak</li>
-            <li>Print Laporan</li>
-            <li>Backup Laporan</li>
-            <li class="no">Pengarsipan Laporan</li>
-            <li>Visit Perusahaan</li>
+            @foreach ($fiturBisnis as $harga)
+              @foreach ($harga->GetFitur as $fitur)
+                <li class=""
+                style="@if ($fitur->menu == 'sub') text-indent: 15px;
+                       @elseif ($fitur->menu == 'besar') font-weight: bolder; font-size: 1.1em; @endif">
+                  {{ $fitur->fitur }}
+                    <img src="@if ($fitur->ada == 'iya') {{ asset('assets/img/yes.svg') }}
+                    @elseif ($fitur->ada == 'tidak'){{ asset('assets/img/no.svg') }} @endif "
+                      height="17" class="position-relative" style="bottom: 3px;left: 5px;">
+                </li>
+              @endforeach
+            @endforeach
           </ul>
         </details>
       </div>
       <div class="col-12 col-md-4 px-md-0">
         <div class="profesional">
-            <h2>{{$profesional['tingkat']}}</h2>
-            @if ($profesional['harga'] > 0)
-            <p><sup>Rp.</sup><var>{{$profesional['harga']}}</var><sub>k/bulan</sub></p>
-            @else
-            <small>(belum tersedia)</small>
-            @endif
           <h2>{{$profesional['tingkat']}}</h2>
           @if ($profesional['harga'] > 0)
-          <p><sup>Rp.</sup><var>{{$profesional['harga']}}</var><sub>rb/bulan</sub></p>
+          <p><sup>Rp.</sup><var>{{$profesional['harga']}}</var><sub>k/bulan</sub></p>
           @else
           <small>(belum tersedia)</small>
           @endif
@@ -179,45 +148,18 @@ foreach ($price as $harga) {
         <details>
           <summary>Lihat Fitur</summary>
           <ul>
-            <li>Rekap Transaksi</li>
-            <li>Jurnal</li>
-            <li>Laporan Buku Besar</li>
-            <li>Laporan daftar aset</li>
-            <li class="submenu">
-              <b>Laporan Keuangan :</b>
-              <ul>
-                <li>Laporan Posisi Keuangan</li>
-                <li>Laporan Laba Rugi Komprehensif</li>
-                <li>Laporan Perubahan ekuitas</li>
-                <li>Laporan Arus Kas</li>
-                <li>Catatan Laporan Keuangan</li>
-              </ul>
-            </li>
-            <li class="submenu">
-              <b>laporan perpajakan :</b>
-              <ul>
-                <li>PPh Pasal 21</li>
-                <li>PPh Pasal 22</li>
-                <li>PPh Pasal 23</li>
-                <li>PPh Pasal 25</li>
-                <li>PPh Pasal 26</li>
-                <li>PPh Pasal 29</li>
-                <li>PPh Pasal 4 (2)</li>
-                <li>PPh Final</li>
-                <li>PPN</li>
-                <li>Dll</li>
-              </ul>
-            </li>
-            <li>Membuat e-billing</li>
-            <li>Membayarkan Pajak</li>
-            <li>Membuat & Melapor SPT PPh Masa</li>
-            <li>Membuat & Melapor SPT Tahunan</li>
-            <li>Perencanaan Keuangan</li>
-            <li>Perencanaan Pajak</li>
-            <li>Print Laporan</li>
-            <li>Backup Laporan</li>
-            <li>Pengarsipan Laporan</li>
-            <li>Visit Perusahaan</li>
+            @foreach ($fiturProfesional as $harga)
+              @foreach ($harga->GetFitur as $fitur)
+                <li class=""
+                style="@if ($fitur->menu == 'sub') text-indent: 15px;
+                       @elseif ($fitur->menu == 'besar') font-weight: bolder; font-size: 1.1em; @endif">
+                  {{ $fitur->fitur }}
+                    <img src="@if ($fitur->ada == 'iya') {{ asset('assets/img/yes.svg') }}
+                    @elseif ($fitur->ada == 'tidak'){{ asset('assets/img/no.svg') }} @endif "
+                      height="17" class="position-relative" style="bottom: 3px;left: 5px;">
+                </li>
+              @endforeach
+            @endforeach
           </ul>
         </details>
       </div>
@@ -233,45 +175,18 @@ foreach ($price as $harga) {
         <details>
           <summary>Lihat Fitur</summary>
           <ul>
-            <li>Rekap Transaksi</li>
-            <li class="no">Jurnal</li>
-            <li class="no">Laporan Buku Besar</li>
-            <li class="no">Laporan daftar aset</li>
-            <li class="submenu">
-              <b>Laporan Keuangan :</b>
-              <ul>
-                <li>Laporan Posisi Keuangan</li>
-                <li>Laporan Laba Rugi Komprehensif</li>
-                <li>Laporan Perubahan ekuitas</li>
-                <li>Laporan Arus Kas</li>
-                <li class="no">Catatan Laporan Keuangan</li>
-              </ul>
-            </li>
-            <li class="submenu">
-              <b>laporan perpajakan :</b>
-              <ul>
-                <li>PPh Pasal 21</li>
-                <li>PPh Pasal 22</li>
-                <li>PPh Pasal 23</li>
-                <li>PPh Pasal 25</li>
-                <li>PPh Pasal 26</li>
-                <li>PPh Pasal 29</li>
-                <li>PPh Pasal 4 (2)</li>
-                <li>PPh Final</li>
-                <li class="no">PPN</li>
-                <li class="no">Dll</li>
-              </ul>
-            </li>
-            <li>Membuat e-billing</li>
-            <li class="no">Membayarkan Pajak</li>
-            <li>Membuat & Melapor SPT PPh Masa</li>
-            <li class="no">Membuat & Melapor SPT Tahunan</li>
-            <li>Perencanaan Keuangan</li>
-            <li class="no">Perencanaan Pajak</li>
-            <li>Print Laporan</li>
-            <li class="no">Backup Laporan</li>
-            <li class="no">Pengarsipan Laporan</li>
-            <li class="no">Visit Perusahaan</li>
+            @foreach ($fiturPemula as $harga)
+              @foreach ($harga->GetFitur as $fitur)
+                <li class=""
+                style="@if ($fitur->menu == 'sub') text-indent: 15px;
+                       @elseif ($fitur->menu == 'besar') font-weight: bolder; font-size: 1.1em; @endif">
+                  {{ $fitur->fitur }}
+                    <img src="@if ($fitur->ada == 'iya') {{ asset('assets/img/yes.svg') }}
+                    @elseif ($fitur->ada == 'tidak'){{ asset('assets/img/no.svg') }} @endif "
+                      height="17" class="position-relative" style="bottom: 3px;left: 5px;">
+                </li>
+              @endforeach
+            @endforeach
           </ul>
         </details>
       </div>
@@ -309,132 +224,51 @@ foreach ($price as $harga) {
         <div class="row mx-0">
           <div class="col-md-4 pl-0">
             <ul>
-              <li>Rekap Transaksi</li>
-              <li class="no">Jurnal</li>
-              <li class="no">Laporan Buku Besar</li>
-              <li>Laporan daftar aset</li>
-              <li class="submenu">
-                <b>Laporan Keuangan :</b>
-                <ul>
-                  <li>Laporan Posisi Keuangan</li>
-                  <li>Laporan Laba Rugi Komprehensif</li>
-                  <li>Laporan Perubahan ekuitas</li>
-                  <li>Laporan Arus Kas</li>
-                  <li class="no">Catatan Laporan Keuangan</li>
-                </ul>
-              </li>
-              <li class="submenu">
-                <b>laporan perpajakan :</b>
-                <ul>
-                  <li>PPh Pasal 21</li>
-                  <li>PPh Pasal 22</li>
-                  <li>PPh Pasal 23</li>
-                  <li>PPh Pasal 25</li>
-                  <li>PPh Pasal 26</li>
-                  <li>PPh Pasal 29</li>
-                  <li>PPh Pasal 4 (2)</li>
-                  <li>PPh Final</li>
-                  <li>PPN</li>
-                  <li>Dll</li>
-                </ul>
-              </li>
-              <li>Membuat e-billing</li>
-              <li>Membayarkan Pajak</li>
-              <li>Membuat & Melapor SPT PPh Masa</li>
-              <li class="no">Membuat & Melapor SPT Tahunan</li>
-              <li>Perencanaan Keuangan</li>
-              <li>Perencanaan Pajak</li>
-              <li>Print Laporan</li>
-              <li>Backup Laporan</li>
-              <li class="no">Pengarsipan Laporan</li>
-              <li>Visit Perusahaan</li>
-            </ul>
+              @foreach ($fiturBisnis as $harga)
+                @foreach ($harga->GetFitur as $fitur)
+  								<li class=""
+  								style="@if ($fitur->menu == 'sub') text-indent: 15px;
+  								       @elseif ($fitur->menu == 'besar') font-weight: bolder; font-size: 1.1em; @endif">
+  									{{ $fitur->fitur }}
+  										<img src="@if ($fitur->ada == 'iya') {{ asset('assets/img/yes.svg') }}
+  										@elseif ($fitur->ada == 'tidak'){{ asset('assets/img/no.svg') }} @endif "
+  											height="17" class="position-relative" style="bottom: 3px;left: 5px;">
+  								</li>
+  							@endforeach
+              @endforeach
+						</ul>
           </div>
           <div class="col-md-4">
             <ul>
-              <li>Rekap Transaksi</li>
-              <li>Jurnal</li>
-              <li>Laporan Buku Besar</li>
-              <li>Laporan daftar aset</li>
-              <li class="submenu">
-                <b>Laporan Keuangan :</b>
-                <ul>
-                  <li>Laporan Posisi Keuangan</li>
-                  <li>Laporan Laba Rugi Komprehensif</li>
-                  <li>Laporan Perubahan ekuitas</li>
-                  <li>Laporan Arus Kas</li>
-                  <li>Catatan Laporan Keuangan</li>
-                </ul>
-              </li>
-              <li class="submenu">
-                <b>laporan perpajakan :</b>
-                <ul>
-                  <li>PPh Pasal 21</li>
-                  <li>PPh Pasal 22</li>
-                  <li>PPh Pasal 23</li>
-                  <li>PPh Pasal 25</li>
-                  <li>PPh Pasal 26</li>
-                  <li>PPh Pasal 29</li>
-                  <li>PPh Pasal 4 (2)</li>
-                  <li>PPh Final</li>
-                  <li>PPN</li>
-                  <li>Dll</li>
-                </ul>
-              </li>
-              <li>Membuat e-billing</li>
-              <li>Membayarkan Pajak</li>
-              <li>Membuat & Melapor SPT PPh Masa</li>
-              <li>Membuat & Melapor SPT Tahunan</li>
-              <li>Perencanaan Keuangan</li>
-              <li>Perencanaan Pajak</li>
-              <li>Print Laporan</li>
-              <li>Backup Laporan</li>
-              <li>Pengarsipan Laporan</li>
-              <li>Visit Perusahaan</li>
-            </ul>
+              @foreach ($fiturProfesional as $harga)
+                @foreach ($harga->GetFitur as $fitur)
+  								<li class=""
+  								style="@if ($fitur->menu == 'sub') text-indent: 15px;
+  								       @elseif ($fitur->menu == 'besar') font-weight: bolder; font-size: 1.1em; @endif">
+  									{{ $fitur->fitur }}
+  										<img src="@if ($fitur->ada == 'iya') {{ asset('assets/img/yes.svg') }}
+  										@elseif ($fitur->ada == 'tidak'){{ asset('assets/img/no.svg') }} @endif "
+  											height="17" class="position-relative" style="bottom: 3px;left: 5px;">
+  								</li>
+  							@endforeach
+              @endforeach
+						</ul>
           </div>
           <div class="col-md-4 pr-0">
             <ul>
-              <li>Rekap Transaksi</li>
-              <li class="no">Jurnal</li>
-              <li class="no">Laporan Buku Besar</li>
-              <li class="no">Laporan daftar aset</li>
-              <li class="submenu">
-                <b>Laporan Keuangan :</b>
-                <ul>
-                  <li>Laporan Posisi Keuangan</li>
-                  <li>Laporan Laba Rugi Komprehensif</li>
-                  <li>Laporan Perubahan ekuitas</li>
-                  <li>Laporan Arus Kas</li>
-                  <li class="no">Catatan Laporan Keuangan</li>
-                </ul>
-              </li>
-              <li class="submenu">
-                <b>laporan perpajakan :</b>
-                <ul>
-                  <li>PPh Pasal 21</li>
-                  <li>PPh Pasal 22</li>
-                  <li>PPh Pasal 23</li>
-                  <li>PPh Pasal 25</li>
-                  <li>PPh Pasal 26</li>
-                  <li>PPh Pasal 29</li>
-                  <li>PPh Pasal 4 (2)</li>
-                  <li>PPh Final</li>
-                  <li class="no">PPN</li>
-                  <li class="no">Dll</li>
-                </ul>
-              </li>
-              <li>Membuat e-billing</li>
-              <li class="no">Membayarkan Pajak</li>
-              <li>Membuat & Melapor SPT PPh Masa</li>
-              <li class="no">Membuat & Melapor SPT Tahunan</li>
-              <li>Perencanaan Keuangan</li>
-              <li class="no">Perencanaan Pajak</li>
-              <li>Print Laporan</li>
-              <li class="no">Backup Laporan</li>
-              <li class="no">Pengarsipan Laporan</li>
-              <li class="no">Visit Perusahaan</li>
-            </ul>
+              @foreach ($fiturPemula as $harga)
+                @foreach ($harga->GetFitur as $fitur)
+  								<li class=""
+  								style="@if ($fitur->menu == 'sub') text-indent: 15px;
+  								       @elseif ($fitur->menu == 'besar') font-weight: bolder; font-size: 1.1em; @endif">
+  									{{ $fitur->fitur }}
+  										<img src="@if ($fitur->ada == 'iya') {{ asset('assets/img/yes.svg') }}
+  										@elseif ($fitur->ada == 'tidak'){{ asset('assets/img/no.svg') }} @endif "
+  											height="17" class="position-relative" style="bottom: 3px;left: 5px;">
+  								</li>
+  							@endforeach
+              @endforeach
+						</ul>
           </div>
         </div>
         <div id="showDetails" class="col-12">

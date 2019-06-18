@@ -51,6 +51,7 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->
   Route::resource('aturan', 'AturanController');
   Route::resource('bantuan', 'BantuanController');
   Route::resource('partner', 'PartnerController');
+  Route::resource('fitur', 'FiturController');
 });
 
 Route::prefix('member')->namespace('Member')->name('member.')->middleware(['auth:member'])->group(function () {
