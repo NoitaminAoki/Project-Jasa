@@ -109,8 +109,8 @@ class UserSeeder extends Seeder
         'noTelp' => $noTelp,
         'email' => $email,
         'status' => $status,
-        'created_at' => date("Y-m-d", strtotime("+".rand(0,7)." days"))
-      ]);
+        'created_at' => date("Y-m-d", strtotime("-".rand(0,6)." days"))
+    ]);
     }
   }
 }

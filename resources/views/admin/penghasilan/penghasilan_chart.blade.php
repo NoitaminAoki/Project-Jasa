@@ -4,6 +4,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap4.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
 @endsection
 
 @section ('title-body', 'Penghasilan')
@@ -14,7 +15,26 @@
     <div class="alert alert-{{(Session::has('success_message'))? 'success' : 'danger'}} text-center">{{(Session::has('success_message'))? Session::get('success_message') : Session::get('failed_message')}}</div>
 </div>
 @endif
-<div class="col-md-3 col-sm-6 col-12">
+<div class="col-md-4 col-sm-6 col-12">
+    <div class="info-box bg-primary-gradient">
+        <span class="info-box-icon"><i class="fa fa-money-bill-wave-alt"></i></span>
+        
+        <div class="info-box-content">
+            <span class="info-box-text">Total Pendapatan</span>
+            <span class="info-box-number">Rp {{number_format($pendapatan+$potensi_pendapatan, 0, ',', '.')}}</span>
+            
+            <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+            </div>
+            <span class="progress-description">
+                100% from (pendapatan + potensi)
+            </span>
+        </div>
+        <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+</div>
+<div class="col-md-4 col-sm-6 col-12">
     <div class="info-box bg-success-gradient">
         <span class="info-box-icon"><i class="fa fa-money-bill-wave-alt"></i></span>
         
@@ -33,7 +53,7 @@
     </div>
     <!-- /.info-box -->
 </div>
-<div class="col-md-3 col-sm-6 col-12">
+<div class="col-md-4 col-sm-6 col-12">
     <div class="info-box bg-warning-gradient">
         <span class="info-box-icon"><i class="fa fa-money-bill-wave-alt"></i></span>
         
@@ -58,10 +78,25 @@
         <div class="card-header no-border">
             <div class="d-flex justify-content-between">
                 <h3 class="card-title">Penghasilan</h3>
-                <a href="javascript:void(0);">View Report</a>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+                {{-- <a href="javascript:void(0);">View Report</a> --}}
             </div>
         </div>
         <div class="card-body" style="overflow-x: auto;">
+            <form action="{{ route('admin.penghasilan.index') }}" method="GET">
+                <div class="row col-12 px-0">
+                    <div class="col-md-4 col-12">
+                        <input type="text" name="daterange" class="form-control input-daterange">
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <button type="submit" class="btn btn-primary btn-md float-left">Filter</button>
+                    </div>
+                </div>
+            </form>
             <div class="col-12" style="min-width: 500px;">
                 <div class="d-flex">
                     <p class="d-flex flex-column">
@@ -157,14 +192,14 @@
                                 {{$value->noTelp}}
                             </span>
                         </div>
-                </li>
-                @endforeach
+                    </li>
+                    @endforeach
                     
                 </ul>
             </div>
             <!-- /.card-body -->
             <div class="card-footer text-center">
-                <a href="javascript:void(0)" class="uppercase">View All Members</a>
+                <a href="{{ route('admin.member.index') }}" class="uppercase">View All Members</a>
             </div>
             <!-- /.card-footer -->
         </div>
@@ -175,9 +210,18 @@
     <script src="{{ asset('plugins/datatables/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('plugins/datatables/dataTables.bootstrap4.js') }}"></script>
     <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset('plugins/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('.message-session').delay(3000).slideUp(600);
+            $('.input-daterange').daterangepicker({
+                "maxSpan": {
+                    "days": 30
+                },
+                "startDate": "{{$startDate}}",
+                "endDate": "{{$endDate}}"
+            });
         });
         $(function () {
             'use strict'

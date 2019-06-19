@@ -11,6 +11,7 @@ use App\Models\Partner;
 use App\Models\Promosi;
 use App\Models\Peraturan;
 use App\Models\Harga;
+use DB;
 
 class DashboardController extends Controller
 {
@@ -22,14 +23,66 @@ class DashboardController extends Controller
     public function index()
     {
         $support = Support::all();
-        $memberActive = Member::where('status', 'active')->count();
-        $memberUnactive = Member::where('status', 'unactive')->count();
-        $klien = Klien::all();
-        $partners = Partner::all();
-        $promosi = Promosi::all();
-        $aturan = Peraturan::all();
-        $price = Harga::all();
-        return view('admin.admin_dashboard', compact('support', 'memberActive', 'memberUnactive', 'klien', 'partners', 'promosi', 'aturan', 'price'));
+        $data['startDate'] = Date('d/m/Y', strtotime('-6 days'));
+        $data['endDate'] = Date('d/m/Y');
+        $data['memberActive'] = Member::where('status', 'active')->count();
+        $data['memberUnactive'] = Member::where('status', 'unactive')->count();
+        $data['popularMember'] = Klien::select(DB::raw('members.id, members.profile_picture, members.name, members.noTelp, sum(penghasilans.fee) as pendapatan'))
+        ->where("kliens.status", 'deal')
+        ->leftJoin('penghasilans', 'kliens.idHarga', '=', 'penghasilans.idHarga')
+        ->leftJoin('members', 'kliens.idMember', '=', 'members.id')
+        ->where('kliens.idMember', '<>', null)
+        ->groupBy('members.id', 'members.profile_picture', 'members.name', 'members.noTelp')
+        ->orderBy('pendapatan', 'desc')
+        ->take(5)
+        ->get();
+        $data['pendapatan'] = Klien::where("kliens.status", 'deal')
+        ->leftJoin('penghasilans', 'kliens.idHarga', '=', 'penghasilans.idHarga')
+        ->sum("penghasilans.fee");
+        $data['potensi_pendapatan'] = Klien::where("kliens.status", 'pending')
+        ->orWhere("kliens.status", 'negosiasi')
+        ->leftJoin('penghasilans', 'kliens.idHarga', '=', 'penghasilans.idHarga')
+        ->sum("penghasilans.fee");
+        $data['totalPendapatan'] = $data['pendapatan'] + $data['potensi_pendapatan'];
+        $data['percentage'] = [
+            'pendapatan' => ($data['pendapatan']/$data['totalPendapatan']*100),
+            'potensi_pendapatan' => ($data['potensi_pendapatan']/$data['totalPendapatan']*100)
+        ];
+        $data['deal_klien'] = Klien::where("kliens.status", 'deal')->count();
+        $data['negosiasi_klien'] = Klien::where("kliens.status", 'negosiasi')->count();
+        $data['pending_klien'] = Klien::where("kliens.status", 'pending')->count();
+        $data['all_klien'] = $data['deal_klien'] + $data['negosiasi_klien'] + $data['pending_klien'];
+        $data['chartPending'] = [];
+        $data['chartNegosiasi'] = [];
+        $data['chartDeal'] = [];
+        $data['xAxis'] = [];
+        $data['pendapatanChart'] = 0;
+        $data['pendapatanChartPending'] = 0;
+        $data['pendapatanChartNegosiasi'] = 0;
+        $data['pendapatanChartDeal'] = 0;
+        $intRow = 0;
+        for ($i=6; $i >= 0; $i--) {
+            $data['xAxis'][($intRow)] =  Date('M d', strtotime('-'.$i.' days'));
+            $data['chartPending'][($intRow)] = Klien::where('kliens.status', 'pending')
+            ->whereDate('kliens.created_at', Date('Y-m-d', strtotime('-'.$i.' days')))
+            ->leftJoin('penghasilans', 'kliens.idHarga', '=', 'penghasilans.idHarga')
+            ->sum('penghasilans.fee');
+            $data['pendapatanChartPending'] += $data['chartPending'][($intRow)];
+            $data['chartNegosiasi'][($intRow)] = Klien::where('kliens.status', 'negosiasi')
+            ->whereDate('kliens.created_at', Date('Y-m-d', strtotime('-'.$i.' days')))
+            ->leftJoin('penghasilans', 'kliens.idHarga', '=', 'penghasilans.idHarga')
+            ->sum('penghasilans.fee');
+            $data['pendapatanChartNegosiasi'] += $data['chartNegosiasi'][($intRow)];
+            $data['chartDeal'][($intRow)] = Klien::where('kliens.status', 'deal')
+            ->whereDate('kliens.created_at', Date('Y-m-d', strtotime('-'.$i.' days')))
+            ->leftJoin('penghasilans', 'kliens.idHarga', '=', 'penghasilans.idHarga')
+            ->sum('penghasilans.fee');
+            $data['pendapatanChartDeal'] += $data['chartDeal'][($intRow)];
+            $data['pendapatanChart'] += $data['chartPending'][($intRow)] + $data['chartNegosiasi'][($intRow)] + $data['chartDeal'][($intRow)];
+            $intRow += 1;
+        }
+        // dd($data);
+        return view('admin.admin_dashboard')->with($data);
     }
 
     /**
