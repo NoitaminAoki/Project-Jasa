@@ -41,11 +41,9 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->
   Route::resource('profil', 'ProfilController');
   Route::put('member/activating/{id}', 'MemberController@activating')->name('member.activating');
   Route::resource('member', 'MemberController');
-
   Route::get('klien/edit-api/{id?}', 'KlienController@editApi')->name('klien.editAjax');
   Route::post('klien/update-api/{id?}', 'KlienController@updateApi')->name('klien.updateAjax');
   Route::resource('klien', 'KlienController');
-
   Route::get('penghasilan/fee', 'PenghasilanController@fee')->name('penghasilan.fee');
   Route::resource('penghasilan', 'PenghasilanController');
   Route::resource('landing-page', 'LandingPageController');

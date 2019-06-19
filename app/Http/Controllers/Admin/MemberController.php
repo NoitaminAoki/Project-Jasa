@@ -41,22 +41,29 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-      $tambahMember = new Member;
+      // $tambahMember = new Member;
+      //
+      // $tambahMember->code = 'id-'.Str::studly($request->name);
+      // $tambahMember->name = $request->name;
+      // $tambahMember->noTelp = $request->noTelp;
+      // $tambahMember->email = $request->email;
+      Member::create([
+          'code' => 'id-' . Str::studly($request->name),
+          'name' => $request->name,
+          'noTelp' => $request->noTelp,
+          'email' => $request->email,
+          'password' => Hash::make($request->password),
+      ]);
+      return redirect()->back()->with('success_message', 'Berhasil Menambah Member');
 
-      $tambahMember->code = 'id-'.Str::studly($request->name);
-      $tambahMember->name = $request->name;
-      $tambahMember->noTelp = $request->noTelp;
-      $tambahMember->email = $request->email;
-
-      $this->validate($request, ['profile_picture' => 'required|file|max:2000']);
-      $uploadLogo = $request->file('profile_picture');
-      $path = $uploadLogo->store('public/files');
+      // $this->validate($request, ['profile_picture' => 'required|file|max:2000']);
+      // $uploadLogo = $request->file('profile_picture');
+      // $path = $uploadLogo->store('public/files');
       // $tambahMember->profile_picture = $path;
 
-      $tambahMember->password = Hash::make($request->password);
+      // $tambahMember->password = Hash::make($request->password);
 
-      $tambahMember->save();
-      return redirect()->back()->with('success_message', 'Berhasil Menambah Member');
+      // $tambahMember->save();
     }
 
     /**
@@ -102,14 +109,13 @@ class MemberController extends Controller
     public function destroy(Request $request, $id)
     {
         Member::where('id', $id)->update(['status' => 'unactive']);
-        $request->session()->flash('success_message', 'Success ...');
-        return redirect()->route('admin.member.index');
+        return redirect()->route('admin.member.index')->with('success_message', 'Success Unactive Member');
     }
 
     public function activating(Request $request, $id)
     {
         Member::where('id', $id)->update(['status' => 'active']);
-        $request->session()->flash('success_message', 'Success ...');
-        return redirect()->route('admin.member.index');
+        // $request->session()->flash('success_message', 'Success ...');
+        return redirect()->route('admin.member.index')->with('success_message', 'Success Reactive Member');
     }
 }
