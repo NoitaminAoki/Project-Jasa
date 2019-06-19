@@ -21,9 +21,9 @@ class HomeController extends Controller
     public function landing()
     {
         $price = Harga::limit(3)->oldest()->with('GetFitur')->get();
-        $fiturPemula = Harga::oldest()->with('GetFitur')->where('tingkat', 'pemula')->get();
-        $fiturProfesional = Harga::oldest()->with('GetFitur')->where('tingkat', 'profesional')->get();
-        $fiturBisnis = Harga::oldest()->with('GetFitur')->where('tingkat', 'bisnis')->get();
+        $fiturPemula = Harga::limit(3)->with('GetFitur')->orderBy('harga', 'asc')->get();
+        $fiturBisnis = Harga::limit(3)->with('GetFitur')->orderBy('harga', 'asc')->skip(1)->get();
+        $fiturProfesional = Harga::limit(3)->with('GetFitur')->orderBy('harga', 'asc')->latest();
         $partners = Partner::all();
         $support = Support::where('tampilkan', 'iya')->get();
         return view('landing', compact('price', 'partners', 'support', 'fiturPemula', 'fiturProfesional', 'fiturBisnis'));
@@ -55,7 +55,7 @@ class HomeController extends Controller
         $support->subjek = $request->subjek;
         $support->pertanyaan = $request->pertanyaan_pengirim;
         $support->save();
-        
+
         return redirect()->back()->with('success_message', 'Bantuanmu Telah Terkirim dan akan dibalas maksimal 2x24 jam');
     }
     public function promosi()
@@ -72,7 +72,7 @@ class HomeController extends Controller
     {
         return view('profil');
     }
-    
+
     public function klienStore(Request $request)
     {
         $request->validate([
@@ -82,9 +82,9 @@ class HomeController extends Controller
             'email' => 'required',
             'noTelp' => 'required'
             ]);
-            
+
             $getMember = Member::Where('code', $request->codeMember)->first();
-            
+
             Klien::create([
                 'nama' => $request->nama,
                 'idHarga' => $request->harga,
@@ -94,9 +94,8 @@ class HomeController extends Controller
                 'email' => $request->email,
                 'status' => 'pending'
                 ]);
-                
+
                 $request->session()->flash('success_daftar', 'Permintaan Anda akan segera kami proses.');
                 return redirect(url('/'));
             }
         }
-        

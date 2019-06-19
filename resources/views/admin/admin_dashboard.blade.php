@@ -238,7 +238,7 @@
 	<div class="card">
 		<div class="card-header">
 			<h3 class="card-title">Popular Member</h3>
-			
+
 			<div class="card-tools">
 				<button type="button" class="btn btn-tool" data-widget="collapse">
 					<i class="fa fa-minus"></i>
@@ -251,7 +251,8 @@
 				@foreach ($popularMember as $value)
 				<li class="item">
 					<div class="product-img">
-						<img src="{{ (Storage::exists($value->profile_picture))? Storage::url($value->profile_picture) : asset('dist/img/avatar5.png') }}" alt="Product Image" class="img-size-50">
+						<img src="{{ (Storage::exists($value->profile_picture))? Storage::url($value->profile_picture) : asset('dist/img/avatar5.png') }}"
+						alt="Product Image" class="img-size-50">
 					</div>
 					<div class="product-info">
 						<a href="javascript:void(0)" class="product-title">{{$value->name}}
@@ -303,17 +304,18 @@
 					{
 						backgroundColor: '#c8c8cc',
 						borderColor    : '#c8c8cc',
-						data           : {!! json_encode($chartPending) !!}
+						data           : @json($chartPending)
 					},
 					{
 						backgroundColor: '#ffc107',
 						borderColor    : '#ffc107',
-						data           : {!! json_encode($chartNegosiasi) !!}
+						data           : @json($chartNegosiasi)
 					},
 					{
 						backgroundColor: '#28a745',
 						borderColor    : '#28a745',
-						data           : {!! json_encode($chartDeal) !!}
+						data           :  @json($chartDeal)
+
 					}
 					]
 				},
