@@ -101,7 +101,7 @@
 					@foreach ($partners as $partner)
 				    <tr>
 					      <td>{{ $partner->nama }}</td>
-					      <td>{{ $partner->created_at }}</td>
+					      <td>{{ $partner->created_at->format('D F Y') }}</td>
 					      <td><a href="{{ route('admin.partner.index') }}" class="btn btn-link text-info">Lihat Lebih Lanjut</a></td>
 				    </tr>
 					@endforeach
