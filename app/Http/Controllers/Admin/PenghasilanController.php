@@ -17,10 +17,8 @@ class PenghasilanController extends Controller
     *
     * @return \Illuminate\Http\Response
     */
-    public function index()
+    public function index(Request $request)
     {
-        $data['startDate'] = Date('d/m/Y');
-        $data['endDate'] = Date('d/m/Y', strtotime('+6 days'));
         $data['popularMember'] = Klien::select(DB::raw('members.id, members.profile_picture, members.name, members.noTelp, sum(penghasilans.fee) as pendapatan'))
         ->where("kliens.status", 'deal')
         ->leftJoin('penghasilans', 'kliens.idHarga', '=', 'penghasilans.idHarga')
@@ -50,38 +48,42 @@ class PenghasilanController extends Controller
         $data['pendapatanChartPending'] = 0;
         $data['pendapatanChartNegosiasi'] = 0;
         $data['pendapatanChartDeal'] = 0;
-        for ($i=0; $i <= 6; $i++) {
-            $data['xAxis'][$i] =  Date('M d', strtotime('+'.$i.' days'));
-            $data['chartPending'][$i] = Klien::where('kliens.status', 'pending')
-            ->whereDate('kliens.created_at', Date('Y-m-d', strtotime('+'.$i.' days')))
-            ->leftJoin('penghasilans', 'kliens.idHarga', '=', 'penghasilans.idHarga')
-            ->sum('penghasilans.fee');
-            $data['pendapatanChartPending'] += $data['chartPending'][$i];
-            $data['chartNegosiasi'][$i] = Klien::where('kliens.status', 'negosiasi')
-            ->whereDate('kliens.created_at', Date('Y-m-d', strtotime('+'.$i.' days')))
-            ->leftJoin('penghasilans', 'kliens.idHarga', '=', 'penghasilans.idHarga')
-            ->sum('penghasilans.fee');
-            $data['pendapatanChartNegosiasi'] += $data['chartNegosiasi'][$i];
-            $data['chartDeal'][$i] = Klien::where('kliens.status', 'deal')
-            ->whereDate('kliens.created_at', Date('Y-m-d', strtotime('+'.$i.' days')))
-            ->leftJoin('penghasilans', 'kliens.idHarga', '=', 'penghasilans.idHarga')
-            ->sum('penghasilans.fee');
-            $data['pendapatanChartDeal'] += $data['chartDeal'][$i];
-            $data['pendapatanChart'] += $data['chartPending'][$i] + $data['chartNegosiasi'][$i] + $data['chartDeal'][$i];
+        $intRow = 0;
+        
+        $getDiffDay = 6;
+        if (!empty($request->daterange)) {
+            $getDaterange = explode(" - ", $request->daterange);
+            $getStartDate = DateTime::createFromFormat("m/d/Y", $getDaterange[0]);
+            $getEndDate = DateTime::createFromFormat("m/d/Y", $getDaterange[1]);
+            $interval = date_diff($getStartDate, $getEndDate);
+            $getDiffDay = $interval->days;
+            $data['startDate'] = $getStartDate->format("m/d/Y");
+            $data['endDate'] = $getEndDate->format("m/d/Y");
         }
-        // $data['pending'] = Klien::where('kliens.status', 'pending')
-        // ->whereDate('kliens.created_at', Date('Y-m-d'))
-        // ->leftJoin('penghasilans', 'kliens.idHarga', '=', 'penghasilans.idHarga')
-        // ->orderBy('kliens.created_at', 'asc')
-        // ->get()->toArray();
-        // $data['negosiasi'] = Klien::where('status', 'negosiasi')
-        // ->orderBy('created_at', 'asc')
-        // ->get()->toArray();
-        // $data['deal'] = Klien::where('status', 'deal')
-        // ->orderBy('created_at', 'asc')
-        // ->get()->toArray();
-        // dd($data);
-        // $data['penghasilan'] = Penghasilan::all();
+        else {
+            $data['startDate'] = Date('m/d/Y', strtotime('-6 days'));
+            $data['endDate'] = Date('m/d/Y');
+        }
+        for ($i=0; $i <= $getDiffDay; $i++) {
+            $data['xAxis'][($intRow)] =  date("M d", strtotime("+".$i." day", strtotime($data['startDate'])));
+            $data['chartPending'][($intRow)] = Klien::where('kliens.status', 'pending')
+            ->whereDate('kliens.created_at', Date('Y-m-d', strtotime("+".$i." day", strtotime($data['startDate']))))
+            ->leftJoin('penghasilans', 'kliens.idHarga', '=', 'penghasilans.idHarga')
+            ->sum('penghasilans.fee');
+            $data['pendapatanChartPending'] += $data['chartPending'][($intRow)];
+            $data['chartNegosiasi'][($intRow)] = Klien::where('kliens.status', 'negosiasi')
+            ->whereDate('kliens.created_at', Date('Y-m-d', strtotime("+".$i." day", strtotime($data['startDate']))))
+            ->leftJoin('penghasilans', 'kliens.idHarga', '=', 'penghasilans.idHarga')
+            ->sum('penghasilans.fee');
+            $data['pendapatanChartNegosiasi'] += $data['chartNegosiasi'][($intRow)];
+            $data['chartDeal'][($intRow)] = Klien::where('kliens.status', 'deal')
+            ->whereDate('kliens.created_at', Date('Y-m-d', strtotime("+".$i." day", strtotime($data['startDate']))))
+            ->leftJoin('penghasilans', 'kliens.idHarga', '=', 'penghasilans.idHarga')
+            ->sum('penghasilans.fee');
+            $data['pendapatanChartDeal'] += $data['chartDeal'][($intRow)];
+            $data['pendapatanChart'] += $data['chartPending'][($intRow)] + $data['chartNegosiasi'][($intRow)] + $data['chartDeal'][($intRow)];
+            $intRow += 1;
+        }
         return view('admin.penghasilan.penghasilan_chart')->with($data);
     }
     
