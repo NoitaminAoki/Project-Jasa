@@ -39,7 +39,7 @@
 	<div class="small-box bg-primary">
 		<div class="inner">
 			<h3>{{$all_klien}}</h3>
-			
+
 			<p>Klien : All</p>
 		</div>
 		<div class="icon">
@@ -55,7 +55,7 @@
 	<div class="small-box bg-success">
 		<div class="inner">
 			<h3>{{$deal_klien}}</h3>
-			
+
 			<p>Klien : Deal</p>
 		</div>
 		<div class="icon">
@@ -71,7 +71,7 @@
 	<div class="small-box bg-warning">
 		<div class="inner">
 			<h3>{{$negosiasi_klien}}</h3>
-			
+
 			<p>Klien : Negosiasi</p>
 		</div>
 		<div class="icon">
@@ -87,7 +87,7 @@
 	<div class="small-box bg-secondary">
 		<div class="inner">
 			<h3>{{$pending_klien}}</h3>
-			
+
 			<p>Klien : Pending</p>
 		</div>
 		<div class="icon">
@@ -101,11 +101,11 @@
 <div class="col-md-4 col-sm-6 col-12">
 	<div class="info-box bg-primary-gradient">
 		<span class="info-box-icon"><i class="fa fa-money-bill-wave-alt"></i></span>
-		
+
 		<div class="info-box-content">
 			<span class="info-box-text">Total Pendapatan</span>
 			<span class="info-box-number">Rp {{number_format($pendapatan+$potensi_pendapatan, 0, ',', '.')}}</span>
-			
+
 			<div class="progress">
 				<div class="progress-bar" style="width: 100%"></div>
 			</div>
@@ -120,11 +120,11 @@
 <div class="col-md-4 col-sm-6 col-12">
 	<div class="info-box bg-success-gradient">
 		<span class="info-box-icon"><i class="fa fa-money-bill-wave-alt"></i></span>
-		
+
 		<div class="info-box-content">
 			<span class="info-box-text">Pendapatan</span>
 			<span class="info-box-number">Rp {{number_format($pendapatan, 0, ',', '.')}}</span>
-			
+
 			<div class="progress">
 				<div class="progress-bar" style="width: {{$percentage['pendapatan']}}%"></div>
 			</div>
@@ -139,11 +139,11 @@
 <div class="col-md-4 col-sm-6 col-12">
 	<div class="info-box bg-warning-gradient">
 		<span class="info-box-icon"><i class="fa fa-money-bill-wave-alt"></i></span>
-		
+
 		<div class="info-box-content">
 			<span class="info-box-text">Potensi Pendapatan</span>
 			<span class="info-box-number">Rp {{number_format($potensi_pendapatan, 0, ',', '.')}}</span>
-			
+
 			<div class="progress">
 				<div class="progress-bar" style="width: {{$percentage['potensi_pendapatan']}}%"></div>
 			</div>
@@ -156,7 +156,7 @@
 	<!-- /.info-box -->
 </div>
 <div class="col-lg-8">
-	
+
 	<div class="card">
 		<div class="card-header no-border">
 			<div class="d-flex justify-content-between">
@@ -175,20 +175,20 @@
 					</p>
 				</div>
 				<!-- /.d-flex -->
-				
+
 				<div class="position-relative mb-4">
 					<canvas id="penghasilan-chart" height="200"></canvas>
 				</div>
-				
+
 				<div class="d-flex flex-row justify-content-end">
 					<span class="mr-2">
 						<i class="fa fa-square text-gray"></i> Pending
 					</span>
-					
+
 					<span>
 						<i class="fa fa-square text-warning"></i> Negosiasi
 					</span>
-					
+
 					<span>
 						<i class="fa fa-square text-success"></i> Deal
 					</span>
@@ -262,7 +262,7 @@
 						</div>
 					</li>
 					@endforeach
-					
+
 				</ul>
 			</div>
 			<!-- /.card-body -->
@@ -273,7 +273,7 @@
 		</div>
 	</div>
 	@endsection
-	
+
 	@section('script')
 	<script src="{{ asset('plugins/datatables/jquery.dataTables.js') }}"></script>
 	<script src="{{ asset('plugins/datatables/dataTables.bootstrap4.js') }}"></script>
@@ -285,15 +285,15 @@
 		});
 		$(function () {
 			'use strict'
-			
+
 			var ticksStyle = {
 				fontColor: '#495057',
 				fontStyle: 'bold'
 			}
-			
+
 			var mode      = 'index'
 			var intersect = true
-			
+
 			var $penghasilanChart = $('#penghasilan-chart')
 			var penghasilanChart  = new Chart($penghasilanChart, {
 				type   : 'bar',
@@ -341,7 +341,7 @@
 							},
 							ticks    : $.extend({
 								beginAtZero: true,
-								
+
 								// Include a dollar sign in the ticks
 								callback: function (value, index, values) {
 									if (value >= 1000000) {
@@ -365,4 +365,3 @@
 		});
 	</script>
 	@endsection
-	
