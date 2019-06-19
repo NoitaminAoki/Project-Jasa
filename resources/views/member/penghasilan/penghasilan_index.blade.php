@@ -1,6 +1,6 @@
 @extends('temp.main')
 
-@section('title-page', 'E-Bina | Admin - Penghasilan')
+@section('title-page', 'E-Bina | Member - Penghasilan')
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap4.css') }}">
@@ -87,7 +87,7 @@
 			</div>
 		</div>
 		<div class="card-body" style="overflow-x: auto;">
-			<form action="{{ route('admin.penghasilan.index') }}" method="GET">
+			<form action="{{ route('member.penghasilan.index') }}" method="GET">
 				<div class="row col-12 px-0">
 					<div class="col-md-4 col-12">
 						<input type="text" name="daterange" class="form-control input-daterange">

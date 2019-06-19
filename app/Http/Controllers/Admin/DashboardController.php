@@ -22,7 +22,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $support = Support::all();
+        // $support = Support::all();
         $data['startDate'] = Date('d/m/Y', strtotime('-6 days'));
         $data['endDate'] = Date('d/m/Y');
         $data['memberActive'] = Member::where('status', 'active')->count();
