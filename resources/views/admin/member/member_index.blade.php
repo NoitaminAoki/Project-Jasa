@@ -11,32 +11,28 @@
 @section('content')
 	@if (Session::has('success_message') || Session::has('failed_message'))
 		<div class="col-12 message-session">
-			<div class="alert alert-{{(Session::has('success_message'))? 'success' : 'danger'}} text-center">{{(Session::has('success_message'))? Session::get('success_message') : Session::get('failed_message')}}</div>
+			<div class="alert alert-{{(Session::has('success_message'))? 'success' : 'danger'}} text-center">
+				{{ (Session::has('success_message'))? Session::get('success_message') : Session::get('failed_message') }}
+			</div>
 		</div>
 	@endif
 	<div class="col-md-4 col-sm-6 col-12">
 		<div class="info-box">
 			<span class="info-box-icon bg-info"><i class="fa fa-users"></i></span>
-
 			<div class="info-box-content">
 				<span class="info-box-text">Active Member(s)</span>
 				<span class="info-box-number">{{ $jumlah_active_member }}</span>
 			</div>
-			<!-- /.info-box-content -->
 		</div>
-		<!-- /.info-box -->
 	</div>
 	<div class="col-md-4 col-sm-6 col-12">
 		<div class="info-box">
 			<span class="info-box-icon bg-danger"><i class="fa fa-users"></i></span>
-
 			<div class="info-box-content">
 				<span class="info-box-text">Unactive Member(s)</span>
 				<span class="info-box-number">{{ $jumlah_unactive_member }}</span>
 			</div>
-			<!-- /.info-box-content -->
 		</div>
-		<!-- /.info-box -->
 	</div>
 	<div class="col-12">
 		<div class="card">
@@ -66,12 +62,6 @@
 										</div>
 										<div class="form-group">
 											<input type="email" class="form-control" name="email" placeholder="Email">
-										</div>
-										<div class="form-group">
-											<div class="custom-file">
-											  <input type="file" class="custom-file-input" name="profile_picture" id="profile_picture">
-											  <label class="custom-file-label text-left" for="profile_picture" style="font-size: 16px;">Upload Profil Picture</label>
-											</div>
 										</div>
 										<div class="form-group">
 											<input type="password" class="form-control" name="password" placeholder="Password">
@@ -109,11 +99,11 @@
 									<span class="badge badge-success">On</span>
 								</td>
 								<td>
-									{{-- <a href="" class="btn btn-warning"><i class="fa fa-edit"></i>Edit</a> --}}
-									<form action="{{ route('admin.member.destroy', ['id' => $value->id]) }}" method="POST">
-										@csrf
-										@method('DELETE')
-										<button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Turn off member"><i class="fa fa-power-off"></i></button>
+									<form action="{{ route('admin.member.destroy', $value->id) }}" method="POST">
+										@csrf	@method('DELETE')
+										<button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Turn off member">
+											<i class="fa fa-power-off"></i>
+										</button>
 									</form>
 								</td>
 								@else
@@ -121,10 +111,11 @@
 									<span class="badge badge-secondary">Off</span>
 								</td>
 								<td>
-									<form action="{{ route('admin.member.activating', ['id' => $value->id]) }}" method="POST">
-										@csrf
-										@method('PUT')
-										<button class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="bottom" title="Turn on member"><i class="fa fa-power-off"></i></button>
+									<form action="{{ route('admin.member.activating', $value->id) }}" method="POST">
+										@csrf	@method('PUT')
+										<button class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="bottom" title="Turn on member">
+											<i class="fa fa-power-off"></i>
+										</button>
 									</form>
 								</td>
 								@endif
@@ -139,16 +130,16 @@
 @endsection
 
 @section('script')
-<script src="{{ asset('plugins/datatables/jquery.dataTables.js') }}"></script>
-<script src="{{ asset('plugins/datatables/dataTables.bootstrap4.js') }}"></script>
-<script src="{{ asset('plugins/bootstrap/js/bs-inputfile.js') }}" charset="utf-8"></script>
-<script>
-	$(document).ready(function() {
-		bsCustomFileInput.init();
-		$('input, textarea, select').prop("required", true);
-		$('.datatables').dataTable();
-		$('.message-session').delay(3000).slideUp(600);
-		$('[data-toggle="tooltip"]').tooltip();
-	});
-</script>
+	<script src="{{ asset('plugins/datatables/jquery.dataTables.js') }}"></script>
+	<script src="{{ asset('plugins/datatables/dataTables.bootstrap4.js') }}"></script>
+	<script src="{{ asset('plugins/bootstrap/js/bs-inputfile.js') }}" charset="utf-8"></script>
+	<script>
+		$(document).ready(function() {
+			bsCustomFileInput.init();
+			$('input, textarea, select').prop("required", true);
+			$('.datatables').dataTable();
+			$('.message-session').delay(3000).slideUp(600);
+			$('[data-toggle="tooltip"]').tooltip();
+		});
+	</script>
 @endsection
