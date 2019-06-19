@@ -16,7 +16,7 @@ class PenghasilanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $data['pendapatan'] = Klien::where('idMember', Auth::guard('member')->user()->id)
         ->where("kliens.status", 'deal')
