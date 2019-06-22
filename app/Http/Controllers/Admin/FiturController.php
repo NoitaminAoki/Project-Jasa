@@ -114,7 +114,7 @@ class FiturController extends Controller
     public function destroy($id)
     {
       $hapusFitur = Fitur::findOrFail($id);
-      $hapusFitur->delete();
+      $hapusFitur->truncate();
       return redirect()->back()->with("success_message", "Berhasil Menghapus Uraian Pekerjaan");
     }
 }

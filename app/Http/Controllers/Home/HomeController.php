@@ -21,9 +21,9 @@ class HomeController extends Controller
     public function landing()
     {
         $price = Harga::limit(3)->oldest()->with('GetFitur')->get();
-        $fiturPemula = Harga::limit(3)->with('GetFitur')->orderBy('harga', 'asc')->get();
-        $fiturBisnis = Harga::limit(3)->with('GetFitur')->orderBy('harga', 'asc')->skip(1)->get();
-        $fiturProfesional = Harga::limit(3)->with('GetFitur')->orderBy('harga', 'asc')->skip(2)->get();
+        $fiturPemula = Harga::limit(3)->with('GetFitur')->where('id', 3)->get();
+        $fiturBisnis = Harga::limit(3)->with('GetFitur')->where('id', 1)->get();
+        $fiturProfesional = Harga::limit(3)->with('GetFitur')->where('id', 2)->get();
         $partners = Partner::all();
         $support = Support::where('tampilkan', 'iya')->get();
         return view('landing', compact('price', 'partners', 'support', 'fiturPemula', 'fiturProfesional', 'fiturBisnis'));
