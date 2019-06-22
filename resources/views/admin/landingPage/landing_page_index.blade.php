@@ -113,26 +113,24 @@
 															<p class="col-12">Ada</p>
 															@if ($fitur->ada == 'iya')
 																<div class="custom-control custom-radio custom-control-inline">
-																	<input type="radio" id="iya" name="menu" class="custom-control-input" value="iya" checked>
-																	<label class="custom-control-label" for="iya">Iya</label>
+																	<input type="radio" id="iya{{ $fitur->id }}" name="ada" class="custom-control-input" value="iya" checked>
+																	<label class="custom-control-label" for="iya{{ $fitur->id }}">Iya</label>
 																</div>
 																<div class="custom-control custom-radio custom-control-inline">
-																	<input type="radio" id="tidak" name="menu" class="custom-control-input" value="tidak">
-																	<label class="custom-control-label" for="tidak">Tidak</label>
+																	<input type="radio" id="tidak{{ $fitur->id }}" name="ada" class="custom-control-input" value="tidak">
+																	<label class="custom-control-label" for="tidak{{ $fitur->id }}">Tidak</label>
 																</div>
 															@else
 																<div class="custom-control custom-radio custom-control-inline">
-																	<input type="radio" id="iya" name="menu" class="custom-control-input" value="iya">
-																	<label class="custom-control-label" for="iya">Iya</label>
+																	<input type="radio" id="iya{{ $fitur->id }}" name="ada" class="custom-control-input" value="iya">
+																	<label class="custom-control-label" for="iya{{ $fitur->id }}">Iya</label>
 																</div>
 																<div class="custom-control custom-radio custom-control-inline">
-																	<input type="radio" id="tidak" name="menu" class="custom-control-input" value="tidak" checked>
-																	<label class="custom-control-label" for="tidak">Tidak</label>
+																	<input type="radio" id="tidak{{ $fitur->id }}" name="ada" class="custom-control-input" value="tidak" checked>
+																	<label class="custom-control-label" for="tidak{{ $fitur->id }}">Tidak</label>
 																</div>
 															@endif
 														</div>
-													@else
-														<input type="hidden" name="ada" value="{{ $fitur->ada }}">
 													@endif
 													<div class="form-group">
 														<label for="namaFitur">Nama Fitur</label>
@@ -140,9 +138,11 @@
 													</div>
 													<div class="custom-control d-inline-block custom-checkbox" style="margin-top: 7px;">
 														@if ($fitur->tampilkan == 'iya')
-															<input type="checkbox" name="ubahTampilkan" class="custom-control-input" id="tampilkanFitur{{ $fitur->id }}" checked>
+															<input type="checkbox" name="ubahTampilkan" value="iya" class="custom-control-input" id="tampilkanFitur{{ $fitur->id }}" checked>
+															<input type="checkbox" name="ubahTampilkan" value="tidak" class="custom-control-input" id="tampilkanFitur{{ $fitur->id }}">
 														@else
-															<input type="checkbox" name="ubahTampilkan" class="custom-control-input" id="tampilkanFitur{{ $fitur->id }}">
+															<input type="checkbox" name="ubahTampilkan" value="iya" class="custom-control-input" id="tampilkanFitur{{ $fitur->id }}">
+															<input type="checkbox" name="ubahTampilkan" value="tidak" class="custom-control-input" id="tampilkanFitur{{ $fitur->id }}" checked>
 														@endif
 														<label class="custom-control-label" for="tampilkanFitur{{ $fitur->id }}">Tampilkan</label>
 													</div>

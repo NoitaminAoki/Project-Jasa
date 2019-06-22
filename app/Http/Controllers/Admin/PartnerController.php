@@ -15,7 +15,7 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        $partners = Partner::paginate(9);
+        $partners = Partner::paginate(12);
         return view('admin.partner.index', ['partners' => $partners]);
     }
 
@@ -85,7 +85,7 @@ class PartnerController extends Controller
       $partner = Partner::findOrFail($id);
       $partner->nama = $request->nama;
       $partner->save();
-      
+
       return redirect()->route('admin.partner.index');
     }
 
