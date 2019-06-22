@@ -122,7 +122,7 @@ foreach ($price as $harga) {
           <summary>Lihat Fitur</summary>
           <ul>
             @foreach ($fiturBisnis as $harga)
-              @foreach ($harga->GetFitur as $fitur)
+              @foreach ($harga->GetFitur->where('tampilkan', 'iya') as $fitur)
                 <li class=""
                 style="@if ($fitur->menu == 'sub') text-indent: 15px;
                        @elseif ($fitur->menu == 'besar') font-weight: bolder; font-size: 1.1em; @endif">
@@ -149,7 +149,7 @@ foreach ($price as $harga) {
           <summary>Lihat Fitur</summary>
           <ul>
             @foreach ($fiturProfesional as $harga)
-              @foreach ($harga->GetFitur as $fitur)
+              @foreach ($harga->GetFitur->where('tampilkan', 'iya') as $fitur)
                 <li class=""
                 style="@if ($fitur->menu == 'sub') text-indent: 15px;
                        @elseif ($fitur->menu == 'besar') font-weight: bolder; font-size: 1.1em; @endif">
@@ -176,7 +176,7 @@ foreach ($price as $harga) {
           <summary>Lihat Fitur</summary>
           <ul>
             @foreach ($fiturPemula as $harga)
-              @foreach ($harga->GetFitur as $fitur)
+              @foreach ($harga->GetFitur->where('tampilkan', 'iya') as $fitur)
                 <li class=""
                 style="@if ($fitur->menu == 'sub') text-indent: 15px;
                        @elseif ($fitur->menu == 'besar') font-weight: bolder; font-size: 1.1em; @endif">
@@ -225,7 +225,7 @@ foreach ($price as $harga) {
           <div class="col-md-4 pl-0">
             <ul>
               @foreach ($fiturBisnis as $harga)
-                @foreach ($harga->GetFitur as $fitur)
+                @foreach ($harga->GetFitur->where('tampilkan', 'iya') as $fitur)
   								<li class=""
   								style="@if ($fitur->menu == 'sub') text-indent: 15px;
   								       @elseif ($fitur->menu == 'besar') font-weight: bolder; font-size: 1.1em; @endif">
@@ -241,7 +241,7 @@ foreach ($price as $harga) {
           <div class="col-md-4">
             <ul>
               @foreach ($fiturProfesional as $harga)
-                @foreach ($harga->GetFitur as $fitur)
+                @foreach ($harga->GetFitur->where('tampilkan', 'iya') as $fitur)
   								<li class=""
   								style="@if ($fitur->menu == 'sub') text-indent: 15px;
   								       @elseif ($fitur->menu == 'besar') font-weight: bolder; font-size: 1.1em; @endif">
@@ -257,7 +257,7 @@ foreach ($price as $harga) {
           <div class="col-md-4 pr-0">
             <ul>
               @foreach ($fiturPemula as $harga)
-                @foreach ($harga->GetFitur as $fitur)
+                @foreach ($harga->GetFitur->where('tampilkan', 'iya') as $fitur)
   								<li class=""
   								style="@if ($fitur->menu == 'sub') text-indent: 15px;
   								       @elseif ($fitur->menu == 'besar') font-weight: bolder; font-size: 1.1em; @endif">

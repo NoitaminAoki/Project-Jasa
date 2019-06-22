@@ -97,13 +97,4 @@ class LandingPageController extends Controller
     $ubah_harga->save();
     return redirect()->route('admin.landing-page.index');
   }
-
-  public function tampilkanFitur(Request $request, $id)
-  {
-    $tampilkan = Fitur::findOrFail($id);
-  }
-  public function hapusFitur(Request $request, $id)
-  {
-    $tampilkan = Fitur::findOrFail($id);
-  }
 }

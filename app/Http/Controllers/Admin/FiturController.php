@@ -93,9 +93,9 @@ class FiturController extends Controller
 
       $updateFitur->fitur = $request->fitur;
       $updateFitur->harga_id = $request->harga_id;
-      $updateFitur->ada = $request->ada;
       $updateFitur->menu = $request->menu;
-      if ($request->ubahTampilkan == 'iya') {
+      $updateFitur->ada = $request->ada;
+      if ($request->has('ubahTampilkan')) {
         $updateFitur->tampilkan = $request->ubahTampilkan;
       }
       else {
