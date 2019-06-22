@@ -23,9 +23,9 @@
       </a>
 
       <!-- Sidebar -->
-      @if (Auth::guard('web')->check())
+      @if (Auth::guard('web')->check() && Request::is('admin/*'))
       @include('temp.sidebarAdmin')
-      @elseif (Auth::guard('member')->check())
+      @elseif (Auth::guard('member')->check() && Request::is('member/*'))
       @include('temp.sidebarMember')
       @endif
       <!-- /.sidebar -->
