@@ -24,13 +24,16 @@ class DashboardController extends Controller
         ->sum("penghasilans.fee");
         $data['potensi_pendapatan'] = Klien::where('idMember', Auth::guard('member')->user()->id)
         ->where("kliens.status", 'pending')
-        ->orWhere("kliens.status", 'negosiasi')
+        ->orWhere([
+            ['kliens.idMember', '=',  Auth::guard('member')->user()->id],
+            ['kliens.status', '=', 'negosiasi']
+        ])
         ->leftJoin('penghasilans', 'kliens.idHarga', '=', 'penghasilans.idHarga')
         ->sum("penghasilans.fee");
         $data['totalPendapatan'] = $data['pendapatan'] + $data['potensi_pendapatan'];
         $data['percentage'] = [
-            'pendapatan' => ($data['pendapatan']/$data['totalPendapatan']*100),
-            'potensi_pendapatan' => ($data['potensi_pendapatan']/$data['totalPendapatan']*100)
+            'pendapatan' => ($data['totalPendapatan'] > 0)?($data['pendapatan']/$data['totalPendapatan']*100): 0,
+            'potensi_pendapatan' => ($data['totalPendapatan'] > 0)?($data['potensi_pendapatan']/$data['totalPendapatan']*100) : 0
         ];
         $data['deal_klien'] = Klien::where('idMember', Auth::guard('member')->user()->id)
         ->where("kliens.status", 'deal')->count();

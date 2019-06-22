@@ -33,8 +33,8 @@ class KlienController extends Controller
         }
         $totalFee = $data['pendapatan'] + $data['potensi_pendapatan'];
         $data['percentage'] = [
-            'pendapatan' => ($data['pendapatan']/$totalFee*100),
-            'potensi_pendapatan' => ($data['potensi_pendapatan']/$totalFee*100)
+            'pendapatan' => ($totalFee > 0)?($data['pendapatan']/$totalFee*100) : 0,
+            'potensi_pendapatan' => ($totalFee > 0)?($data['potensi_pendapatan']/$totalFee*100) : 0
         ];
         return view('member.klien.klien_index')->with($data);
     }

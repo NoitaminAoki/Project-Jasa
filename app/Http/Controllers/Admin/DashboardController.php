@@ -45,8 +45,8 @@ class DashboardController extends Controller
         ->sum("penghasilans.fee");
         $data['totalPendapatan'] = $data['pendapatan'] + $data['potensi_pendapatan'];
         $data['percentage'] = [
-            'pendapatan' => ($data['pendapatan']/$data['totalPendapatan']*100),
-            'potensi_pendapatan' => ($data['potensi_pendapatan']/$data['totalPendapatan']*100)
+            'pendapatan' => ($data['totalPendapatan'] > 0)?($data['pendapatan']/$data['totalPendapatan']*100): 0,
+            'potensi_pendapatan' => ($data['totalPendapatan'] > 0)?($data['potensi_pendapatan']/$data['totalPendapatan']*100) : 0
         ];
         $data['deal_klien'] = Klien::where("kliens.status", 'deal')->count();
         $data['negosiasi_klien'] = Klien::where("kliens.status", 'negosiasi')->count();

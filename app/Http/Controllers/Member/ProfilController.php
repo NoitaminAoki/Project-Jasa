@@ -21,7 +21,7 @@ class ProfilController extends Controller
     */
     public function index()
     {
-        $data['jumlah_klien'] = Klien::count();
+        $data['jumlah_klien'] = Klien::where('idMember', Auth::guard('member')->user()->id)->count();
         return view('member.profil.profil_index')->with($data);
     }
 
