@@ -49,12 +49,12 @@
       </div>
     </li> --}}
     <li class="nav-item">
-      @if (Auth::guard('web')->check())
+      @if (Auth::guard('web')->check() && Request::is('admin/*'))
         <form class="d-inline" action="{{ route('admin.logout') }}" method="post">
           @csrf
           <button type="submit" name="button" class="nav-link btn btn-link"><i class="fa fa-power-off"></i></button>
         </form>
-      @elseif (Auth::guard('member')->check())
+      @elseif (Auth::guard('member')->check() && Request::is('member/*'))
         <form id="logout-form" action="{{ route('member.logout') }}" method="POST">
           @csrf
           <button type="submit" class="btn btn-link nav-link"><i class="fa fa-power-off"></i></button>
