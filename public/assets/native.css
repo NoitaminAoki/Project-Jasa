@@ -450,15 +450,7 @@ header#promosiPage {
 header#promosiPage .header__caption {
   text-align: center;
 }
-#promosiPage + main section figure > a:first-child {
-  display: block;
-  height: 100%;
-  width: 100%;
-}
-#promosiPage + main section figure > a:first-child:hover figcaption {
-  background-color: #ededed;
-}
-#promosiPage + main section figure > a:first-child:hover img {
+#promosiPage + main section figure > img:hover {
   filter: brightness(80%); /*defaultnya 100%*/
 }
 #promosiPage + main section figure {
@@ -480,10 +472,12 @@ header#promosiPage .header__caption {
   border-bottom: 1px solid #a2a2a2;
   color: #4D4D4D;
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 #promosiPage + main section figcaption time {
   font-weight: lighter;
-  margin-top: 15px;
   display: block;
   color: #909090;
 }

@@ -63,7 +63,7 @@
 			<div class="card">
 				<img src="{{ Storage::url($promo->gambar) }}" class="card-img-top" height="180" alt="Promo {{ $promo->title }}">
 				<div class="card-body position-relative">
-					<h2>{{ $promo->title }}</h2>
+					<h2><a href="{{ route('admin.promosi.show', $promo->slug) }}">{{ $promo->title }}</a></h2>
 					<a href="javascript:void(0);" class="more-option-btn"><i class="fas fa-ellipsis-v"></i></a>
 					<ul class="more-option">
 						<li>

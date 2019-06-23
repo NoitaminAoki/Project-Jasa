@@ -67,6 +67,11 @@ class HomeController extends Controller
         $promos = Promosi::where('endDate', '>=', Carbon::now())->paginate(10);
         return view('promosi', ['promos' => $promos]);
     }
+    public function showPromo($slug)
+    {
+      $promo = Promosi::where('slug', $slug)->firstOrFail();
+      return view('show_promosi', ['promo' => $promo]);
+    }
     public function peraturan()
     {
         $peraturan = Peraturan::all();
