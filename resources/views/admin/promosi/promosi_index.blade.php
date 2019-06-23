@@ -61,7 +61,7 @@
 	@foreach ($promos as $promo)
 		<div class="col-12 col-md-4 mb-3">
 			<div class="card">
-				<img src="{{ Storage::url($promo->gambar) }}" class="card-img-top" height="180" alt="Promo {{ $promo->title }}">
+				<img src="{{ asset('assets/img/' . $promo->gambar) }}" class="card-img-top" height="180" alt="Promo {{ $promo->title }}">
 				<div class="card-body position-relative">
 					<h2><a href="{{ route('admin.promosi.show', $promo->slug) }}">{{ $promo->title }}</a></h2>
 					<a href="javascript:void(0);" class="more-option-btn"><i class="fas fa-ellipsis-v"></i></a>
@@ -78,7 +78,7 @@
 							</form>
 						</li>
 					</ul>
-					<p class="card-text">{!! $promo->isi !!}</p>
+					<p class="card-text">{!! str_limit($promo->isi, 150) !!}</p>
 				</div>
 				<div class="card-footer justify-content-between d-flex">
 					<time><span>{{ $promo->startDate->format('d F Y') }}</span> s/d <span>{{ $promo->endDate->format('d F Y') }}</span></time>

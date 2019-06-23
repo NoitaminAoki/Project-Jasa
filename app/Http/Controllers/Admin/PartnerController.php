@@ -41,12 +41,13 @@ class PartnerController extends Controller
         'nama' => 'nullable|max:100',
         'logo' => 'required|file|max:4000', // max 4MB
       ]);
-      $uploadLogo = $request->file('logo');
-      $path = $uploadLogo->store('public/files');
-      $file = Partner::create([
-        'nama' => $request->nama,
-        'logo' => $path
-      ]);
+      $uploadGambar = $request->file('gambar');
+      $gambarName = $uploadGambar->getClientOriginalName();
+      $request->file('gambar')->move('assets/img', $gambarName);
+
+      $partner = new Partner;
+      $partner->nama = $request->nama;
+      $partner->logo = $gambarName;
       return redirect()->route('admin.partner.index');
     }
 

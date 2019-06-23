@@ -3,7 +3,7 @@
 @section('title-body', 'Edit Partner')
 @section('content')
   <div class="col-12">
-    <img src="{{ Storage::url($partner->logo) }}" height="100" class="mx-auto d-block mb-3" alt="{{ $partner->nama }}">
+    <img src="{{ asset('assets/img/' . $partner->logo) }}" height="100" class="mx-auto d-block mb-3" alt="{{ $partner->nama }}">
     <form action="{{ route('admin.partner.update', $partner->id) }}" method="post" enctype="multipart/form-data">
       @csrf @method('PUT')
       <div class="form-group">

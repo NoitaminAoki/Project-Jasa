@@ -14,7 +14,7 @@
       @foreach ($partners as $partner)
         <div class="card-group col-12 col-md-3">
           <div class="card">
-            <img src="{{ Storage::url($partner->logo) }}" height="100" class="card-img-top" alt="{{ $partner->nama }}">
+            <img src="{{ asset('assets/img/' . $partner->logo)}}" height="100" class="card-img-top" alt="{{ $partner->nama }}">
             <div class="card-body">
               <strong class="card-text">{{ $partner->nama }}</strong>
             </div>

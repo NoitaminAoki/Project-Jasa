@@ -39,7 +39,7 @@
       <div class="row">
         <div class="col-12 col-md-6 mx-auto">
             <figure class="mt-5">
-                <img src="{{ Storage::url($promo->gambar) }}" height="200" alt="Promo {{ $promo->title }}">
+                <img src="{{ asset('assets/img/' . $promo->gambar) }}" height="200" alt="Promo {{ $promo->title }}">
                 <figcaption class="py-3">
                   <h1 class="col-12 px-0 mb-3">{{ $promo->title }}</h1>
                   <p class="card-text">{!! $promo->isi !!}</p>

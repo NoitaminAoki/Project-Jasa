@@ -24,10 +24,10 @@
         @foreach ($promos as $promo)
           <div class="col-12 col-md-4">
               <figure>
-                  <img src="{{ Storage::url($promo->gambar) }}" height="200" alt="Promo {{ $promo->title }}">
+                  <img src="{{ asset('assets/img/' . $promo->gambar) }}" height="200" alt="Promo {{ $promo->title }}">
                   <figcaption>
                     <h2 class="col-12 px-0">{{ $promo->title }}</h2>
-                    <a href="{{ route('home.promo.show', $promo->slug) }}" class="col-12 px-0 mb-3" target="_blank">Read More</a>
+                    <a href="{{ route('home.promo.show', $promo->slug) }}" class="col-12 px-0 mb-3" target="">Read More</a>
                     <time>{{ $promo->startDate->format('d F Y') . " - " . $promo->endDate->format('d F Y') }}</time>
                   </figcaption>
               </figure>

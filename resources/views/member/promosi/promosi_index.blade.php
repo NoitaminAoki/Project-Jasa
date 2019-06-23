@@ -61,7 +61,7 @@
 	@foreach ($promos as $promo)
 		<div class="col-12 col-md-4 mb-3">
 			<div class="card">
-				<img src="{{ Storage::url($promo->gambar) }}" class="card-img-top" height="180" alt="Promo {{ $promo->title }}">
+				<img src="{{ asset('assets/img/' . $promo->gambar) }}" class="card-img-top" height="180" alt="Promo {{ $promo->title }}">
 				<div class="card-body position-relative">
 					<h2><a href="{{ route('member.promosi.show', $promo->slug) }}">{{ $promo->title }}</a></h2>
 					<p class="card-text">{!! $promo->isi !!}</p>

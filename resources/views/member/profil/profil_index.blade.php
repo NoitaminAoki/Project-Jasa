@@ -29,7 +29,7 @@
 		<div class="card-body box-profile">
 			<div class="text-center">
 				<img class="profile-user-img img-fluid img-circle"
-				src="{{ (Storage::exists(Auth::guard('member')->user()->profile_picture))? Storage::url(Auth::guard('member')->user()->profile_picture) : asset('dist/img/avatar5.png') }}" alt="User profile picture">
+				src="{{ asset('assets/img/' . Auth::guard('member')->user()->profile_picture) }}" alt="User profile picture">
 			</div>
 
 			<h3 class="profile-username text-center">{{ Auth::guard('member')->user()->name }}</h3>

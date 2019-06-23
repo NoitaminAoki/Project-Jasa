@@ -47,16 +47,19 @@ class PromosiController extends Controller
       'gambar' => 'required|file|max:2000'
     ]);
     $uploadGambar = $request->file('gambar');
-    $gambar = $uploadGambar->store('public/files');
+    $gambarName = $uploadGambar->getClientOriginalName();
+    $request->file('gambar')->move('assets/img', $gambarName);
+
     $tambahPromo = new Promosi;
     $tambahPromo->slug = Str::slug($request->title);
     $tambahPromo->title = $request->title;
-    $tambahPromo->gambar = $gambar;
+    $tambahPromo->gambar = $gambarName;
     $tambahPromo->isi = $request->isi;
     $tambahPromo->kode = url()->current() . '/' . Str::slug(strtolower($request->title)) . '/' . Str::slug(strtolower(Auth::user()->name));
     $tambahPromo->startDate = new DateTime($request->startDate);
     $tambahPromo->endDate = new DateTime($request->endDate);
     $tambahPromo->save();
+
     return redirect()->route('admin.promosi.index');
   }
 
@@ -99,10 +102,10 @@ class PromosiController extends Controller
     $updatePromosi->isi = $request->isi;
     if ($request->hasFile('gambar') && $request->file('gambar')->isValid()) {
       $this->validate($request, ['gambar' => 'file|max:2000']);
-      Storage::delete($updatePromosi->gambar);
-      $uploadLogo = $request->file('gambar');
-      $updateGambar = $uploadLogo->store('public/files');
-      $updatePromosi->gambar = $updateGambar;
+      $uploadGambar = $request->file('gambar');
+      $gambarName = $uploadGambar->getClientOriginalName();
+      $request->file('gambar')->move('assets/img', $gambarName);
+      $updatePromosi->gambar = $gambarName;
     }
     $updatePromosi->startDate = new DateTime($request->startDate);
     $updatePromosi->endDate = new DateTime($request->endDate);
