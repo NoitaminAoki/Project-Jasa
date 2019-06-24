@@ -42,9 +42,6 @@
 	.more-option li:hover {
 		background-color: #e4e2e2;
 	}
-	.more-option li:first-child {
-		/* margin-bottom: 10px; */
-	}
 </style>
 @endsection
 
@@ -61,7 +58,7 @@
 	@foreach ($promos as $promo)
 		<div class="col-12 col-md-4 mb-3 card-group">
 			<div class="card">
-				<img src="{{ asset('assets/img/' . $promo->gambar) }}" class="card-img-top" height="180" alt="Promo {{ $promo->title }}">
+				<img src="{{ asset('assets/img/' . $promo->gambar) }}" height="180" alt="Promo {{ $promo->title }}">
 				<div class="card-body position-relative">
 					<h2><a href="{{ route('admin.promosi.show', $promo->slug) }}">{{ $promo->title }}</a></h2>
 					<a href="javascript:void(0);" class="more-option-btn"><i class="fas fa-ellipsis-v"></i></a>
@@ -90,7 +87,7 @@
 			</div>
 		</div>
 	@endforeach
-	<div class="col-12 d-flex mb-4 justify-content-between">
+	<div class="col-12 d-flex mb-4 justify-content-between align-items-center">
 		<a href="{{ route('admin.promosi.create') }}" class="btn btn-info">Buat Promo</a>
 		{{ $promos->links('vendor.pagination.bootstrap-4') }}
 	</div>

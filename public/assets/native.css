@@ -465,16 +465,18 @@ header#promosiPage .header__caption {
 #promosiPage + main section .col-12:not(:first-of-type) {
   margin-top: 40px;
 }
-#promosiPage + main section figcaption {
-  border-right: 1px solid #a2a2a2;
-  border-radius: 0 0 8px 8px;
-  border-left: 1px solid #a2a2a2;
-  border-bottom: 1px solid #a2a2a2;
+#promosiPage + main section figure {
+  border: 1px solid #a2a2a2;
+  border-radius: 8px;
   color: #4D4D4D;
-  padding: 10px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+#promosiPage + main section figcaption {
+  padding: 10px;
+  border-top: 1px solid #a2a2a2;
+  width: 100%;
 }
 #promosiPage + main section figcaption time {
   font-weight: lighter;

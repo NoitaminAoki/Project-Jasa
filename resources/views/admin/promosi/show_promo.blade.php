@@ -24,7 +24,7 @@
   	</div>
 	@endif
 	<figure class="col-8 mx-auto mb-3 text-center">
-		<img src="{{ asset('assets/img/' . $promo->gambar) }}" height="300" alt="Promo {{ $promo->title }}">
+		<img src="{{ asset('assets/img/' . $promo->gambar) }}" class="img-fluid" height="300" alt="Promo {{ $promo->title }}">
 		<figcaption class="text-left py-4">
 			<h1 class="text-center mb-4 font-weight-bold">{{ $promo->title }}</h1>
 			<p class="card-text">{!! $promo->isi !!}</p>

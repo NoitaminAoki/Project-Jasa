@@ -5,6 +5,9 @@
     figure figcaption a {
       color: #2d87df;
     }
+    figure {
+      border: 1px solid #a2a2a2;
+    }
   </style>
 @endsection
 @section('header')
