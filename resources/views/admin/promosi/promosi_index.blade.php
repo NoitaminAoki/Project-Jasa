@@ -59,7 +59,7 @@
 	</div>
 	@endif
 	@foreach ($promos as $promo)
-		<div class="col-12 col-md-4 mb-3">
+		<div class="col-12 col-md-4 mb-3 card-group">
 			<div class="card">
 				<img src="{{ asset('assets/img/' . $promo->gambar) }}" class="card-img-top" height="180" alt="Promo {{ $promo->title }}">
 				<div class="card-body position-relative">

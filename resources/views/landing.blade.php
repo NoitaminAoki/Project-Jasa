@@ -86,7 +86,7 @@ foreach ($price as $harga) {
     <div class="row mx-0 klienSlideshow" id="slideshowMobile">
       @foreach ($partners as $partner)
       <figure style="margin-bottom: 30px;">
-        <img src="{{ Storage::url($partner->logo) }}" height="100" alt="{{ $partner->nama }}">
+        <img src="{{ asset('assets/img/' . $partner->logo) }}" height="100" alt="{{ $partner->nama }}">
         <figcaption>
           {{ $partner->nama }}
         </figcaption>
@@ -96,7 +96,7 @@ foreach ($price as $harga) {
     <div class="row mx-0 klienSlideshow" id="slideshowDesktop">
       @foreach ($partners as $partner)
       <figure>
-        <img src="{{ Storage::url($partner->logo) }}" height="100" alt="{{ $partner->nama }}">
+        <img src="{{ asset('assets/img/' . $partner->logo) }}" height="100" alt="{{ $partner->nama }}">
         <figcaption>
           {{ $partner->nama }}
         </figcaption>

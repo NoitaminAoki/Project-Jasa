@@ -59,12 +59,12 @@
 	</div>
 	@endif
 	@foreach ($promos as $promo)
-		<div class="col-12 col-md-4 mb-3">
+		<div class="col-12 col-md-4 mb-3 card-group">
 			<div class="card">
 				<img src="{{ asset('assets/img/' . $promo->gambar) }}" class="card-img-top" height="180" alt="Promo {{ $promo->title }}">
 				<div class="card-body position-relative">
 					<h2><a href="{{ route('member.promosi.show', $promo->slug) }}">{{ $promo->title }}</a></h2>
-					<p class="card-text">{!! $promo->isi !!}</p>
+					<p class="card-text">{!! str_limit($promo->isi, 150) !!}</p>
 				</div>
 				<div class="card-footer justify-content-between d-flex">
 					<time>{{ $promo->startDate->format('d F Y') . " - " . $promo->endDate->format('d F Y') }}</time>
