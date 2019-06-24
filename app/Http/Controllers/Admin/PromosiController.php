@@ -111,6 +111,7 @@ class PromosiController extends Controller
     $updatePromosi->endDate = new DateTime($request->endDate);
     $updatePromosi->save();
     return redirect()->route('admin.promosi.index')->with('success_message', 'Berhasil Mengubah Promosi');
+
   }
 
   /**

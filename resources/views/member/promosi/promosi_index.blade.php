@@ -104,7 +104,7 @@
 			return;
 			$(this).parents(".card").find(".more-option").removeClass("visible");
 		});
-		$("*").not(".more-optio, .more-option-btn").click(function(e) {
+		$("*").not(".more-option, .more-option-btn").click(function(e) {
 			if (e.target !== this)
 			return;
 			$(".more-option").removeClass("visible");

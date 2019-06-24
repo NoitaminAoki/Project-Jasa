@@ -20,7 +20,7 @@ class CreateMembersTable extends Migration
             $table->string('noTelp', 25);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('email')->unique();
-            $table->string('profile_picture')->default('public/files/avatar5.png');
+            $table->string('profile_picture')->default('avatar5.png');
             $table->string('password');
             $table->string('status')->default('active');
             $table->timestamps();

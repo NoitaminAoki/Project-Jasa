@@ -70,19 +70,11 @@ Route::prefix('member')->namespace('Member')->name('member.')->middleware(['auth
 });
 
 Route::namespace('Home')->name('home.')->group(function () {
-  // $member = App\Models\Member::all()->toArray();
-  // $configMember = Str::slug($member[0]['name'], '-');
-  // $member = array_splice($member, 1);
-  // foreach ($member as $value) {
-  //   $configMember = $configMember."||".Str::slug($value['name'], '-');
-  // }
   $promo = App\Models\Promosi::all()->toArray();
   $configPromo = $promo[0]['slug'];
   $promo = array_splice($promo, 1);
   foreach ($promo as $value) {
     $configPromo = $configPromo."||".$value['slug'];
   }
-Route::get('/{promo}/{member}', 'HomeController@getPromo')->name('getpromo')
-->where('promo', $configPromo);
-// ->where(['promo' => '^(?!admin$).*$', 'promo' => '^(?!member$).*$', 'member' => $configMember]);
+  Route::get('/{promo}/{member}', 'HomeController@getPromo')->name('getpromo')->where('promo', $configPromo);
 });
