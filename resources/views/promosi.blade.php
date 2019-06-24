@@ -8,6 +8,35 @@
     figure {
       border: 1px solid #a2a2a2;
     }
+    .pagination {
+      display: flex;
+      justify-content: space-between;
+      background-color: inherit;
+      border: 1px solid #e2e2e2;
+      border-radius: 5px;
+    }
+    .pagination li {
+      transition: all 250ms;
+      height: 35px;
+      line-height: 35px;
+      padding: 0 1rem;
+    }
+    .pagination li:not(:last-child) {
+      border-right: 1px solid #e2e2e2;
+    }
+    .pagination .active {
+      background-color: #3790c6;
+      color: #fff;
+    }
+    .pagination li:not(.active):not(.disabled):hover {
+      background-color: #ededed;
+    }
+    .pagination .disabled {
+      color: #cccccc;
+    }
+    .pagination li:not(.active):not(.disabled) {
+      color: #3790c6;
+    }
   </style>
 @endsection
 @section('header')
@@ -36,6 +65,9 @@
               </figure>
           </div>
         @endforeach
+      </div>
+      <div class="row py-5 align-items-center justify-content-center">
+        {{ $promos->links('vendor.pagination.mypaginate') }}
       </div>
     </div>
   </section>
