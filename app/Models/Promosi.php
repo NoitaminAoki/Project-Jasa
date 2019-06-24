@@ -9,6 +9,7 @@ use App\Models\Promosi;
 class Promosi extends Model
 {
     protected $table = 'promosi';
+    protected $fillable = ['isi', 'kode', 'startDate', 'endDate', 'gambar', 'slug', 'title'];
     protected $dates = ['startDate', 'endDate'];
 
     // public function getCreatedAtAttribute($timestamp) {

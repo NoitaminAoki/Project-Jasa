@@ -31,9 +31,9 @@ class HomeController extends Controller
     public function getPromo($promo, $member)
     {
         $price = Harga::limit(3)->get();
-        $fiturPemula = Harga::limit(3)->with('GetFitur')->orderBy('harga', 'asc')->get();
-        $fiturBisnis = Harga::limit(3)->with('GetFitur')->orderBy('harga', 'asc')->skip(1)->get();
-        $fiturProfesional = Harga::limit(3)->with('GetFitur')->orderBy('harga', 'asc')->latest();
+        $fiturPemula = Harga::limit(3)->with('GetFitur')->where('id', 3)->get();
+        $fiturBisnis = Harga::limit(3)->with('GetFitur')->where('id', 1)->get();
+        $fiturProfesional = Harga::limit(3)->with('GetFitur')->where('id', 2)->get();
         $partners = Partner::all();
         $getPromo = Promosi::where('slug', $promo)->firstOrFail();
         $getMember = Member::where('name', str_replace('-', ' ', $member))->firstOrFail();
@@ -66,6 +66,11 @@ class HomeController extends Controller
     {
         $promos = Promosi::where('endDate', '>=', Carbon::now())->paginate(10);
         return view('promosi', ['promos' => $promos]);
+    }
+    public function showPromo($slug)
+    {
+      $promo = Promosi::where('slug', $slug)->firstOrFail();
+      return view('show_promosi', ['promo' => $promo]);
     }
     public function peraturan()
     {

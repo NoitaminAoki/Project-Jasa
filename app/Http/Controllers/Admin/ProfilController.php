@@ -102,12 +102,17 @@ class ProfilController extends Controller
     public function UpdateProfile(Request $request)
     {
       $this->validate($request, ['profile_picture' => 'required|file|max:2000']);
-      $uploadLogo = $request->file('profile_picture');
-      $path = $uploadLogo->store('public/files');
+      // $uploadLogo = $request->file('profile_picture');
+      // $path = $uploadLogo->store('public/files');
 
       $profile_picture = User::findOrFail(Auth::guard('web')->user()->id);
-      Storage::delete($profile_picture->profile_picture);
-      $profile_picture->profile_picture = $path;
+      // Storage::delete($profile_picture->profile_picture);
+      if ($request->hasFile('profile_picture') && $request->file('profile_picture')->isValid()) {
+        $uploadGambar = $request->file('profile_picture');
+        $gambarName = $uploadGambar->getClientOriginalName();
+        $request->file('profile_picture')->move('assets/img', $gambarName);
+        $profile_picture->profile_picture = $gambarName;
+      }
       $profile_picture->save();
       $request->session()->flash('success_message', 'Profile Picture Updated');
       return redirect()->back();

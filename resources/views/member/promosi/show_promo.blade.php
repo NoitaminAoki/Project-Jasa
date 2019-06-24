@@ -1,6 +1,6 @@
 @extends('temp.main')
 
-@section('title-page', 'E-Bina | Admin - Promosi')
+@section('title-page', 'E-Bina | Promosi')
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap4.css') }}">
@@ -24,7 +24,7 @@
   	</div>
 	@endif
 	<figure class="col-8 mx-auto mb-3 text-center">
-		<img src="{{ Storage::url($promo->gambar) }}" height="300" alt="Promo {{ $promo->title }}">
+		<img src="{{ asset('assets/img/' . $promo->gambar) }}" height="300" alt="Promo {{ $promo->title }}">
 		<figcaption class="text-left py-4">
 			<h1 class="text-center mb-4 font-weight-bold">{{ $promo->title }}</h1>
 			<p class="card-text">{!! $promo->isi !!}</p>

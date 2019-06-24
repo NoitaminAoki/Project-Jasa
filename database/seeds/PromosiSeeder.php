@@ -15,7 +15,7 @@ class PromosiSeeder extends Seeder
         [
           'slug' => 'promosi-pertama',
           'title' => 'Promosi Pertama',
-          'gambar' => 'public/files/promos.png',
+          'gambar' => 'promos.png',
           'isi' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non justo nec risus feugiat sagittis ac vel nunc.
                     Integer turpis urna, aliquet non enim id, ultrices pharetra orci. Suspendisse convallis sapien libero,
                     sit amet vestibulum.',
@@ -26,7 +26,7 @@ class PromosiSeeder extends Seeder
         [
           'slug' => 'promosi-kedua',
           'title' => 'Promosi Kedua',
-          'gambar' => 'public/files/promos.png',
+          'gambar' => 'promos.png',
           'isi' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non justo nec risus feugiat sagittis ac vel nunc.
                     Integer turpis urna, aliquet non enim id, ultrices pharetra orci. Suspendisse convallis sapien libero,
                     sit amet vestibulum.',
@@ -37,7 +37,7 @@ class PromosiSeeder extends Seeder
         [
           'slug' => 'promosi-ketiga',
           'title' => 'Promosi Ketiga',
-          'gambar' => 'public/files/promos.png',
+          'gambar' => 'promos.png',
           'isi' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non justo nec risus feugiat sagittis ac vel nunc.
                     Integer turpis urna, aliquet non enim id, ultrices pharetra orci. Suspendisse convallis sapien libero,
                     sit amet vestibulum.',
@@ -48,7 +48,7 @@ class PromosiSeeder extends Seeder
         [
           'slug' => 'promosi-keempat',
           'title' => 'Promosi Keempat',
-          'gambar' => 'public/files/promos.png',
+          'gambar' => 'promos.png',
           'isi' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non justo nec risus feugiat sagittis ac vel nunc.
                     Integer turpis urna, aliquet non enim id, ultrices pharetra orci. Suspendisse convallis sapien libero,
                     sit amet vestibulum.',
@@ -59,7 +59,7 @@ class PromosiSeeder extends Seeder
         [
           'slug' => 'promosi-kelima',
           'title' => 'Promosi kelima',
-          'gambar' => 'public/files/promos.png',
+          'gambar' => 'promos.png',
           'isi' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non justo nec risus feugiat sagittis ac vel nunc.
                     Integer turpis urna, aliquet non enim id, ultrices pharetra orci. Suspendisse convallis sapien libero,
                     sit amet vestibulum.',

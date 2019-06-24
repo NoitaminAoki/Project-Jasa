@@ -28,6 +28,7 @@ Route::namespace('Home')->name('home.')->group(function () {
   Route::get('support', 'HomeController@support')->name('support');
   Route::post('support', 'HomeController@supportStore')->name('support.store');
   Route::get('promo', 'HomeController@promosi')->name('promosi');
+  Route::get('promo/{slug}', 'HomeController@showPromo')->name('promo.show');
   Route::get('syarat-dan-ketentuan', 'HomeController@peraturan')->name('peraturan');
   Route::get('profil', 'HomeController@profil')->name('profil');
   Route::get('profil/asd', 'HomeController@profil')->name('profil');

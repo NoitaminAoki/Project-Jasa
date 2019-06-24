@@ -66,7 +66,6 @@ class UserSeeder extends Seeder
     DB::table('users')->insert([
       'name' => 'Admin E-Bina',
       'email' => 'admin@ebina.com',
-      'profile_picture' => 'public/files/avatar5.png',
       'password' => Hash::make('adminebina'),
     ]);
     DB::table('members')->insert([
