@@ -16,7 +16,7 @@ class PromosiController extends Controller
      */
     public function index()
     {
-        $promos = Promosi::where('endDate', '>=', Carbon::now())->paginate(10);
+        $promos = Promosi::paginate(9);
         return view('member.promosi.promosi_index', ['promos' => $promos]);
     }
 
