@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
           PromosiSeeder::class,
           FiturSeeder::class,
           PenghasilanSeeder::class,
+          MitraSeeder::class,
         ]);
     }
 }

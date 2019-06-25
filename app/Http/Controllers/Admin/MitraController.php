@@ -16,7 +16,7 @@ class MitraController extends Controller
      */
     public function index()
     {
-        $mitra = Mitra::paginate(12);
+        $mitra = Mitra::paginate(10);
         return view('admin.mitra', compact('mitra'));
     }
 
@@ -90,6 +90,8 @@ class MitraController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $mitraDelete = Mitra::findOrFail($id);
+        $mitraDelete->delete();
+        return redirect()->back()->with('success_message', 'Berhasil Hapus Mitra');
     }
 }
