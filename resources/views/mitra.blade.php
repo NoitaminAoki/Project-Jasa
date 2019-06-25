@@ -1,8 +1,34 @@
 @extends('layouts.master_static')
 @section('title', 'Mari Bermitra Dengan Kami')
+@section('css')
+  <style media="screen">
+    .alert {
+      position: fixed;
+      top: 90px;
+      padding: .75rem 1.25rem;
+      border: 1px solid transparent;
+      border-radius: .25rem;
+      z-index: 3;
+      width: 80%;
+      max-width: 700px;
+    }
+    .alert-success {
+      background-color: #d4edda;
+      color: #155724;
+      border-color: #c3e6cb;
+    }
+  </style>
+@endsection
 @section('header')
   <header id="mitraPage">
     <div class="overlay">
+      @if (Session::has('success_message') || Session::has('failed_message'))
+    	<div class="col-12 message-session">
+    		<div class="alert alert-success {{(Session::has('success_message'))? 'success' : 'danger'}} text-center">
+    			{{(Session::has('success_message'))? Session::get('success_message') : Session::get('failed_message')}}
+    		</div>
+    	</div>
+    	@endif
       @include('temp.nav')
       <div class="header__caption">
         <h1>Ayo Bermitra Bersama Kami!</h1>
@@ -53,20 +79,20 @@
               <span class="modal__close"><box-icon name='x' color="white"></box-icon></span>
             </div>
             <div class="modal__content">
-              <form action="" method="post">
+              <form action="{{ route('home.mitra.store') }}" method="post">
                 @csrf
                 <div class="row flex-column mx-0">
                   <div class="col px-0 mb-4">
-                    <input type="text" name="" placeholder="Nama Bisnis">
+                    <input type="text" name="nama" placeholder="Nama Bisnis">
                   </div>
                   <div class="col px-0 mb-4">
-                    <input type="email" name="" placeholder="Email Bisnis">
+                    <input type="email" name="email" placeholder="Email Bisnis">
                   </div>
                   <div class="col px-0 mb-4">
-                    <input type="number" name="" placeholder="Nomor Handphone">
+                    <input type="number" name="hp" placeholder="Nomor Handphone">
                   </div>
                   <div class="col px-0 mb-4">
-                    <textarea name="name" rows="10" placeholder="Alamat Rumah"></textarea>
+                    <textarea rows="10" name="alamat" placeholder="Alamat Rumah"></textarea>
                   </div>
                   <button type="submit" name="button" class="btn-secondary col-md-auto align-self-end">
                     daftar sekarang

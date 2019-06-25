@@ -25,6 +25,7 @@ Route::namespace('Home')->name('home.')->group(function () {
   Route::get('/', 'HomeController@landing');
   Route::get('about', 'HomeController@about')->name('about');
   Route::get('mitra', 'HomeController@mitra')->name('mitra');
+  Route::post('mitra', 'HomeController@storeMitra')->name('mitra.store');
   Route::get('support', 'HomeController@support')->name('support');
   Route::post('support', 'HomeController@supportStore')->name('support.store');
   Route::get('promo', 'HomeController@promosi')->name('promosi');
@@ -54,6 +55,7 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->
   Route::resource('bantuan', 'BantuanController');
   Route::resource('partner', 'PartnerController');
   Route::resource('fitur', 'FiturController');
+  Route::resource('mitra', 'MitraController');
 });
 
 Route::prefix('member')->namespace('Member')->name('member.')->middleware(['auth:member'])->group(function () {

@@ -57,6 +57,14 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{{ route('admin.mitra.index') }}" class="nav-link {{ (Request::segment(2) == "mitra")? 'active' : '' }}">
+            <i class="nav-icon fa fa-male"></i>
+            <p>
+              Mitra
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{{ route('admin.landing-page.index') }}" class="nav-link {{ (Request::segment(2) == "landing-page")? 'active' : '' }}">
             <i class="nav-icon fa fa-book"></i>
             <p>

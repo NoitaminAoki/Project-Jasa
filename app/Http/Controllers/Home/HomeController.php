@@ -15,6 +15,7 @@ use Carbon\Carbon;
 use App\Models\Support;
 use App\Models\Faq;
 use App\Models\Promosi;
+use App\Models\Mitra;
 
 class HomeController extends Controller
 {
@@ -47,6 +48,17 @@ class HomeController extends Controller
     public function mitra()
     {
         return view('mitra');
+    }
+    public function storeMitra(Request $request)
+    {
+      $mitra = new Mitra;
+      $mitra->nama = $request->nama;
+      $mitra->email = $request->email;
+      $mitra->hp = $request->hp;
+      $mitra->alamat = $request->alamat;
+      $mitra->save();
+
+      return redirect()->back()->with('success_message', 'Terima Kasih! Kami Akan Menghubungimu Untuk Info Lebih Lanjut');
     }
     public function support()
     {
