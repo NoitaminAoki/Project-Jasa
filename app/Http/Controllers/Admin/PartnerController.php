@@ -38,16 +38,17 @@ class PartnerController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, [
-        'nama' => 'nullable|max:100',
-        'logo' => 'required|file|max:4000', // max 4MB
+        'nama' => 'required',
+        'logo' => 'required|file', // max 4MB
       ]);
-      $uploadGambar = $request->file('gambar');
+      $uploadGambar = $request->file('logo');
       $gambarName = $uploadGambar->getClientOriginalName();
-      $request->file('gambar')->move('assets/img', $gambarName);
+      $request->file('logo')->move('assets/img', $gambarName);
 
       $partner = new Partner;
       $partner->nama = $request->nama;
       $partner->logo = $gambarName;
+      $partner->save();
       return redirect()->route('admin.partner.index');
     }
 

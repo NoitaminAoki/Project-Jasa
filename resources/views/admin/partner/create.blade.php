@@ -21,3 +21,12 @@
     </form>
   </div>
 @endsection
+@section('script')
+  <script src="{{ asset('plugins/bootstrap/js/bs-inputfile.js') }}" charset="utf-8"></script>
+  <script>
+    $(document).ready(function() {
+      $("input").prop("required", true);
+      bsCustomFileInput.init();
+    });
+  </script>
+@endsection
