@@ -14,7 +14,7 @@ class CreateSupportsTable extends Migration
     public function up()
     {
         Schema::create('support', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->string('id')->unique();
             $table->string('email');
             $table->string('subjek');
             $table->enum('status_terbalas', ['sudah', 'belum'])->default('belum');

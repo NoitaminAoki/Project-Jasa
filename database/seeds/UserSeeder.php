@@ -70,6 +70,7 @@ class UserSeeder extends Seeder
     ]);
     DB::table('members')->insert([
       [
+        'id' => (string) Str::uuid(),
         'code' => 'id-Rizky',
         'name' => 'Rizky',
         'noTelp' => '0899912371',
@@ -78,6 +79,7 @@ class UserSeeder extends Seeder
         'status' => 'active',
       ],
       [
+        'id' => (string) Str::uuid(),
         'code' => 'id-BariqDharmawan',
         'name' => 'Bariq Dharmawan',
         'noTelp' => '0858919113',
@@ -101,6 +103,7 @@ class UserSeeder extends Seeder
       }
 
       DB::table('kliens')->insert([
+        'id' => (string) Str::uuid(),
         'nama' => $fullname,
         'idHarga' => $idHarga,
         'idMember' => $idMember,

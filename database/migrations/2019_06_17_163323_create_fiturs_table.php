@@ -14,7 +14,7 @@ class CreateFitursTable extends Migration
     public function up()
     {
         Schema::create('fitur', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->string('id')->unique();
             $table->string('fitur');
             $table->integer('harga_id');
             $table->enum('ada', ['iya', 'tidak', 'kosong'])->default('kosong');

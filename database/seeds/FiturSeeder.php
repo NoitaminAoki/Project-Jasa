@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class FiturSeeder extends Seeder
 {
@@ -14,6 +15,7 @@ class FiturSeeder extends Seeder
       //fitur di kategori harga pemula
       DB::table('fitur')->insert([
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Rekap Transaksi',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -21,6 +23,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Jurnal',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -28,6 +31,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Buku Besar',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -35,6 +39,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan daftar aset',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -42,6 +47,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Keuangan :',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -49,6 +55,7 @@ class FiturSeeder extends Seeder
           'menu' => 'besar',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Posisi Keuangan',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -56,6 +63,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Laba Rugi Komprehensif',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -63,6 +71,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Perubahan ekuitas',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -70,6 +79,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Arus Kas',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -77,6 +87,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Catatan Laporan Keuangan',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -84,6 +95,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Perpajakan :',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -91,6 +103,7 @@ class FiturSeeder extends Seeder
           'menu' => 'besar',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Pasal 21',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -98,6 +111,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Pasal 22',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -105,6 +119,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => ' PPh Pasal 23',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -112,6 +127,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Pasal 25',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -119,6 +135,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Pasal 26',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -126,6 +143,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Pasal 29',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -133,6 +151,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Pasal 4 (2)',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -140,6 +159,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Final',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -147,6 +167,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPN',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -154,6 +175,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Dll',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -161,6 +183,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Membuat e-billing',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -168,6 +191,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Membayarkan Pajak',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -175,6 +199,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Membuat & Melapor SPT PPh Masa',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -182,6 +207,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Membuat & Melapor SPT Tahunan',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -189,6 +215,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Perencanaan Keuangan',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -196,6 +223,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Perencanaan Pajak',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -203,6 +231,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Print Laporan',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -210,6 +239,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Backup Laporan',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -217,6 +247,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Pengarsipan Laporan',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -224,6 +255,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Visit Perusahaan',
           'harga_id' => 3,
           'tampilkan' => 'iya',
@@ -234,6 +266,7 @@ class FiturSeeder extends Seeder
       //fitur di kategori harga profesional
       DB::table('fitur')->insert([
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Rekap Transaksi',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -241,6 +274,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Jurnal',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -248,6 +282,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Buku Besar',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -255,6 +290,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan daftar aset',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -262,6 +298,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Keuangan :',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -269,6 +306,7 @@ class FiturSeeder extends Seeder
           'menu' => 'besar',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Posisi Keuangan',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -276,6 +314,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Laba Rugi Komprehensif',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -283,6 +322,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Perubahan ekuitas',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -290,6 +330,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Arus Kas',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -297,6 +338,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Catatan Laporan Keuangan',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -304,6 +346,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Perpajakan :',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -311,6 +354,7 @@ class FiturSeeder extends Seeder
           'menu' => 'besar',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Pasal 21',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -318,6 +362,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Pasal 22',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -325,6 +370,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Pasal 23',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -332,6 +378,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Pasal 25',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -339,6 +386,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Pasal 26',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -346,6 +394,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Pasal 29',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -353,6 +402,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Pasal 4 (2)',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -360,6 +410,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Final',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -367,6 +418,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPN',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -374,6 +426,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Dll',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -381,6 +434,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Membuat e-billing',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -388,6 +442,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Membayarkan Pajak',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -395,6 +450,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Membuat & Melapor SPT PPh Masa',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -402,6 +458,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Membuat & Melapor SPT Tahunan',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -409,6 +466,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Perencanaan Keuangan',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -416,6 +474,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Perencanaan Pajak',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -423,6 +482,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Print Laporan',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -430,6 +490,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Backup Laporan',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -437,6 +498,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Pengarsipan Laporan',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -444,6 +506,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Visit Perusahaan',
           'harga_id' => 2,
           'tampilkan' => 'iya',
@@ -454,6 +517,7 @@ class FiturSeeder extends Seeder
       //fitur dikategori harga Bisnis
       DB::table('fitur')->insert([
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Rekap Transaksi',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -461,6 +525,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Jurnal',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -468,6 +533,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Buku Besar',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -475,6 +541,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan daftar aset',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -482,6 +549,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Keuangan :',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -489,6 +557,7 @@ class FiturSeeder extends Seeder
           'menu' => 'besar',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Posisi Keuangan',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -496,6 +565,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Laba Rugi Komprehensif',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -503,6 +573,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Perubahan ekuitas',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -510,6 +581,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Arus Kas',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -517,6 +589,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Catatan Laporan Keuangan',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -524,6 +597,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Laporan Perpajakan :',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -531,6 +605,7 @@ class FiturSeeder extends Seeder
           'menu' => 'besar',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Pasal 21',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -538,6 +613,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Pasal 22',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -545,6 +621,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => ' PPh Pasal 23',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -552,6 +629,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Pasal 25',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -559,6 +637,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Pasal 26',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -566,6 +645,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Pasal 29',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -573,6 +653,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Pasal 4 (2)',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -580,6 +661,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPh Final',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -587,6 +669,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'PPN',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -594,6 +677,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Dll',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -601,6 +685,7 @@ class FiturSeeder extends Seeder
           'menu' => 'sub',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Membuat e-billing',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -608,6 +693,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Membayarkan Pajak',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -615,6 +701,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Membuat & Melapor SPT PPh Masa',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -622,6 +709,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Membuat & Melapor SPT Tahunan',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -629,6 +717,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Perencanaan Keuangan',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -636,6 +725,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Perencanaan Pajak',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -643,6 +733,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Print Laporan',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -650,6 +741,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Backup Laporan',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -657,6 +749,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Pengarsipan Laporan',
           'harga_id' => 1,
           'tampilkan' => 'iya',
@@ -664,6 +757,7 @@ class FiturSeeder extends Seeder
           'menu' => 'biasa',
         ],
         [
+          'id' => (string) Str::uuid(),
           'fitur' => 'Visit Perusahaan',
           'harga_id' => 1,
           'tampilkan' => 'iya',

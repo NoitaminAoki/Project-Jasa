@@ -18,16 +18,14 @@
 @section ('title-body', 'Profil')
 
 @section('content')
-@if (Session::has('success_message') || Session::has('failed_message'))
-<div class="col-12 message-session">
-	<div class="alert alert-{{(Session::has('success_message'))? 'success' : 'danger'}} text-center">
-		{{(Session::has('success_message'))? Session::get('success_message') : Session::get('failed_message')}}
-	</div>
-</div>
-@endif
+	@if (session('success_message') OR session('failed_message'))
+		<div class="col-12 message-session">
+			<div class="alert alert-{{(session('success_message')) ? 'success' : 'danger'}} text-center">
+				{{ (Session::has('success_message'))? Session::get('success_message') : Session::get('failed_message') }}
+			</div>
+		</div>
+	@endif
 <div class="col-md-3">
-
-	<!-- Profile Image -->
 	<div class="card card-primary card-outline">
 		<div class="card-body box-profile">
 			<div class="text-center">

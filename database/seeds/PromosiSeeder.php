@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class PromosiSeeder extends Seeder
 {
@@ -13,6 +14,7 @@ class PromosiSeeder extends Seeder
     {
       DB::table('promosi')->insert([
         [
+          'id' => (string) Str::uuid(),
           'slug' => 'promosi-pertama',
           'title' => 'Promosi Pertama',
           'gambar' => 'promos.png',
@@ -24,6 +26,7 @@ class PromosiSeeder extends Seeder
           'endDate' => '2019-07-13 23:59:59',
         ],
         [
+          'id' => (string) Str::uuid(),
           'slug' => 'promosi-kedua',
           'title' => 'Promosi Kedua',
           'gambar' => 'promos.png',
@@ -35,6 +38,7 @@ class PromosiSeeder extends Seeder
           'endDate' => '2019-07-13 23:59:59',
         ],
         [
+          'id' => (string) Str::uuid(),
           'slug' => 'promosi-ketiga',
           'title' => 'Promosi Ketiga',
           'gambar' => 'promos.png',
@@ -46,6 +50,7 @@ class PromosiSeeder extends Seeder
           'endDate' => '2019-07-13 23:59:59',
         ],
         [
+          'id' => (string) Str::uuid(),
           'slug' => 'promosi-keempat',
           'title' => 'Promosi Keempat',
           'gambar' => 'promos.png',
@@ -57,6 +62,7 @@ class PromosiSeeder extends Seeder
           'endDate' => '2019-07-13 23:59:59',
         ],
         [
+          'id' => (string) Str::uuid(),
           'slug' => 'promosi-kelima',
           'title' => 'Promosi kelima',
           'gambar' => 'promos.png',
@@ -68,6 +74,7 @@ class PromosiSeeder extends Seeder
           'endDate' => '2019-06-13 23:59:59',
         ],
         [
+          'id' => (string) Str::uuid(),
           'slug' => 'promosi-keenam',
           'title' => 'Promosi keenam',
           'gambar' => 'promos.png',
@@ -79,6 +86,7 @@ class PromosiSeeder extends Seeder
           'endDate' => '2019-06-13 23:59:59',
         ],
         [
+          'id' => (string) Str::uuid(),
           'slug' => 'promosi-ketujuh',
           'title' => 'Promosi ketujuh',
           'gambar' => 'promos.png',
@@ -90,6 +98,7 @@ class PromosiSeeder extends Seeder
           'endDate' => '2019-06-13 23:59:59',
         ],
         [
+          'id' => (string) Str::uuid(),
           'slug' => 'promosi-kedelapan',
           'title' => 'Promosi kedelapan',
           'gambar' => 'promos.png',
@@ -101,6 +110,7 @@ class PromosiSeeder extends Seeder
           'endDate' => '2019-06-13 23:59:59',
         ],
         [
+          'id' => (string) Str::uuid(),
           'slug' => 'promosi-kesembilan',
           'title' => 'Promosi kesembilan',
           'gambar' => 'promos.png',
@@ -112,6 +122,7 @@ class PromosiSeeder extends Seeder
           'endDate' => '2019-06-13 23:59:59',
         ],
         [
+          'id' => (string) Str::uuid(),
           'slug' => 'promosi-kesepuluh',
           'title' => 'Promosi kesepuluh',
           'gambar' => 'promos.png',
@@ -123,6 +134,7 @@ class PromosiSeeder extends Seeder
           'endDate' => '2019-06-13 23:59:59',
         ],
         [
+          'id' => (string) Str::uuid(),
           'slug' => 'promosi-kesebelas',
           'title' => 'Promosi kesebelas',
           'gambar' => 'promos.png',
@@ -134,6 +146,7 @@ class PromosiSeeder extends Seeder
           'endDate' => '2019-06-13 23:59:59',
         ],
         [
+          'id' => (string) Str::uuid(),
           'slug' => 'promosi-keduabelas',
           'title' => 'Promosi keduabelas',
           'gambar' => 'promos.png',
@@ -145,6 +158,7 @@ class PromosiSeeder extends Seeder
           'endDate' => '2019-06-13 23:59:59',
         ],
         [
+          'id' => (string) Str::uuid(),
           'slug' => 'promosi-ketigabelas',
           'title' => 'Promosi ketigabelas',
           'gambar' => 'promos.png',

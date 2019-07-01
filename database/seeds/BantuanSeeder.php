@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class BantuanSeeder extends Seeder
 {
@@ -14,6 +15,7 @@ class BantuanSeeder extends Seeder
     {
       DB::table('support')->insert([
         [
+          'id' => (string) Str::uuid(),
           'email' => 'rizky@ebina.com',
           'subjek' => 'subjek pertanyaan Pertama',
           'pertanyaan' => 'Pertanyaan Pertama',
@@ -22,6 +24,7 @@ class BantuanSeeder extends Seeder
           'tampilkan' => 'tidak',
         ],
         [
+          'id' => (string) Str::uuid(),
           'email' => 'rizky@ebina.com',
           'subjek' => 'subjek pertanyaan Kedua',
           'pertanyaan' => 'Pertanyaan Kedua',
@@ -30,6 +33,7 @@ class BantuanSeeder extends Seeder
           'tampilkan' => 'tidak',
         ],
         [
+          'id' => (string) Str::uuid(),
           'email' => 'andi@ebina.com',
           'subjek' => 'subjek pertanyaan Ketiga',
           'pertanyaan' => 'Pertanyaan Ketiga',
@@ -38,6 +42,7 @@ class BantuanSeeder extends Seeder
           'tampilkan' => 'tidak',
         ],
         [
+          'id' => (string) Str::uuid(),
           'email' => 'andi@ebina.com',
           'subjek' => 'subjek pertanyaan Keempat',
           'pertanyaan' => 'Pertanyaan Keempat',
@@ -46,6 +51,7 @@ class BantuanSeeder extends Seeder
           'tampilkan' => 'tidak',
         ],
         [
+          'id' => (string) Str::uuid(),
           'email' => 'barqi@ebina.com',
           'subjek' => 'subjek pertanyaan Kelima',
           'pertanyaan' => 'Pertanyaan Kelima',
@@ -54,6 +60,7 @@ class BantuanSeeder extends Seeder
           'created_at' => Carbon::now('Asia/Jakarta'),
         ],
         [
+          'id' => (string) Str::uuid(),
           'email' => 'adit@ebina.com',
           'subjek' => 'subjek pertanyaan Keenam',
           'pertanyaan' => 'Pertanyaan Kelima',
@@ -62,6 +69,7 @@ class BantuanSeeder extends Seeder
           'created_at' => Carbon::now('Asia/Jakarta'),
         ],
         [
+          'id' => (string) Str::uuid(),
           'email' => 'megi@ebina.com',
           'subjek' => 'subjek pertanyaan Ketujuh',
           'pertanyaan' => 'Pertanyaan Kelima',

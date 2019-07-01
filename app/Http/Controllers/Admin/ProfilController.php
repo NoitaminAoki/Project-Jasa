@@ -20,9 +20,9 @@ class ProfilController extends Controller
      */
     public function index()
     {
-        $data['jumlah_member'] = Member::count();
-        $data['jumlah_klien'] = Klien::count();
-        return view('admin.profil.profil_index')->with($data);
+        $jumlah_member = Member::count();
+        $jumlah_klien = Klien::count();
+        return view('admin.profil.profil_index', ['jumlah_member' => $jumlah_member, 'jumlah_klien' => $jumlah_klien]);
     }
 
     /**
@@ -58,17 +58,6 @@ class ProfilController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -78,35 +67,32 @@ class ProfilController extends Controller
     public function update(Request $request, $id)
     {
         $adminId =  Auth::guard('web')->user()->id;
-        $request->validate([
+        $validation = $request->validate([
             'name' => 'required|string|max:199|unique:users,name,' . $adminId,
             'email' => 'required|string|email|max:255|unique:users,email,' . $adminId
         ]);
-
         User::where('id', $adminId)->update([
           'name' => $request->name,
           'email' => $request->email
         ]);
-        $request->session()->flash('success_message', 'Success Changed Profil');
-        return redirect()->back();
+        return redirect()->back()->with('success_message', 'Success Changed Profil');
     }
 
     public function changePassword(Request $request)
     {
-        $request->validate(['password' => 'required|string|min:6|confirmed']);
+        $validation = $request->validate([
+          'password' => 'required|string|min:6|confirmed'
+        ]);
         User::where('id', Auth::guard('web')->user()->id)->update(['password' => Hash::make($request->password)]);
-        $request->session()->flash('success_message', 'Success Changed Password');
-        return redirect()->route('admin.profil.index');
+        return redirect()->route('admin.profil.index')->with('success_message', 'Success Changed Password');
     }
 
     public function UpdateProfile(Request $request)
     {
-      $this->validate($request, ['profile_picture' => 'required|file|max:2000']);
-      // $uploadLogo = $request->file('profile_picture');
-      // $path = $uploadLogo->store('public/files');
-
+      $validation = $request->validate([
+        'profile_picture' => 'required|file|max:2000'
+      ]);
       $profile_picture = User::findOrFail(Auth::guard('web')->user()->id);
-      // Storage::delete($profile_picture->profile_picture);
       if ($request->hasFile('profile_picture') && $request->file('profile_picture')->isValid()) {
         $uploadGambar = $request->file('profile_picture');
         $gambarName = $uploadGambar->getClientOriginalName();

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class HargaSeeder extends Seeder
 {
@@ -13,14 +14,17 @@ class HargaSeeder extends Seeder
     {
       DB::table('harga')->insert([
         [
+          'id' => (string) Str::uuid(),
           'harga' => 350,
           'tingkat' => 'bisnis',
         ],
         [
+          'id' => (string) Str::uuid(),
           'harga' => 500,
           'tingkat' => 'profesional',
         ],
         [
+          'id' => (string) Str::uuid(),
           'harga' => 200,
           'tingkat' => 'pemula',
         ]
