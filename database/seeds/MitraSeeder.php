@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
-use Illuminate\Support\Str;
 
 class MitraSeeder extends Seeder
 {
@@ -15,7 +14,6 @@ class MitraSeeder extends Seeder
     {
         DB::table('mitra')->insert([
           [
-            'id' => (string) Str::uuid(),
             'nama' => 'PT. JAKARTA TEKNOLOGI SOLUSINDO ',
             'email' => 'mitra@kesatu.com',
             'status' => 'pending',
@@ -24,7 +22,6 @@ class MitraSeeder extends Seeder
             'created_at' => Carbon::now('Asia/Jakarta'),
           ],
           [
-            'id' => (string) Str::uuid(),
             'nama' => 'PT. JAKARTA TEKNOLOGI SOLUSINDO ',
             'email' => 'mitra@kedua.com',
             'status' => 'pending',
@@ -33,7 +30,6 @@ class MitraSeeder extends Seeder
             'created_at' => Carbon::now('Asia/Jakarta'),
           ],
           [
-            'id' => (string) Str::uuid(),
             'nama' => 'PT. JAKARTA TEKNOLOGI SOLUSINDO ',
             'email' => 'mitra@ketiga.com',
             'status' => 'pending',
@@ -42,7 +38,6 @@ class MitraSeeder extends Seeder
             'created_at' => Carbon::now('Asia/Jakarta'),
           ],
           [
-            'id' => (string) Str::uuid(),
             'nama' => 'PT. JAKARTA TEKNOLOGI SOLUSINDO ',
             'email' => 'mitra@keempat.com',
             'status' => 'pending',

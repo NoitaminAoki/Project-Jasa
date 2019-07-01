@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
 class PeraturanSeeder extends Seeder
 {
@@ -14,7 +13,6 @@ class PeraturanSeeder extends Seeder
     {
       DB::table('peraturan')->insert([
         [
-          'id' => (string) Str::uuid(),
           'judul' => 'Peraturan Pertama',
           'deskripsi' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit quam nec condimentum sagittis.
                           Curabitur ac turpis turpis. Duis est urna, egestas sit amet sapien at, suscipit porta sapien.
@@ -26,7 +24,6 @@ class PeraturanSeeder extends Seeder
                           blandit.',
         ],
         [
-          'id' => (string) Str::uuid(),
           'judul' => 'Peraturan Kedua',
           'deskripsi' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit quam nec condimentum sagittis.
                           Curabitur ac turpis turpis. Duis est urna, egestas sit amet sapien at, suscipit porta sapien.
@@ -38,7 +35,6 @@ class PeraturanSeeder extends Seeder
                           blandit.',
         ],
         [
-          'id' => (string) Str::uuid(),
           'judul' => 'Peraturan Ketiga',
           'deskripsi' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit quam nec condimentum sagittis.
                           Curabitur ac turpis turpis. Duis est urna, egestas sit amet sapien at, suscipit porta sapien.
@@ -50,7 +46,6 @@ class PeraturanSeeder extends Seeder
                           blandit.',
         ],
         [
-          'id' => (string) Str::uuid(),
           'judul' => 'Peraturan Keempat',
           'deskripsi' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit quam nec condimentum sagittis.
                           Curabitur ac turpis turpis. Duis est urna, egestas sit amet sapien at, suscipit porta sapien.

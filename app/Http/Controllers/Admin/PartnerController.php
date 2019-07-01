@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Partner;
+use Illuminate\Support\Str;
 
 class PartnerController extends Controller
 {
@@ -15,7 +16,7 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        $partners = Partner::paginate(12);
+        $partners = Partner::orderBy('created_at', 'ASC')->paginate(12);
         return view('admin.partner.index', ['partners' => $partners]);
     }
 
@@ -46,10 +47,11 @@ class PartnerController extends Controller
       $request->file('logo')->move('assets/img', $gambarName);
 
       $partner = new Partner;
+      $partner->id = (string) Str::uuid();
       $partner->nama = $request->nama;
       $partner->logo = $gambarName;
       $partner->save();
-      return redirect()->route('admin.partner.index');
+      return redirect()->route('admin.partner.index')->with('success_message', 'Berhasil Menambah Partner');
     }
 
     /**

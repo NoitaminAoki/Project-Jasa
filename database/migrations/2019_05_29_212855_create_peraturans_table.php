@@ -14,7 +14,7 @@ class CreatePeraturansTable extends Migration
     public function up()
     {
         Schema::create('peraturan', function (Blueprint $table) {
-            $table->string('id')->unique();
+            $table->bigIncrements('id');
             $table->string('judul');
             $table->text('deskripsi');
             $table->timestamps();

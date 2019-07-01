@@ -14,7 +14,7 @@ class CreatePenghasilansTable extends Migration
     public function up()
     {
         Schema::create('penghasilans', function (Blueprint $table) {
-            $table->string('id')->unique();
+            $table->bigIncrements('id');
             $table->bigInteger('idHarga');
             $table->integer('point');
             $table->integer('fee');

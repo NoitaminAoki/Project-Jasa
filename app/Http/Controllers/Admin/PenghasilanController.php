@@ -49,7 +49,7 @@ class PenghasilanController extends Controller
         $data['pendapatanChartNegosiasi'] = 0;
         $data['pendapatanChartDeal'] = 0;
         $intRow = 0;
-        
+
         $getDiffDay = 6;
         if (!empty($request->daterange)) {
             $getDaterange = explode(" - ", $request->daterange);
@@ -86,7 +86,7 @@ class PenghasilanController extends Controller
         }
         return view('admin.penghasilan.penghasilan_chart')->with($data);
     }
-    
+
     /**
     * Display a listing of the resource.
     *
@@ -97,7 +97,7 @@ class PenghasilanController extends Controller
         $data['penghasilan'] = Penghasilan::all();
         return view('admin.penghasilan.penghasilan_index')->with($data);
     }
-    
+
     /**
     * Show the form for creating a new resource.
     *
@@ -108,7 +108,7 @@ class PenghasilanController extends Controller
         $data['harga'] = Harga::all();
         return view('admin.penghasilan.penghasilan_create')->with($data);
     }
-    
+
     /**
     * Store a newly created resource in storage.
     *
@@ -122,7 +122,7 @@ class PenghasilanController extends Controller
             'point' => 'required|int',
             'fee' => 'required|int'
             ]);
-            
+
             Penghasilan::create([
                 'idHarga' => $request->idHarga,
                 'point' => $request->point,
@@ -131,7 +131,7 @@ class PenghasilanController extends Controller
                 $request->session()->flash('success_message', 'Success Adding Konfigurasi Penghasilan');
                 return redirect()->route('admin.penghasilan.index');
             }
-            
+
             /**
             * Display the specified resource.
             *
@@ -142,7 +142,7 @@ class PenghasilanController extends Controller
             {
                 //
             }
-            
+
             /**
             * Show the form for editing the specified resource.
             *
@@ -155,7 +155,7 @@ class PenghasilanController extends Controller
                 $data['penghasilan'] = Penghasilan::findOrfail($id);
                 return view('admin.penghasilan.penghasilan_edit')->with($data);
             }
-            
+
             /**
             * Update the specified resource in storage.
             *
@@ -170,7 +170,7 @@ class PenghasilanController extends Controller
                     'point' => 'required|int',
                     'fee' => 'required|int'
                     ]);
-                    
+
                     Penghasilan::where('id', $id)->update([
                         'idHarga' => $request->idHarga,
                         'point' => $request->point,
@@ -179,7 +179,7 @@ class PenghasilanController extends Controller
                         $request->session()->flash('success_message', 'Success Updating Konfigurasi Penghasilan');
                         return redirect()->route('admin.penghasilan.index');
                     }
-                    
+
                     /**
                     * Remove the specified resource from storage.
                     *
@@ -193,4 +193,3 @@ class PenghasilanController extends Controller
                         return redirect()->route('admin.penghasilan.index');
                     }
                 }
-                

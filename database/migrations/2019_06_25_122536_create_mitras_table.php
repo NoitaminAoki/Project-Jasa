@@ -14,7 +14,7 @@ class CreateMitrasTable extends Migration
     public function up()
     {
         Schema::create('mitra', function (Blueprint $table) {
-            $table->string('id')->unique();
+            $table->bigIncrements('id');
             $table->string('nama');
             $table->string('email');
             $table->enum('status', ['bergabung', 'pending'])->default('pending');

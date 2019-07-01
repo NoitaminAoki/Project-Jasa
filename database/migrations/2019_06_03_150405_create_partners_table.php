@@ -14,7 +14,7 @@ class CreatePartnersTable extends Migration
     public function up()
     {
         Schema::create('partner', function (Blueprint $table) {
-            $table->string('id')->unique();
+            $table->bigIncrements('id');
             $table->string('nama');
             $table->string('logo');
             $table->timestamps();

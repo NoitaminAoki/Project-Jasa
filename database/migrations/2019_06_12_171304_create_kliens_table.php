@@ -14,7 +14,7 @@ class CreateKliensTable extends Migration
     public function up()
     {
         Schema::create('kliens', function (Blueprint $table) {
-            $table->string('id')->unique();
+            $table->bigIncrements('id');
             $table->bigInteger('idHarga');
             $table->bigInteger('idMember')->unsigned()->nullable();
             $table->string('nama');
